@@ -1,0 +1,143 @@
+﻿@page
+@model Web.Pages.Survey.SponsorModel
+@{
+    ViewData["Title"] = "Sponsor";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        @ViewData["Title"]
+    </title>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet"
+          href="~/css/bootstrap-multiselect.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css" />
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-2 text-center">Sponsor Request Form</h2>
+        <p class="text-justify mt-3 mb-3">
+            The Thermon Way describes our absolute commitment to business integrity through promoting a culture of trust to enhance and grow our business relationships.  An important point in the Thermon Way to have in place guidelines to ensure that our people and third parties working on our behalf share our values.
+            This Sponsor Request Form is to be completed by the Thermon employee who has the most knowledge of a Third Party Representative (TPR) such as a Sales Agent, Distributor or Governmenet Agency Agent (as those are defined in our Anti-corruption Policy, Section 5 (link)).
+
+            Please fill out this form completely and if you have any questions, contact <a href="mailto:compliance@thermon.com">here</a>.
+        </p>
+
+        <hr />
+
+        <form method="post">
+            @foreach (var sec in Model.Questions["Sections"])
+            {
+                <div class="mt-1 mb-2">
+                    <h5 class="text-uppercase">
+                        @sec["Title"]
+                    </h5>
+
+                    @foreach (var ques in sec["Questions"])
+                    {
+                        <div class="mb-4">
+                            @if (!string.IsNullOrWhiteSpace(ques["Question"].ToString()))
+                            {
+                                <p class="text-justify mb-1"
+                                   style="font-weight: 500">
+                                    @ques["Question"]
+                                </p>
+                            }
+
+                            @if (ques["Type"].ToString() == "MCQ")
+                            {
+                                foreach (var opt in ques["Options"])
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input"
+                                               type="radio"
+                                               name=" @ques["ID"]"
+                                               id="@ques["ID"]_@opt"
+                                               value="@opt">
+                                        <label class="form-check-label"
+                                               for="@ques["ID"]_@opt">
+                                            @opt
+                                        </label>
+                                    </div>
+                                }
+                            }
+                            else if (ques["Type"].ToString() == "Text")
+                            {
+                                <input class="form-control form-control-sm col-md-4"
+                                       name="@ques["ID"]"
+                                       type="text">
+                            }
+                            else if (ques["Type"].ToString() == "Email")
+                            {
+                                <input class="form-control form-control-sm col-md-4"
+                                       name="@ques["ID"]"
+                                       type="email">
+                            }
+                            else if (ques["Type"].ToString() == "Url")
+                            {
+                                <input class="form-control form-control-sm col-md-4"
+                                       name="@ques["ID"]"
+                                       type="url">
+                            }
+                            else if (ques["Type"].ToString() == "Date")
+                            {
+                                <input class="form-control form-control-sm col-md-4"
+                                       name="@ques["ID"]"
+                                       type="date">
+                            }
+                            else if (ques["Type"].ToString() == "Multiselect")
+                            {
+                                <select class="multiselect" 
+                                        multiple="multiple"
+                                        style="border: 2px solid black">
+                                    @foreach (var opt in ques["Options"])
+                                    {
+                                        <option value="@opt">@opt</option>
+                                    }
+                                </select>
+                            }
+
+                        </div>
+                    }
+
+                </div>
+            }
+            <input type="submit"
+                   class="btn btn-primary"
+                   value="Submit" />
+        </form>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/js/bootstrap-multiselect.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.multiselect').multiselect({
+                buttonWidth: '350px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 200,
+                minWidth: 200
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
