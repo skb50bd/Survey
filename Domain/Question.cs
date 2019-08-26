@@ -8,12 +8,6 @@ namespace Domain
 
         public string Statement { get; set; }
         public QuestionType QuestionType { get; set; }
-        public IEnumerable<Option> Options { get; set; }
-    }
-
-    public class Option
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public IEnumerable<string> Options { get; set; }
     }
 }
