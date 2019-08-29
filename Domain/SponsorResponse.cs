@@ -5,12 +5,35 @@ namespace Domain
 {
     public class SponsorResponse
     {
-        public Sponsor Sponsor { get; set; }
-        public Survey Survey { get; set; }
+        public string A1 { get; set; }
 
+        public string B1 { get; set; }
+        public string B2 { get; set; }
+        public string B3 { get; set; }
 
-        public IEnumerable<string> Responses { get; set; }
+        public string C1 { get; set; }
+        public IList<string> C2 { get; set; }
+        public string C3 { get; set; }
+        public string C4 { get; set; }
+        public string C5 { get; set; }
+        public string C6 { get; set; }
+        public string C7 { get; set; }
 
-        public ThirdPartyResponse ThirdPartyResponse { get; set; }
+        public string D1 { get; set; }
+        public string D2 { get; set; }
+        public string D3 { get; set; }
+
+        public string E1 { get; set; }
+        public string E2 { get; set; }
+        public string E3 { get; set; }
+
+        public string F1 { get; set; }
+        public string F2 { get; set; }
+        public string F3 { get; set; }
+
+        public bool G1 { get; set; }
+        public string G2 { get; set; }
+        public string G3 { get; set; }
+        public string G4 { get; set; }
     }
 }

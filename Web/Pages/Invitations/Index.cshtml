@@ -1,0 +1,69 @@
+﻿@page
+@model Web.Pages.Invitations.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+    <div class="card-body">     
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="card-header">
+                    Invitations
+                </h1>
+            </div>
+
+            <div class="col-md-6 text-md-right">
+                <a class="btn btn-primary" 
+                   asp-page="./Send">Send New Invitation</a>
+            </div>
+        </div>
+
+        
+
+        <table class="table table-sm table-hover table-borderless">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Sponsor</th>
+                    <th>Sponsor Email</th>
+                    <th>Response</th>
+                    <th class="text-right">Third Party</th>
+                    <th class="text-right">Third Party Email</th>
+                    <th class="text-right">Response</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var sp in Model.Sponsors)
+            {
+                var sponsorClass = "table-danger";
+                var thirdPartyClass = "table-info";
+
+                <tr>
+                    <td class="@sponsorClass">
+                        @sp.Name
+                    </td>
+                    <td class="@sponsorClass">
+                        @sp.Email
+                    </td>
+                    <td class="@sponsorClass">
+                        <a href="#">Link</a>
+                    </td>
+                    <td class="@thirdPartyClass text-right">
+                        @sp.ThirdParty.Name
+                    </td>
+                    <td class="@thirdPartyClass text-right">
+                        @sp.ThirdParty.Email
+                    </td>
+                    <td class="@thirdPartyClass text-right">
+                        <a href="#">Link</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,64 @@
+﻿@page
+@model Web.Pages.Invitation.SendModel
+@{
+    ViewData["Title"] = "Invite";
+}
+
+<div class="card" style="max-width: 50rem;">
+    <div class="card-body">
+        <h1 class="card-title">Invite</h1>
+        <form method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="Input.SponsorName"
+                               class="form-control"
+                               placeholder="Sponsor Name">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="Input.SponsorEmail"
+                               class="form-control"
+                               placeholder="Sponsor Email">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="Input.ThirdPartyName"
+                               class="form-control"
+                               placeholder="Third Party Name">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="Input.ThirdPartyEmail"
+                               class="form-control"
+                               placeholder="Third Party Email">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button class="btn btn-primary"
+                                type="submit">
+                            Send Invitation
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

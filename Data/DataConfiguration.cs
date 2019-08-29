@@ -1,5 +1,4 @@
-﻿using Data.Repository;
-using LiteDB;
+﻿using LiteDB;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,12 +15,10 @@ namespace Data
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
-                    config.GetConnectionString("IdentityDB")));
+                    config.GetConnectionString("DataDB")));
             services.AddDefaultIdentity<IdentityUser>()
                     .AddDefaultUI(UIFramework.Bootstrap4)
                     .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            BsonMapper.Global.ConfigureMapper();
 
             return services;
         }

@@ -1,4 +1,5 @@
 ﻿@page
+@using Microsoft.EntityFrameworkCore.Internal
 @model Web.Pages.Survey.SponsorModel
 @{
     ViewData["Title"] = "Sponsor";
@@ -28,95 +29,701 @@
 <body>
     <div class="container">
         <h2 class="mt-2 text-center">Sponsor Request Form</h2>
-        <p class="text-justify mt-3 mb-3">
-            The Thermon Way describes our absolute commitment to business integrity through promoting a culture of trust to enhance and grow our business relationships.  An important point in the Thermon Way to have in place guidelines to ensure that our people and third parties working on our behalf share our values.
-            This Sponsor Request Form is to be completed by the Thermon employee who has the most knowledge of a Third Party Representative (TPR) such as a Sales Agent, Distributor or Governmenet Agency Agent (as those are defined in our Anti-corruption Policy, Section 5 (link)).
+        <p class="alert alert-info text-justify mt-3 mb-3">
+            The Thermon Way describes our absolute commitment to business integrity through promoting a culture of trust to enhance and grow our business relationships.
+            An important point in the Thermon Way to have in place guidelines to ensure that our people and third parties working on our behalf share our values.
+            This Sponsor Request Form is to be completed by the Thermon employee who has the most knowledge of a Third Party Representative (TPR) such as a Sales Agent,
+            Distributor or Government Agency Agent (as those are defined in our Anti-corruption Policy, Section 5 (link)).
 
             Please fill out this form completely and if you have any questions, contact <a href="mailto:compliance@thermon.com">here</a>.
         </p>
 
-        <hr />
 
         <form method="post">
-            @foreach (var sec in Model.Questions["Sections"])
-            {
-                <div class="mt-1 mb-2">
-                    <h5 class="text-uppercase">
-                        @sec["Title"]
-                    </h5>
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger">
+            </div>
 
-                    @foreach (var ques in sec["Questions"])
-                    {
-                        <div class="mb-4">
-                            @if (!string.IsNullOrWhiteSpace(ques["Question"].ToString()))
-                            {
-                                <p class="text-justify mb-1"
-                                   style="font-weight: 500">
-                                    @ques["Question"]
-                                </p>
-                            }
+            <!--GROUP A-->
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="card-title h4 text-uppercase">
+                            A. Type of TPR Representative
+                        </label>
 
-                            @if (ques["Type"].ToString() == "MCQ")
-                            {
-                                foreach (var opt in ques["Options"])
-                                {
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input"
-                                               type="radio"
-                                               name=" @ques["ID"]"
-                                               id="@ques["ID"]_@opt"
-                                               value="@opt">
-                                        <label class="form-check-label"
-                                               for="@ques["ID"]_@opt">
-                                            @opt
-                                        </label>
-                                    </div>
-                                }
-                            }
-                            else if (ques["Type"].ToString() == "Text")
-                            {
-                                <input class="form-control form-control-sm col-md-4"
-                                       name="@ques["ID"]"
-                                       type="text">
-                            }
-                            else if (ques["Type"].ToString() == "Email")
-                            {
-                                <input class="form-control form-control-sm col-md-4"
-                                       name="@ques["ID"]"
-                                       type="email">
-                            }
-                            else if (ques["Type"].ToString() == "Url")
-                            {
-                                <input class="form-control form-control-sm col-md-4"
-                                       name="@ques["ID"]"
-                                       type="url">
-                            }
-                            else if (ques["Type"].ToString() == "Date")
-                            {
-                                <input class="form-control form-control-sm col-md-4"
-                                       name="@ques["ID"]"
-                                       type="date">
-                            }
-                            else if (ques["Type"].ToString() == "Multiselect")
-                            {
-                                <select class="multiselect" 
-                                        multiple="multiple"
-                                        style="border: 2px solid black">
-                                    @foreach (var opt in ques["Options"])
-                                    {
-                                        <option value="@opt">@opt</option>
-                                    }
-                                </select>
-                            }
-
+                        <div class="form-check">
+                            <input asp-for="Answers.A1"
+                                   class="form-check-input"
+                                   type="radio"
+                                   id="A1a"
+                                   value="Sales Agent (receiving commission on any part of business">
+                            <label class="form-check-label"
+                                   for="A1a">
+                                Sales Agent (receiving commission on any part of business
+                            </label>
                         </div>
-                    }
-
+                        <div class="form-check">
+                            <input asp-for="Answers.A1"
+                                   class="form-check-input"
+                                   type="radio"
+                                   id="A1b"
+                                   value="Distributor">
+                            <label class="form-check-label"
+                                   for="A1b">
+                                Distributor
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input asp-for="Answers.A1"
+                                   class="form-check-input"
+                                   type="radio"
+                                   id="A1c"
+                                   value="Government Agency Agent">
+                            <label class="form-check-label"
+                                   for="A1c">
+                                Government Agency Agent
+                            </label>
+                        </div>
+                    </div>
                 </div>
-            }
-            <input type="submit"
-                   class="btn btn-primary"
-                   value="Submit" />
+            </div>
+
+            <!--GROUP B-->
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="form-group">
+                        <h4 class="card-title h4 text-uppercase">
+                            B. Business Related Information
+                        </h4>
+
+                        <div>
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                1. Business Unit Involved
+                            </label>
+
+                            <div class="form-check">
+                                <input asp-for="Answers.B1"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="B1a"
+                                       value="Heat Tracing">
+                                <label class="form-check-label"
+                                       for="B1a">
+                                    Heat Tracing
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.B1"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="B1b"
+                                       value="Heating Solutions">
+                                <label class="form-check-label"
+                                       for="B1b">
+                                    Heating Solutions
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.B1"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="B1c"
+                                       value="Power Solutions">
+                                <label class="form-check-label"
+                                       for="B1c">
+                                    Power Solutions
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                2. Region Involved
+                            </label>
+
+                            <div class="form-check">
+                                <input asp-for="Answers.B2"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="B2a"
+                                       value="Only Corporate">
+                                <label class="form-check-label"
+                                       for="B2a">
+                                    Only Corporate
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.B2"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="B2b"
+                                       value="US/Latin America">
+                                <label class="form-check-label"
+                                       for="B2b">
+                                    US/Latin America
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.B2"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="B2c"
+                                       value="EMEA">
+                                <label class="form-check-label"
+                                       for="B2c">
+                                    EMEA
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.B2"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="B2d"
+                                       value="APAC">
+                                <label class="form-check-label"
+                                       for="B2d">
+                                    APAC
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                3. Will services provided relate to a Thermon "Greenfield" Project?
+                            </label>
+
+                            <div class="form-check">
+                                <input asp-for="Answers.B2"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="B3a"
+                                       value="Yes">
+                                <label class="form-check-label"
+                                       for="B3a">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.B2"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="B3b"
+                                       value="No">
+                                <label class="form-check-label"
+                                       for="B3b">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--GROUP C-->
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="form-group">
+                        <h4 class="card-title h4 text-uppercase">
+                            C. TPR Representative
+                        </h4>
+
+                        <div>
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                1. Full Legal Name
+                            </label>
+
+                            <input asp-for="Answers.C1"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="text" />
+
+                            <span asp-validation-for="Answers.C1"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                2. Country(s) where Services will be provided
+                            </label>
+                                      <br/>
+                            <select asp-for="Answers.C2"
+                                    class="multiselect form-control form-control-sm col-md-6"
+                                    multiple="multiple"
+                                    style="border: 2px solid black;">
+                                @foreach (var country in Model.Countries)
+                                {
+                                    <option value="@country">@country</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                3. For Government Agency Agent, type of Services being provided
+                            </label>
+
+                            <div class="form-check">
+                                <input asp-for="Answers.C3"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="C3a"
+                                       value="N/A">
+                                <label class="form-check-label"
+                                       for="C3a">
+                                    N/A
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.C3"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="C3b"
+                                       value="Visa/Immigration">
+                                <label class="form-check-label"
+                                       for="C3b">
+                                    Visa/Immigration
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.C3"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="C3c"
+                                       value="Permits">
+                                <label class="form-check-label"
+                                       for="C3c">
+                                    Permits
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.C3"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="C3d"
+                                       value="Relocation Licensing">
+                                <label class="form-check-label"
+                                       for="C3d">
+                                    Relocation Licensing
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.C3"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="C3e"
+                                       value="Customs">
+                                <label class="form-check-label"
+                                       for="C3e">
+                                    Customs
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.C3"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="C3f"
+                                       value="Logistics">
+                                <label class="form-check-label"
+                                       for="C3f">
+                                    Logistics
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.C3"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="C3g"
+                                       value="Tax">
+                                <label class="form-check-label"
+                                       for="C3g">
+                                    Tax
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.C3"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="C3h"
+                                       value="Legal">
+                                <label class="form-check-label"
+                                       for="C3h">
+                                    Legal
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                4. Address
+                            </label>
+
+                            <input asp-for="Answers.C4"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="text" />
+
+                            <span asp-validation-for="Answers.C4"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                5. Website
+                            </label>
+
+                            <input asp-for="Answers.C5"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="url" />
+
+                            <span asp-validation-for="Answers.C5"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                6. Primary Contact at TPR
+                            </label>
+
+                            <input asp-for="Answers.C6"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="text" />
+
+                            <span asp-validation-for="Answers.C6"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                7. Email Address of the Primary Contact
+                            </label>
+
+                            <input asp-for="Answers.C7"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="email" />
+
+                            <span asp-validation-for="Answers.C7"
+                                  class="text-danger">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--GROUP D-->
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="form-group">
+                        <h4 class="card-title h4 text-uppercase">
+                            D. Selection of TPR
+                        </h4>
+
+                        <div>
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                1. The primary reason(s) the TPR was selected versus another TPR
+                            </label>
+
+                            <input asp-for="Answers.D1"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="text" />
+
+                            <span asp-validation-for="Answers.D1"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                2. Describe the TPR's experience including length of time in business,
+                                particular expertise and include names of other companies that work with them
+                            </label>
+
+                            <input asp-for="Answers.D2"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="text" />
+
+                            <span asp-validation-for="Answers.D2"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                3. Briefly describe the process that was used in the selection of
+                                the TPR (obtained recommendations, interviewed them, formal tender, etc.)
+                            </label>
+
+                            <input asp-for="Answers.D3"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="text" />
+
+                            <span asp-validation-for="Answers.D3"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--GROUP E-->
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="form-group">
+                        <h4 class="card-title h4 text-uppercase">
+                            E. Background of the TPR
+                        </h4>
+
+                        <div>
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                1. Is there any concern regarding the reputation of the TRP from a business integrity or compliance standpoint.
+                                For example, has the TPR faced allegations of bribery, kickbacks, fraud or other wrongdoings?
+                            </label>
+
+                            <div class="form-check">
+                                <input asp-for="Answers.E1"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="E1a"
+                                       value="Yes">
+                                <label class="form-check-label"
+                                       for="E1a">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.E1"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="E1b"
+                                       value="No">
+                                <label class="form-check-label"
+                                       for="E1b">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                2. Did a representative of the customer or a government official recommend (without us requesting a recommendation)
+                                or insist that we use the TPR?
+                            </label>
+
+                            <div class="form-check">
+                                <input asp-for="Answers.E2"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="E2a"
+                                       value="Yes">
+                                <label class="form-check-label"
+                                       for="E2a">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.E2"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="E2b"
+                                       value="No">
+                                <label class="form-check-label"
+                                       for="E2b">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                3. Has the TPR requested that they receive payment 1) in a jurisdiction other than the country in which
+                                the services are being provided or the country of their corporate headquarters, 2)
+                                to an account that does not appear to be their company`s business account or 3) to a party that is not part of the contract?
+                            </label>
+
+                            <div class="form-check">
+                                <input asp-for="Answers.E3"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="E3a"
+                                       value="Yes">
+                                <label class="form-check-label"
+                                       for="E3a">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.E3"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="E3b"
+                                       value="No">
+                                <label class="form-check-label"
+                                       for="E3b">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--GROUP F-->
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="form-group">
+                        <h4 class="card-title h4 text-uppercase">
+                            F. Internal Information
+                        </h4>
+
+                        <div>
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                1. Person primarily responsible for the TPR relationship
+                            </label>
+
+                            <input asp-for="Answers.F1"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="text" />
+
+                            <span asp-validation-for="Answers.F1"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                2. Email of Primary Person Responsible/Creator of this Form
+                            </label>
+
+                            <input asp-for="Answers.F2"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="email" />
+
+                            <span asp-validation-for="Answers.F2"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                3. Email of leader for the Primary Person Responsible
+                            </label>
+
+                            <input asp-for="Answers.F3"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="email" />
+
+                            <span asp-validation-for="Answers.F3"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!--GROUP F-->
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="form-group">
+                        <h4 class="card-title h4 text-uppercase">
+                            G. Completed and Confirm as Accurate
+                        </h4>
+                                  
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" 
+                                   asp-for="Answers.G1"
+                                   id="G1"
+                                   type="checkbox"
+                                   value="Yes">
+                            <label class="form-check-label"
+                                   for="G1">
+                                <strong>Virtual Signature </strong>- Please Check Box
+                            </label>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                1. Full Name and Title
+                            </label>
+
+                            <input asp-for="Answers.G2"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="text" />
+
+                            <span asp-validation-for="Answers.G2"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                2. Email Address
+                            </label>
+
+                            <input asp-for="Answers.G3"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="email" />
+
+                            <span asp-validation-for="Answers.G3"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                3. Date
+                            </label>
+
+                            <input asp-for="Answers.G4"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="date" />
+
+                            <span asp-validation-for="Answers.G4"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Submit
+            </button>
         </form>
     </div>
 
@@ -135,6 +742,9 @@
             });
         });
     </script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
 </body>
 </html>
 

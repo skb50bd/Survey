@@ -1,0 +1,57 @@
+﻿@using Domain
+@model Invitation
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Survey Invitation</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .button {
+            background-color: #4caf50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    Hello @Model.Name,
+    <br />
+    <br />
+    Please take a moment to fill out the survey form.
+    <br />
+
+    To get started, click the button below.
+    <br />
+    <br />
+
+    <a href="@Url" class="button">
+        Click Here
+    </a>
+    <br />
+    <br />
+
+    Sincerely,
+    <br/>
+    SOMEONE 
+    <br/>
+    Trevno
+</div>
+</body>
+</html>
