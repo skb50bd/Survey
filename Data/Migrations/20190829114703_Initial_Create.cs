@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial_Create : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,18 +47,19 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Sponsors",
+                name: "ThirdParties",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    ThirdPartyId = table.Column<int>(nullable: false)
+                    UniqueIdentifier = table.Column<Guid>(nullable: false),
+                    HasResponded = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sponsors", x => x.Id);
+                    table.PrimaryKey("PK_ThirdParties", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -168,24 +169,87 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ThirdParties",
+                name: "Sponsors",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    SponsorId = table.Column<int>(nullable: false)
+                    UniqueIdentifier = table.Column<Guid>(nullable: false),
+                    HasResponded = table.Column<bool>(nullable: false),
+                    ThirdPartyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ThirdParties", x => x.Id);
+                    table.PrimaryKey("PK_Sponsors", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ThirdParties_Sponsors_SponsorId",
+                        name: "FK_Sponsors_ThirdParties_ThirdPartyId",
+                        column: x => x.ThirdPartyId,
+                        principalTable: "ThirdParties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ThirdPartyResponses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ThirdPartyId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ThirdPartyResponses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ThirdPartyResponses_ThirdParties_ThirdPartyId",
+                        column: x => x.ThirdPartyId,
+                        principalTable: "ThirdParties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SponsorResponses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    SponsorId = table.Column<int>(nullable: false),
+                    A1 = table.Column<string>(nullable: true),
+                    B1 = table.Column<string>(nullable: true),
+                    B2 = table.Column<string>(nullable: true),
+                    B3 = table.Column<string>(nullable: true),
+                    C1 = table.Column<string>(nullable: true),
+                    C2 = table.Column<string>(nullable: true),
+                    C3 = table.Column<string>(nullable: true),
+                    C4 = table.Column<string>(nullable: true),
+                    C5 = table.Column<string>(nullable: true),
+                    C6 = table.Column<string>(nullable: true),
+                    C7 = table.Column<string>(nullable: true),
+                    D1 = table.Column<string>(nullable: true),
+                    D2 = table.Column<string>(nullable: true),
+                    D3 = table.Column<string>(nullable: true),
+                    E1 = table.Column<string>(nullable: true),
+                    E2 = table.Column<string>(nullable: true),
+                    E3 = table.Column<string>(nullable: true),
+                    F1 = table.Column<string>(nullable: true),
+                    F2 = table.Column<string>(nullable: true),
+                    F3 = table.Column<string>(nullable: true),
+                    G1 = table.Column<string>(nullable: true),
+                    G2 = table.Column<string>(nullable: true),
+                    G3 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SponsorResponses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SponsorResponses_Sponsors_SponsorId",
                         column: x => x.SponsorId,
                         principalTable: "Sponsors",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -226,10 +290,29 @@ namespace Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ThirdParties_SponsorId",
+                name: "IX_SponsorResponses_SponsorId",
+                table: "SponsorResponses",
+                column: "SponsorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sponsors_ThirdPartyId",
+                table: "Sponsors",
+                column: "ThirdPartyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sponsors_UniqueIdentifier",
+                table: "Sponsors",
+                column: "UniqueIdentifier");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ThirdParties_UniqueIdentifier",
                 table: "ThirdParties",
-                column: "SponsorId",
-                unique: true);
+                column: "UniqueIdentifier");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ThirdPartyResponses_ThirdPartyId",
+                table: "ThirdPartyResponses",
+                column: "ThirdPartyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -250,7 +333,10 @@ namespace Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ThirdParties");
+                name: "SponsorResponses");
+
+            migrationBuilder.DropTable(
+                name: "ThirdPartyResponses");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -260,6 +346,9 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Sponsors");
+
+            migrationBuilder.DropTable(
+                name: "ThirdParties");
         }
     }
 }

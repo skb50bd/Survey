@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{uid}"
 @using Microsoft.EntityFrameworkCore.Internal
 @model Web.Pages.Survey.SponsorModel
 @{
@@ -43,6 +43,10 @@
             <div asp-validation-summary="ModelOnly"
                  class="text-danger">
             </div>
+
+            <input asp-for="Answers.UniqueIdentifier"
+                   value="@Model.UniqueId"
+                   hidden />
 
             <!--GROUP A-->
             <div class="card mb-2">
@@ -251,7 +255,7 @@
                                    style="font-weight: 500">
                                 2. Country(s) where Services will be provided
                             </label>
-                                      <br/>
+                            <br />
                             <select asp-for="Answers.C2"
                                     class="multiselect form-control form-control-sm col-md-6"
                                     multiple="multiple"
@@ -655,16 +659,16 @@
                         <h4 class="card-title h4 text-uppercase">
                             G. Completed and Confirm as Accurate
                         </h4>
-                                  
-                        
+
+
                         <div class="form-check">
-                            <input class="form-check-input" 
-                                   asp-for="Answers.G1"
-                                   id="G1"
+                            <input class="form-check-input"
+                                   asp-for="Answers.G0"
+                                   id="G0"
                                    type="checkbox"
                                    value="Yes">
                             <label class="form-check-label"
-                                   for="G1">
+                                   for="G0">
                                 <strong>Virtual Signature </strong>- Please Check Box
                             </label>
                         </div>
@@ -675,11 +679,11 @@
                                 1. Full Name and Title
                             </label>
 
-                            <input asp-for="Answers.G2"
+                            <input asp-for="Answers.G1"
                                    class="form-control form-control-sm col-md-6"
                                    type="text" />
 
-                            <span asp-validation-for="Answers.G2"
+                            <span asp-validation-for="Answers.G1"
                                   class="text-danger">
                             </span>
                         </div>
@@ -691,11 +695,11 @@
                                 2. Email Address
                             </label>
 
-                            <input asp-for="Answers.G3"
+                            <input asp-for="Answers.G2"
                                    class="form-control form-control-sm col-md-6"
                                    type="email" />
 
-                            <span asp-validation-for="Answers.G3"
+                            <span asp-validation-for="Answers.G2"
                                   class="text-danger">
                             </span>
                         </div>
@@ -707,11 +711,11 @@
                                 3. Date
                             </label>
 
-                            <input asp-for="Answers.G4"
+                            <input asp-for="Answers.G3"
                                    class="form-control form-control-sm col-md-6"
                                    type="date" />
 
-                            <span asp-validation-for="Answers.G4"
+                            <span asp-validation-for="Answers.G3"
                                   class="text-danger">
                             </span>
                         </div>

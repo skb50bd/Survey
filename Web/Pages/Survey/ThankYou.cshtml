@@ -1,0 +1,48 @@
+﻿@page "{name}"
+@model Web.Pages.Survey.ThankYouModel
+
+@{
+    ViewData["Title"] = "Thank You!";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        @ViewData["Title"]
+    </title>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="container text-center">
+        <h2 class="m-2 display-4">
+            Thank You!
+        </h2>
+
+        <p class="lead">
+            <span style="font-weight: 500;">
+                @Model.Name,
+            </span>
+            We are very grateful you took time for responding.
+            <br />
+
+            Stay in touch with
+            <span style="font-weight: 500;">
+                Thermon.
+            </span>
+        </p>
+    </div>
+</body>
+</html>
+
+
+
+

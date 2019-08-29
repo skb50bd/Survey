@@ -23,13 +23,81 @@ namespace Data.Migrations
 
                     b.Property<string>("Email");
 
+                    b.Property<bool>("HasResponded");
+
                     b.Property<string>("Name");
 
                     b.Property<int>("ThirdPartyId");
 
+                    b.Property<Guid>("UniqueIdentifier");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("ThirdPartyId");
+
+                    b.HasIndex("UniqueIdentifier");
+
                     b.ToTable("Sponsors");
+                });
+
+            modelBuilder.Entity("Domain.SponsorResponse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("A1");
+
+                    b.Property<string>("B1");
+
+                    b.Property<string>("B2");
+
+                    b.Property<string>("B3");
+
+                    b.Property<string>("C1");
+
+                    b.Property<string>("C2");
+
+                    b.Property<string>("C3");
+
+                    b.Property<string>("C4");
+
+                    b.Property<string>("C5");
+
+                    b.Property<string>("C6");
+
+                    b.Property<string>("C7");
+
+                    b.Property<string>("D1");
+
+                    b.Property<string>("D2");
+
+                    b.Property<string>("D3");
+
+                    b.Property<string>("E1");
+
+                    b.Property<string>("E2");
+
+                    b.Property<string>("E3");
+
+                    b.Property<string>("F1");
+
+                    b.Property<string>("F2");
+
+                    b.Property<string>("F3");
+
+                    b.Property<string>("G1");
+
+                    b.Property<string>("G2");
+
+                    b.Property<string>("G3");
+
+                    b.Property<int>("SponsorId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SponsorId");
+
+                    b.ToTable("SponsorResponses");
                 });
 
             modelBuilder.Entity("Domain.ThirdParty", b =>
@@ -39,16 +107,31 @@ namespace Data.Migrations
 
                     b.Property<string>("Email");
 
+                    b.Property<bool>("HasResponded");
+
                     b.Property<string>("Name");
 
-                    b.Property<int>("SponsorId");
+                    b.Property<Guid>("UniqueIdentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SponsorId")
-                        .IsUnique();
+                    b.HasIndex("UniqueIdentifier");
 
                     b.ToTable("ThirdParties");
+                });
+
+            modelBuilder.Entity("Domain.ThirdPartyResponse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ThirdPartyId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ThirdPartyId");
+
+                    b.ToTable("ThirdPartyResponses");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -212,12 +295,28 @@ namespace Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Domain.ThirdParty", b =>
+            modelBuilder.Entity("Domain.Sponsor", b =>
+                {
+                    b.HasOne("Domain.ThirdParty", "ThirdParty")
+                        .WithMany()
+                        .HasForeignKey("ThirdPartyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Domain.SponsorResponse", b =>
                 {
                     b.HasOne("Domain.Sponsor", "Sponsor")
-                        .WithOne("ThirdParty")
-                        .HasForeignKey("Domain.ThirdParty", "SponsorId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .WithMany()
+                        .HasForeignKey("SponsorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Domain.ThirdPartyResponse", b =>
+                {
+                    b.HasOne("Domain.ThirdParty", "ThirdParty")
+                        .WithMany()
+                        .HasForeignKey("ThirdPartyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

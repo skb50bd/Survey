@@ -35,8 +35,15 @@
             <tbody>
             @foreach (var sp in Model.Sponsors)
             {
-                var sponsorClass = "table-danger";
-                var thirdPartyClass = "table-info";
+                var sponsorClass =
+                    sp.HasResponded
+                        ? "table-success"
+                        : "table-danger";
+
+                var thirdPartyClass = 
+                    sp.ThirdParty.HasResponded 
+                        ? "table-success"
+                        : "table-danger";
 
                 <tr>
                     <td class="@sponsorClass">

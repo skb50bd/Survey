@@ -5,6 +5,11 @@ namespace Domain
 {
     public class SponsorResponse
     {
+        public int Id { get; set; }
+
+        public int SponsorId { get; set; }
+        public Sponsor Sponsor { get; set; }
+
         public string A1 { get; set; }
 
         public string B1 { get; set; }
@@ -12,7 +17,7 @@ namespace Domain
         public string B3 { get; set; }
 
         public string C1 { get; set; }
-        public IList<string> C2 { get; set; }
+        public string C2 { get; set; }
         public string C3 { get; set; }
         public string C4 { get; set; }
         public string C5 { get; set; }
@@ -31,9 +36,8 @@ namespace Domain
         public string F2 { get; set; }
         public string F3 { get; set; }
 
-        public bool G1 { get; set; }
+        public string G1 { get; set; }
         public string G2 { get; set; }
         public string G3 { get; set; }
-        public string G4 { get; set; }
     }
 }

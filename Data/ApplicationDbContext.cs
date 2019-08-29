@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
-    public class ApplicationDbContext: IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -16,15 +16,18 @@ namespace Data
         {
             base.OnModelCreating(builder);
 
+            builder.Entity<ThirdParty>()
+                   .HasIndex(tp => tp.UniqueIdentifier);
+
             builder.Entity<Sponsor>()
-                   .HasOne(s => s.ThirdParty)
-                   .WithOne(tp => tp.Sponsor)
-                   .HasForeignKey<ThirdParty>(s => s.SponsorId)
-                   .OnDelete(DeleteBehavior.SetNull);
-            }
+                   .HasIndex(s => s.UniqueIdentifier);
+        }
 
         public DbSet<Sponsor> Sponsors { get; set; }
 
         public DbSet<ThirdParty> ThirdParties { get; set; }
+
+        public DbSet<SponsorResponse> SponsorResponses { get; set; }
+        public DbSet<ThirdPartyResponse> ThirdPartyResponses { get; set; }
     }
 }

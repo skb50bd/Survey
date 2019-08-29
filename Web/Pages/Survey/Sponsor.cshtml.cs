@@ -7,13 +7,20 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using AutoMapper;
+using Data;
 using Domain;
+using Microsoft.EntityFrameworkCore;
 using static System.IO.File;
 
 namespace Web.Pages.Survey
 {
     public class SponsorModel : PageModel
     {
+        private readonly IMapper _mapper;
+        private readonly ApplicationDbContext _ctx;
+        public string UniqueId { get; set; }
+
         public IList<string> Countries = new List<string>
         {
             "Afghanistan",
@@ -66,7 +73,7 @@ namespace Web.Pages.Survey
             "Colombia",
             "Comoros",
             "Congo",
-            "Congo, The Democratic Republic of The",
+            "Congo",
             "Cook Islands",
             "Costa Rica",
             "Cote D'ivoire",
@@ -118,7 +125,7 @@ namespace Web.Pages.Survey
             "Iceland",
             "India",
             "Indonesia",
-            "Iran, Islamic Republic of",
+            "Iran",
             "Iraq",
             "Ireland",
             "Isle of Man",
@@ -131,11 +138,11 @@ namespace Web.Pages.Survey
             "Kazakhstan",
             "Kenya",
             "Kiribati",
-            "Korea, Democratic People's Republic of",
-            "Korea, Republic of",
+            "Korea",
+            "Korea",
             "Kuwait",
             "Kyrgyzstan",
-            "Lao, People's Democratic Republic",
+            "Lao",
             "Latvia",
             "Lebanon",
             "Lesotho",
@@ -145,7 +152,7 @@ namespace Web.Pages.Survey
             "Lithuania",
             "Luxembourg",
             "Macao",
-            "Macedonia, The Former Yugoslav Republic of",
+            "Macedonia",
             "Madagascar",
             "Malawi",
             "Malaysia",
@@ -158,8 +165,8 @@ namespace Web.Pages.Survey
             "Mauritius",
             "Mayotte",
             "Mexico",
-            "Micronesia, Federated States of",
-            "Moldova, Republic of",
+            "Micronesia",
+            "Moldova",
             "Monaco",
             "Mongolia",
             "Montenegro",
@@ -230,7 +237,7 @@ namespace Web.Pages.Survey
             "Syrian Arab Republic",
             "Taiwan (ROC)",
             "Tajikistan",
-            "Tanzania, United Republic of",
+            "Tanzania",
             "Thailand",
             "Timor-leste",
             "Togo",
@@ -240,7 +247,7 @@ namespace Web.Pages.Survey
             "Tunisia",
             "Turkey",
             "Turkmenistan",
-            "Turks, and Caicos Islands",
+            "Turks",
             "Tuvalu",
             "Uganda",
             "Ukraine",
@@ -262,8 +269,36 @@ namespace Web.Pages.Survey
             "Zimbabwe"
         };
 
+        public SponsorModel(
+            IMapper mapper, 
+            ApplicationDbContext ctx)
+        {
+            _mapper = mapper;
+            _ctx = ctx;
+        }
+
+        public async Task<IActionResult> OnGetAsync(string uid)
+        {
+            if (uid == null)
+                return NotFound();
+
+            var sponsor =
+                await _ctx.Sponsors.FirstOrDefaultAsync(
+                    s => s.UniqueIdentifier.ToString() == uid);
+
+            var isValid = !sponsor?.HasResponded ?? false;
+
+            if (!isValid)
+                return NotFound();
+
+            UniqueId = uid;
+
+            return Page();
+        }
+
+
         [BindProperty]
-        public SponsorResponse Answers { get; set; }
+        public SponsorResponseInput Answers { get; set; }
 
         public IActionResult OnPost()
         {
@@ -272,7 +307,52 @@ namespace Web.Pages.Survey
                 return Page();
             }
 
-            return RedirectToPage("./Index");
+            var answers = _mapper.Map<SponsorResponse>(Answers);
+
+            // TODO - Persist the response and change the responder name in route value 
+
+            return RedirectToPagePermanent(
+                "./ThankYou", 
+                new
+                {
+                    name = "User User"
+                }
+            );
         }
+    }
+    public class SponsorResponseInput
+    {
+        public string UniqueIdentifier { get; set; }
+
+        public string A1 { get; set; }
+
+        public string B1 { get; set; }
+        public string B2 { get; set; }
+        public string B3 { get; set; }
+
+        public string C1 { get; set; }
+        public IList<string> C2 { get; set; }
+        public string C3 { get; set; }
+        public string C4 { get; set; }
+        public string C5 { get; set; }
+        public string C6 { get; set; }
+        public string C7 { get; set; }
+
+        public string D1 { get; set; }
+        public string D2 { get; set; }
+        public string D3 { get; set; }
+
+        public string E1 { get; set; }
+        public string E2 { get; set; }
+        public string E3 { get; set; }
+
+        public string F1 { get; set; }
+        public string F2 { get; set; }
+        public string F3 { get; set; }
+
+        public bool G0 { get; set; }
+        public string G1 { get; set; }
+        public string G2 { get; set; }
+        public string G3 { get; set; }
     }
 }

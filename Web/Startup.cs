@@ -1,3 +1,4 @@
+using AutoMapper;
 using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,7 +7,6 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Web.Email;
 using WebUI;
 
 namespace Web
@@ -31,20 +31,21 @@ namespace Web
             });
 
             services.ConfigureData(Configuration);
+            services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 
             services.AddMvc()
                     .SetCompatibilityVersion(
                          CompatibilityVersion.Version_2_2);
 
-            services.AddTransient<IEmailSender, Sender>();
+            services.AddTransient<IEmailSender, Email.Sender>();
 
             services
                .AddTransient<
                     IRazorViewToStringRenderer,
                     RazorViewToStringRenderer>();
 
-            services.Configure<Settings>(
+            services.Configure<Email.Settings>(
                 Configuration.GetSection("EmailSettings"));
         }
 
