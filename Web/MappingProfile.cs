@@ -8,6 +8,9 @@ namespace Web
     {
         public MappingProfile()
         {
+            CreateMap<string, string>()
+               .ConvertUsing(s => s ?? string.Empty);
+
             CreateMap<SponsorResponseInput, SponsorResponse>()
                .ForMember(
                     dest => dest.C2,

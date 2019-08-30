@@ -27,12 +27,7 @@ namespace Web.Pages.Invitation
             _renderer = renderer;
         }
 
-        public void OnGet()
-        {
-
-        }
-
-
+        
         [BindProperty]
         public InputModel Input { get; set; }
         public async Task<IActionResult> OnPostAsync()
