@@ -7,9 +7,6 @@ namespace Domain
     {
         public int Id { get; set; }
 
-        public int SponsorId { get; set; }
-        public Sponsor Sponsor { get; set; }
-
         public string A1 { get; set; }
 
         public string B1 { get; set; }

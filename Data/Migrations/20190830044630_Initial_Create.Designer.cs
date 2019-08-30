@@ -3,25 +3,29 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190829114703_Initial_Create")]
+    [Migration("20190830044630_Initial_Create")]
     partial class Initial_Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Domain.Sponsor", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email");
 
@@ -29,11 +33,15 @@ namespace Data.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int?>("ResponseId");
+
                     b.Property<int>("ThirdPartyId");
 
                     b.Property<Guid>("UniqueIdentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ResponseId");
 
                     b.HasIndex("ThirdPartyId");
 
@@ -45,7 +53,8 @@ namespace Data.Migrations
             modelBuilder.Entity("Domain.SponsorResponse", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("A1");
 
@@ -93,11 +102,7 @@ namespace Data.Migrations
 
                     b.Property<string>("G3");
 
-                    b.Property<int>("SponsorId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SponsorId");
 
                     b.ToTable("SponsorResponses");
                 });
@@ -105,7 +110,8 @@ namespace Data.Migrations
             modelBuilder.Entity("Domain.ThirdParty", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email");
 
@@ -113,9 +119,13 @@ namespace Data.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int?>("ResponseId");
+
                     b.Property<Guid>("UniqueIdentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ResponseId");
 
                     b.HasIndex("UniqueIdentifier");
 
@@ -125,13 +135,10 @@ namespace Data.Migrations
             modelBuilder.Entity("Domain.ThirdPartyResponse", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ThirdPartyId");
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ThirdPartyId");
 
                     b.ToTable("ThirdPartyResponses");
                 });
@@ -154,7 +161,8 @@ namespace Data.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex");
+                        .HasName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -162,7 +170,8 @@ namespace Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType");
 
@@ -223,7 +232,8 @@ namespace Data.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex");
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -231,7 +241,8 @@ namespace Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType");
 
@@ -299,26 +310,21 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Domain.Sponsor", b =>
                 {
+                    b.HasOne("Domain.SponsorResponse", "Response")
+                        .WithMany()
+                        .HasForeignKey("ResponseId");
+
                     b.HasOne("Domain.ThirdParty", "ThirdParty")
                         .WithMany()
                         .HasForeignKey("ThirdPartyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Domain.SponsorResponse", b =>
+            modelBuilder.Entity("Domain.ThirdParty", b =>
                 {
-                    b.HasOne("Domain.Sponsor", "Sponsor")
+                    b.HasOne("Domain.ThirdPartyResponse", "Response")
                         .WithMany()
-                        .HasForeignKey("SponsorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Domain.ThirdPartyResponse", b =>
-                {
-                    b.HasOne("Domain.ThirdParty", "ThirdParty")
-                        .WithMany()
-                        .HasForeignKey("ThirdPartyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ResponseId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

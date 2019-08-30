@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Data;
+﻿using Data;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using WebUI;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace Web.Pages.Invitation
 {
+    [Authorize]
     public class SendModel : PageModel
     {
         private readonly ApplicationDbContext _ctx;
@@ -69,10 +67,12 @@ namespace Web.Pages.Invitation
                         Name = sponsor.Name,
                         Url = Url.Page(
                             "/Survey/Sponsor",
+                            null,
                             new
                             {
                                 uid = sponsor.UniqueIdentifier.ToString()
-                            })
+                            },
+                            Request.Scheme)
                     });
 
             var thirdPartyInvitation =

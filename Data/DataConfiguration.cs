@@ -1,5 +1,4 @@
-﻿using LiteDB;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity.UI;
@@ -13,8 +12,8 @@ namespace Data
             this IServiceCollection services, 
             IConfiguration config)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
+            services.AddDbContext<ApplicationDbContext>(
+                options => options.UseSqlServer(
                     config.GetConnectionString("DataDB")));
             services.AddDefaultIdentity<IdentityUser>()
                     .AddDefaultUI(UIFramework.Bootstrap4)
@@ -22,6 +21,5 @@ namespace Data
 
             return services;
         }
-
     }
 }

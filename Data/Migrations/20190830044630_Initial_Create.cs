@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
@@ -47,19 +48,50 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ThirdParties",
+                name: "SponsorResponses",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    UniqueIdentifier = table.Column<Guid>(nullable: false),
-                    HasResponded = table.Column<bool>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    A1 = table.Column<string>(nullable: true),
+                    B1 = table.Column<string>(nullable: true),
+                    B2 = table.Column<string>(nullable: true),
+                    B3 = table.Column<string>(nullable: true),
+                    C1 = table.Column<string>(nullable: true),
+                    C2 = table.Column<string>(nullable: true),
+                    C3 = table.Column<string>(nullable: true),
+                    C4 = table.Column<string>(nullable: true),
+                    C5 = table.Column<string>(nullable: true),
+                    C6 = table.Column<string>(nullable: true),
+                    C7 = table.Column<string>(nullable: true),
+                    D1 = table.Column<string>(nullable: true),
+                    D2 = table.Column<string>(nullable: true),
+                    D3 = table.Column<string>(nullable: true),
+                    E1 = table.Column<string>(nullable: true),
+                    E2 = table.Column<string>(nullable: true),
+                    E3 = table.Column<string>(nullable: true),
+                    F1 = table.Column<string>(nullable: true),
+                    F2 = table.Column<string>(nullable: true),
+                    F3 = table.Column<string>(nullable: true),
+                    G1 = table.Column<string>(nullable: true),
+                    G2 = table.Column<string>(nullable: true),
+                    G3 = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ThirdParties", x => x.Id);
+                    table.PrimaryKey("PK_SponsorResponses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ThirdPartyResponses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ThirdPartyResponses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -67,7 +99,7 @@ namespace Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -88,7 +120,7 @@ namespace Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -169,85 +201,54 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Sponsors",
+                name: "ThirdParties",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     UniqueIdentifier = table.Column<Guid>(nullable: false),
                     HasResponded = table.Column<bool>(nullable: false),
+                    ResponseId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ThirdParties", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ThirdParties_ThirdPartyResponses_ResponseId",
+                        column: x => x.ResponseId,
+                        principalTable: "ThirdPartyResponses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sponsors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    UniqueIdentifier = table.Column<Guid>(nullable: false),
+                    HasResponded = table.Column<bool>(nullable: false),
+                    ResponseId = table.Column<int>(nullable: true),
                     ThirdPartyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sponsors", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Sponsors_SponsorResponses_ResponseId",
+                        column: x => x.ResponseId,
+                        principalTable: "SponsorResponses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Sponsors_ThirdParties_ThirdPartyId",
                         column: x => x.ThirdPartyId,
                         principalTable: "ThirdParties",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ThirdPartyResponses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ThirdPartyId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ThirdPartyResponses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ThirdPartyResponses_ThirdParties_ThirdPartyId",
-                        column: x => x.ThirdPartyId,
-                        principalTable: "ThirdParties",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SponsorResponses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    SponsorId = table.Column<int>(nullable: false),
-                    A1 = table.Column<string>(nullable: true),
-                    B1 = table.Column<string>(nullable: true),
-                    B2 = table.Column<string>(nullable: true),
-                    B3 = table.Column<string>(nullable: true),
-                    C1 = table.Column<string>(nullable: true),
-                    C2 = table.Column<string>(nullable: true),
-                    C3 = table.Column<string>(nullable: true),
-                    C4 = table.Column<string>(nullable: true),
-                    C5 = table.Column<string>(nullable: true),
-                    C6 = table.Column<string>(nullable: true),
-                    C7 = table.Column<string>(nullable: true),
-                    D1 = table.Column<string>(nullable: true),
-                    D2 = table.Column<string>(nullable: true),
-                    D3 = table.Column<string>(nullable: true),
-                    E1 = table.Column<string>(nullable: true),
-                    E2 = table.Column<string>(nullable: true),
-                    E3 = table.Column<string>(nullable: true),
-                    F1 = table.Column<string>(nullable: true),
-                    F2 = table.Column<string>(nullable: true),
-                    F3 = table.Column<string>(nullable: true),
-                    G1 = table.Column<string>(nullable: true),
-                    G2 = table.Column<string>(nullable: true),
-                    G3 = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SponsorResponses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SponsorResponses_Sponsors_SponsorId",
-                        column: x => x.SponsorId,
-                        principalTable: "Sponsors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -261,7 +262,8 @@ namespace Data.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -287,12 +289,13 @@ namespace Data.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SponsorResponses_SponsorId",
-                table: "SponsorResponses",
-                column: "SponsorId");
+                name: "IX_Sponsors_ResponseId",
+                table: "Sponsors",
+                column: "ResponseId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sponsors_ThirdPartyId",
@@ -305,14 +308,14 @@ namespace Data.Migrations
                 column: "UniqueIdentifier");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ThirdParties_ResponseId",
+                table: "ThirdParties",
+                column: "ResponseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ThirdParties_UniqueIdentifier",
                 table: "ThirdParties",
                 column: "UniqueIdentifier");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ThirdPartyResponses_ThirdPartyId",
-                table: "ThirdPartyResponses",
-                column: "ThirdPartyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -333,10 +336,7 @@ namespace Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "SponsorResponses");
-
-            migrationBuilder.DropTable(
-                name: "ThirdPartyResponses");
+                name: "Sponsors");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -345,10 +345,13 @@ namespace Data.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Sponsors");
+                name: "SponsorResponses");
 
             migrationBuilder.DropTable(
                 name: "ThirdParties");
+
+            migrationBuilder.DropTable(
+                name: "ThirdPartyResponses");
         }
     }
 }

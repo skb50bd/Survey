@@ -300,22 +300,27 @@ namespace Web.Pages.Survey
         [BindProperty]
         public SponsorResponseInput Answers { get; set; }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var answers = _mapper.Map<SponsorResponse>(Answers);
+            var response = _mapper.Map<SponsorResponse>(Answers);
+            var sponsor = await _ctx.Sponsors.FirstOrDefaultAsync(
+                s => s.UniqueIdentifier.ToString() ==
+                     Answers.UniqueIdentifier);
 
-            // TODO - Persist the response and change the responder name in route value 
+            sponsor.Response = response;
+            sponsor.HasResponded = true;
+            await _ctx.SaveChangesAsync();
 
             return RedirectToPagePermanent(
                 "./ThankYou", 
                 new
                 {
-                    name = "User User"
+                    name = sponsor.Name
                 }
             );
         }
