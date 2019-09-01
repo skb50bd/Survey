@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
+
 
 namespace Web.Pages.Invitations
 {
@@ -13,11 +15,14 @@ namespace Web.Pages.Invitations
     {
         public IList<Sponsor> Sponsors { get; set; }
 
+        public string ClientBase { get; set; }
+
         private readonly ApplicationDbContext _ctx;
 
-        public IndexModel(ApplicationDbContext ctx)
+        public IndexModel(ApplicationDbContext ctx, IConfiguration config)
         {
             _ctx = ctx;
+            ClientBase = config["ClientBase"];
         }
 
         public void OnGet()

@@ -1,16 +1,35 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace Domain
+namespace Client.Pages
 {
-    public class ThirdPartyResponse
+    public class ThirdPartyModel : PageModel
     {
-        public int Id { get; set; }
+        [BindProperty]
+        public ThirdPartyResponseInput Answers { get; set; }
+
+        public string UniqueId { get; set; }
+    }
+    public class ThirdPartyResponseInput
+    {
+        public string UniqueIdentifier { get; set; }
 
         #region Form Completion Information
+        [DataType(DataType.Date)]
         public string A1 { get; set; }
+
         public string A2A { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string A2B { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
         public string A2C1 { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
         public string A2C2 { get; set; }
         #endregion
 
@@ -29,7 +48,7 @@ namespace Domain
         public string B2Oc { get; set; }
         public string B2Od { get; set; }
 
-        public byte[] B3File { get; set; }
+        public IFormFile B3File { get; set; }
         public string B3A { get; set; }
         public string B3B1 { get; set; }
         public string B3B2 { get; set; }
@@ -38,13 +57,13 @@ namespace Domain
         public string B3D1B { get; set; }
         public string B3D2 { get; set; }
 
-        public byte[] B4File { get; set; }
+        public IFormFile B4File { get; set; }
         public string B4A { get; set; }
         public string B4B { get; set; }
         public string B4C { get; set; }
 
         public string B5 { get; set; }
-        public byte[] B5File { get; set; }
+        public IFormFile B5File { get; set; }
         #endregion
 
         #region Reference Information
@@ -74,22 +93,22 @@ namespace Domain
         #endregion
 
         #region Personal Information
-        public string D1 { get; set; }
-        public string D2 { get; set; }
+        public IList<string> D1 { get; set; }
+        public IList<string> D2 { get; set; }
         public string D3 { get; set; }
         public string D4 { get; set; }
-        public string D4A { get; set; }
-        public string D4B { get; set; }
-        public string D4C { get; set; }
-        public string D4D { get; set; }
+        public IList<string> D4A { get; set; }
+        public IList<string> D4B { get; set; }
+        public IList<string> D4C { get; set; }
+        public IList<string> D4D { get; set; }
         public string D5 { get; set; }
         public string D6 { get; set; }
-        public string D6A { get; set; }
+        public IList<string> D6A { get; set; }
         #endregion
 
         #region Potential Conflicts Information
         public string E1 { get; set; }
-        public string E1A { get; set; }
+        public IList<string> E1A { get; set; }
         public string E2 { get; set; }
         public string E3 { get; set; }
         #endregion
@@ -115,10 +134,10 @@ namespace Domain
 
         #region Sub-Agent Information
         public string G1 { get; set; }
-        public string G2A { get; set; }
-        public string G2B { get; set; }
-        public string G2C { get; set; }
-        public string G2D { get; set; }
+        public IList<string> G2A { get; set; }
+        public IList<string> G2B { get; set; }
+        public IList<string> G2C { get; set; }
+        public IList<string> G2D { get; set; }
         #endregion
 
         #region Signature and Certification
@@ -129,4 +148,5 @@ namespace Domain
         public string H5 { get; set; }
         #endregion
     }
+
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Domain;
-using Web.Pages.Survey;
+using Client.Pages;
 
 namespace Web
 {

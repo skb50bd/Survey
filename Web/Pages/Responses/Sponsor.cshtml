@@ -1,0 +1,49 @@
+﻿@page "{id:int}"
+@model Web.Pages.Responses.SponsorModel
+@{
+    ViewData["Title"] = "Sponsor";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-header display-4">
+            Sponsor Response
+        </h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Response</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                    </td>
+                    <td>@Model.SResponse.A1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                    </td>
+                    <td>@Model.SResponse.B1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                    </td>
+                    <td>@Model.SResponse.B2</td>
+                </tr>
+            
+            <tr>
+                    <td>
+                    </td>
+                    <td>@Model.SResponse.B3</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

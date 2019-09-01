@@ -5,7 +5,7 @@
 }
 
 <div class="card">
-    <div class="card-body">     
+    <div class="card-body">
         <div class="row">
             <div class="col-md-6">
                 <h1 class="card-header">
@@ -14,58 +14,122 @@
             </div>
 
             <div class="col-md-6 text-md-right">
-                <a class="btn btn-primary" 
+                <a class="btn btn-primary"
                    asp-page="./Send">Send New Invitation</a>
             </div>
         </div>
 
-        
 
-        <table class="table table-sm table-hover table-borderless">
+
+        <table class="table table-sm table-hover table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <th>Sponsor</th>
-                    <th>Sponsor Email</th>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Survey</th>
                     <th>Response</th>
-                    <th class="text-right">Third Party</th>
-                    <th class="text-right">Third Party Email</th>
-                    <th class="text-right">Response</th>
                 </tr>
             </thead>
             <tbody>
-            @foreach (var sp in Model.Sponsors)
-            {
-                var sponsorClass =
-                    sp.HasResponded
-                        ? "table-success"
-                        : "table-danger";
+                @foreach (var sp in Model.Sponsors)
+                {
+                    var sponsorClass =
+                        sp.HasResponded
+                            ? "table-success"
+                            : "table-danger";
 
-                var thirdPartyClass = 
-                    sp.ThirdParty.HasResponded 
-                        ? "table-success"
-                        : "table-danger";
+                    var thirdPartyClass =
+                        sp.ThirdParty.HasResponded
+                            ? "table-success"
+                            : "table-danger";
 
-                <tr>
-                    <td class="@sponsorClass">
-                        @sp.Name
-                    </td>
-                    <td class="@sponsorClass">
-                        @sp.Email
-                    </td>
-                    <td class="@sponsorClass">
-                        <a href="#">Link</a>
-                    </td>
-                    <td class="@thirdPartyClass text-right">
-                        @sp.ThirdParty.Name
-                    </td>
-                    <td class="@thirdPartyClass text-right">
-                        @sp.ThirdParty.Email
-                    </td>
-                    <td class="@thirdPartyClass text-right">
-                        <a href="#">Link</a>
-                    </td>
-                </tr>
-            }
+                    <tr>
+                        <td>
+                            Sponsor
+                            <br />
+                            Third Party
+                        </td>
+                        <td style="font-weight: bold">
+                            @sp.Name
+                            <br />
+                            @sp.ThirdParty.Name
+                        </td>
+                        <td>
+                            <a href="mailto:@sp.Email">
+                                @sp.Email
+                            </a>
+
+                            <br />
+
+                            <a href="mailto:@sp.ThirdParty.Email">
+                                @sp.ThirdParty.Email
+                            </a>
+                        </td>
+                        <td>
+                            @if (sp.HasResponded)
+                            {
+                                <span class="text-success"
+                                      style="font-weight: bold">
+                                    N/A
+                                </span>
+                            }
+                            else
+                            {
+                                <a href="@Model.ClientBase/Sponsor/@sp.UniqueIdentifier"
+                                   target="_blank">
+                                    Link
+                                </a>
+                            }
+                            <br />
+                            @if (sp.ThirdParty.HasResponded)
+                            {
+                                <span class="text-success"
+                                      style="font-weight: bold">
+                                    N/A
+                                </span>
+                            }
+                            else
+                            {
+                                <a href="@Model.ClientBase/ThirdParty/@sp.UniqueIdentifier"
+                                   target="_blank">
+                                    Link
+                                </a>
+                            }
+                        </td>
+                        <td>
+                            @if (sp.HasResponded)
+                            {
+                                <a href="@Url.Page("/Responses/Sponsor", new {id = sp.Id})"
+                                   target="_blank">
+                                    Link
+                                </a>
+                            }
+                            else
+                            {
+                                <span class="text-danger"
+                                      style="font-weight: bold">
+                                    N/A
+                                </span>
+                            }
+                            <br />
+                            @if (sp.ThirdParty.HasResponded)
+                            {
+                                <a href="@Url.Page("/Responses/ThirdParty", new {id = sp.ThirdPartyId})"
+                                   target="_blank">
+                                    Link
+                                </a>
+                            }
+                            else
+                            {
+                                <span class="text-danger"
+                                      style="font-weight: bold">
+                                    N/A
+                                </span>
+                            }
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

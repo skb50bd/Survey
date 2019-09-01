@@ -13,7 +13,7 @@ using Domain;
 using Microsoft.EntityFrameworkCore;
 using static System.IO.File;
 
-namespace Web.Pages.Survey
+namespace Client.Pages
 {
     public class SponsorModel : PageModel
     {
