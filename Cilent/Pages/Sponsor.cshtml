@@ -19,23 +19,35 @@
 
     <link rel="stylesheet"
           href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet"
-          href="~/css/bootstrap-multiselect.css" />
 
     <link rel="stylesheet"
           href="~/css/site.css" />
 </head>
 <body>
     <div class="container">
-        <h2 class="mt-2 text-center">Sponsor Request Form</h2>
-        <p class="alert alert-info text-justify mt-3 mb-3">
-            The Thermon Way describes our absolute commitment to business integrity through promoting a culture of trust to enhance and grow our business relationships.
-            An important point in the Thermon Way to have in place guidelines to ensure that our people and third parties working on our behalf share our values.
-            This Sponsor Request Form is to be completed by the Thermon employee who has the most knowledge of a Third Party Representative (TPR) such as a Sales Agent,
-            Distributor or Government Agency Agent (as those are defined in our Anti-corruption Policy, Section 5 (link)).
-
-            Please fill out this form completely and if you have any questions, contact <a href="mailto:compliance@thermon.com">here</a>.
-        </p>
+        <h1 class="display-4 mt-2 text-center">Sponsor Request Form</h1>
+        <div class="alert alert-info text-justify mt-3 mb-3">
+            The Thermon Way describes our absolute commitment to
+            business integrity through promoting a culture of trust to
+            enhance and grow our business relationships.
+            An important point in the Thermon Way to have in place guidelines to
+            ensure that our people and third parties working on our behalf share our values.
+            <br />
+            <br />
+            This Sponsor Request Form is to be completed by the
+            Thermon employee who has the most knowledge of a
+            Third Party Representative
+            <span style="font-style: italic; font-weight: bold">(“TPR”)</span>
+            such as a Sales Agent,
+            Distributor or Governmenet Agency Agent
+            (as defined in our Anti-corruption Policy, Section 5 (link)).
+            <br />
+            Please fill out this form completely and if you have any questions,
+            contact
+            <a href="mailto:legal.compliance@thermon.com">
+                legal.compliance@thermon.com
+            </a>.
+        </div>
 
 
         <form method="post">
@@ -60,10 +72,10 @@
                                    class="form-check-input"
                                    type="radio"
                                    id="A1a"
-                                   value="Sales Agent (receiving commission on any part of business">
+                                   value="Sales Agent">
                             <label class="form-check-label"
                                    for="A1a">
-                                Sales Agent (receiving commission on any part of business
+                                Sales Agent (receiving commission)
                             </label>
                         </div>
                         <div class="form-check">
@@ -88,6 +100,17 @@
                                 Government Agency Agent
                             </label>
                         </div>
+                        <div class="form-check">
+                            <input asp-for="Answers.A1"
+                                   class="form-check-input"
+                                   type="radio"
+                                   id="A1d"
+                                   value="Joint Venture Partner">
+                            <label class="form-check-label"
+                                   for="A1d">
+                                Joint Venture Partner
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -103,7 +126,7 @@
                         <div>
                             <label class="text-justify mb-0"
                                    style="font-weight: 500">
-                                1. Business Unit Involved
+                                1. Product Line Involved
                             </label>
 
                             <div class="form-check">
@@ -163,10 +186,10 @@
                                        class="form-check-input"
                                        type="radio"
                                        id="B2b"
-                                       value="US/Latin America">
+                                       value="US/Canada">
                                 <label class="form-check-label"
                                        for="B2b">
-                                    US/Latin America
+                                    US/Canada
                                 </label>
                             </div>
                             <div class="form-check">
@@ -174,10 +197,10 @@
                                        class="form-check-input"
                                        type="radio"
                                        id="B2c"
-                                       value="EMEA">
+                                       value="Latin America">
                                 <label class="form-check-label"
                                        for="B2c">
-                                    EMEA
+                                    Latin America
                                 </label>
                             </div>
                             <div class="form-check">
@@ -185,9 +208,20 @@
                                        class="form-check-input"
                                        type="radio"
                                        id="B2d"
-                                       value="APAC">
+                                       value="EMEA">
                                 <label class="form-check-label"
                                        for="B2d">
+                                    EMEA
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Answers.B2"
+                                       class="form-check-input"
+                                       type="radio"
+                                       id="B2e"
+                                       value="APAC">
+                                <label class="form-check-label"
+                                       for="B2e">
                                     APAC
                                 </label>
                             </div>
@@ -200,7 +234,7 @@
                             </label>
 
                             <div class="form-check">
-                                <input asp-for="Answers.B2"
+                                <input asp-for="Answers.B3"
                                        class="form-check-input"
                                        type="radio"
                                        id="B3a"
@@ -211,7 +245,7 @@
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input asp-for="Answers.B2"
+                                <input asp-for="Answers.B3"
                                        class="form-check-input"
                                        type="radio"
                                        id="B3b"
@@ -255,10 +289,13 @@
                                 2. Country(s) where Services will be provided
                             </label>
                             <br />
+                            <span style="font-size: smaller; font-style: italic;">
+                                Hold control to select multiple options
+                            </span>
                             <select asp-for="Answers.C2"
                                     class="multiselect form-control form-control-sm col-md-6"
                                     multiple="multiple"
-                                    style="border: 2px solid black;">
+                                    style="height: 10rem;">
                                 @foreach (var country in Model.Countries)
                                 {
                                     <option value="@country">@country</option>
@@ -368,9 +405,10 @@
                                 4. Address
                             </label>
 
-                            <input asp-for="Answers.C4"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
+                            <textarea asp-for="Answers.C4"
+                                      class="form-control form-control-sm col-md-6"
+                                      type="text">
+                            </textarea>
 
                             <span asp-validation-for="Answers.C4"
                                   class="text-danger">
@@ -439,9 +477,10 @@
                                 1. The primary reason(s) the TPR was selected versus another TPR
                             </label>
 
-                            <input asp-for="Answers.D1"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
+                            <textarea asp-for="Answers.D1"
+                                      class="form-control form-control-sm col-md-6"
+                                      type="text">
+                            </textarea>
 
                             <span asp-validation-for="Answers.D1"
                                   class="text-danger">
@@ -456,9 +495,10 @@
                                 particular expertise and include names of other companies that work with them
                             </label>
 
-                            <input asp-for="Answers.D2"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
+                            <textarea asp-for="Answers.D2"
+                                      class="form-control form-control-sm col-md-6"
+                                      type="text">
+                            </textarea>
 
                             <span asp-validation-for="Answers.D2"
                                   class="text-danger">
@@ -473,9 +513,10 @@
                                 the TPR (obtained recommendations, interviewed them, formal tender, etc.)
                             </label>
 
-                            <input asp-for="Answers.D3"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
+                            <textarea asp-for="Answers.D3"
+                                      class="form-control form-control-sm col-md-6"
+                                      type="text">
+                            </textarea>
 
                             <span asp-validation-for="Answers.D3"
                                   class="text-danger">
@@ -497,8 +538,10 @@
                         <div>
                             <label class="text-justify mb-0"
                                    style="font-weight: 500">
-                                1. Is there any concern regarding the reputation of the TRP from a business integrity or compliance standpoint.
-                                For example, has the TPR faced allegations of bribery, kickbacks, fraud or other wrongdoings?
+                                1. Is there any concern regarding the reputation 
+                                of the TRP from a business integrity or compliance standpoint.
+                                For example, has the TPR faced allegations 
+                                of bribery, kickbacks, fraud or other wrongdoings?
                             </label>
 
                             <div class="form-check">
@@ -528,7 +571,9 @@
                         <div class="mt-2">
                             <label class="text-justify mb-0"
                                    style="font-weight: 500">
-                                2. Did a representative of the customer or a government official recommend (without us requesting a recommendation)
+                                2. Did a representative of the customer 
+                                or a government official recommend
+                                (without us requesting a recommendation)
                                 or insist that we use the TPR?
                             </label>
 
@@ -559,9 +604,12 @@
                         <div class="mt-2">
                             <label class="text-justify mb-0"
                                    style="font-weight: 500">
-                                3. Has the TPR requested that they receive payment 1) in a jurisdiction other than the country in which
-                                the services are being provided or the country of their corporate headquarters, 2)
-                                to an account that does not appear to be their company`s business account or 3) to a party that is not part of the contract?
+                                3. Has the TPR requested that they receive payment 
+                                1) in a jurisdiction other than the country in which
+                                the services are being provided or the country of their corporate headquarters,
+                                2)
+                                to an account that does not appear to be their company`s business account or 
+                                3) to a party that is not part of the contract?
                             </label>
 
                             <div class="form-check">
@@ -602,7 +650,10 @@
                         <div>
                             <label class="text-justify mb-0"
                                    style="font-weight: 500">
-                                1. Person primarily responsible for the TPR relationship
+                                1. Thermon employee primarily responsible for the TPR relationship 
+                                (“
+                                <span style="font-weight: bold; font-style: italic;">Primary Person Responsible</span>
+                                ”)
                             </label>
 
                             <input asp-for="Answers.F1"
@@ -634,7 +685,7 @@
                         <div class="mt-2">
                             <label class="text-justify mb-0"
                                    style="font-weight: 500">
-                                3. Email of leader for the Primary Person Responsible
+                                3. Email of supervisor for the Primary Person Responsible
                             </label>
 
                             <input asp-for="Answers.F3"
@@ -651,7 +702,7 @@
             </div>
 
 
-            <!--GROUP F-->
+            <!--GROUP G-->
             <div class="card mb-2">
                 <div class="card-body">
                     <div class="form-group">
@@ -664,8 +715,7 @@
                             <input class="form-check-input"
                                    asp-for="Answers.G0"
                                    id="G0"
-                                   type="checkbox"
-                                   value="Yes">
+                                   type="checkbox">
                             <label class="form-check-label"
                                    for="G0">
                                 <strong>Virtual Signature </strong>- Please Check Box
@@ -733,18 +783,6 @@
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="~/js/bootstrap-multiselect.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.multiselect').multiselect({
-                buttonWidth: '350px',
-                enableFiltering: true,
-                includeSelectAllOption: true,
-                maxHeight: 200,
-                minWidth: 200
-            });
-        });
-    </script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 

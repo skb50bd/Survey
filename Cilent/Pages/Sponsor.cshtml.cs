@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -329,35 +330,61 @@ namespace Client.Pages
     {
         public string UniqueIdentifier { get; set; }
 
-        public string A1 { get; set; }
+        #region Type of TPR
+        public string A1 { get; set; } 
+        #endregion
 
+        #region Business Information
         public string B1 { get; set; }
         public string B2 { get; set; }
         public string B3 { get; set; }
+        #endregion
 
+        #region TPR Representative
         public string C1 { get; set; }
         public IList<string> C2 { get; set; }
         public string C3 { get; set; }
-        public string C4 { get; set; }
+        public string C4 { get; set; } 
+
+        [DataType(DataType.Url)]
         public string C5 { get; set; }
         public string C6 { get; set; }
-        public string C7 { get; set; }
 
+        [DataType(DataType.EmailAddress)]
+        public string C7 { get; set; }
+        #endregion
+
+        #region Selection of TPR
         public string D1 { get; set; }
         public string D2 { get; set; }
         public string D3 { get; set; }
+        #endregion
 
+        #region Background of the TPR
         public string E1 { get; set; }
         public string E2 { get; set; }
         public string E3 { get; set; }
+        #endregion
 
+        #region Internal Information
         public string F1 { get; set; }
-        public string F2 { get; set; }
-        public string F3 { get; set; }
 
+        [DataType(DataType.EmailAddress)]
+        public string F2 { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        public string F3 { get; set; }
+        #endregion
+
+        #region Completed and Confirm as Accurate
         public bool G0 { get; set; }
         public string G1 { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string G2 { get; set; }
-        public string G3 { get; set; }
+
+        [DataType(DataType.Date)]
+        public string G3 { get; set; } 
+        #endregion
     }
 }
