@@ -25,722 +25,736 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="display-4 mt-2 text-center" style="font-size: 3rem;">
-            Third Party Representative Questionnaire
-        </h1>
-        <div class="alert alert-info mt-3 mb-3">
-            <div class="text-justify">
-                <div>
-                    Thermon is committed to business integrity through promoting trust to enhance and grow our business relationships.
-                    Our commitment to integrity is outlined in the Thermon Way that is available for you and your colleagues to view at
-                    <a href="www.xxxx.com">www.xxxx.com</a>.
-                    <br />
-
-                    Because our reputation, like yours, is so important, we have adopted a third party representative questionnaire for our important
-                    third parties to complete as part of a standardized due diligence process.
-                    <br />
-
-                    Please complete this questionnaire in its entirety, responding to each question or request for information.
-                    Upon completion, please return this form along with the requested documents <strong>A-E</strong>
-                    (if requested documents do not exist, please indicate so) to:
-                    <a href="mailto:compliance@thermon.com">
-                        compliance@thermon.com
-                    </a>
-                </div>
-                <br />
-                <div>
-                    <em>
-                        Any information provided through this questionnaire and/or originated during our due diligence process
-                        (“Confidential Information”) shall be treated confidentially.
-                        We hereby agree to
-                        (i) keep such Confidential Information under strict confidentiality and
-                        use it exclusively for the purpose of the due diligence process; and
-                        (ii) allow access to such
-                        Confidential Information only to our employees who need to access to the same,
-                        for the purposes of the due diligence process, or to external counsel contracted specifically for such purpose,
-                        provided parties shall always be subject to a non-disclosure commitment.
+        <form method="post"
+              enctype="multipart/form-data">
+            <h1 class="display-4 mt-2 text-center" style="font-size: 3rem;">
+                Third Party Representative Questionnaire
+            </h1>
+            <div class="alert alert-info mt-3 mb-3">
+                <div class="text-justify">
+                    <div>
+                        Thermon is committed to business integrity through
+                        promoting trust to enhance and grow our business relationships.
+                        Our commitment to integrity is outlined in the
+                        Thermon Way that is available for you and your colleagues
+                        to view at <a href="https://ir.thermon.com/corporate-governance">
+                            ir.thermon.com/corporate-governance
+                        </a>.
                         <br />
-                        Confidential Information shall not include any information which:
-                        (i) was known or in our possession before the date of its disclosure;
-                        (ii) is legitimately in or subsequently comes into the public domain or made available to the
-                        public in any way other than by breach by us or our  confidentiality obligations hereunder;
-                        (iii) has been rightfully received without restriction on disclosure or use from a third party,
-                        whom we reasonably believe to be authorized to make such disclosure;
-                        (iv) which the disclosure has been authorized in writing by the disclosing party; or
-                        (v) the disclosure is required by law or by virtue of a judicial, court or administrative order,
-                        provided that such disclosure is limited to the extent strictly necessary to comply with said order or legal requirement.
-                    </em>
-                </div>
-            </div>
-
-            <div class="text-center">
-                <strong>
-                    For questions or clarifications, please contact:
-                    <a href="mailto:compliance@thermon.com">compliance@thermon.com</a>
-                </strong>
-            </div>
-        </div>
-
-        <form method="post">
-            <div asp-validation-summary="ModelOnly"
-                 class="text-danger">
-            </div>
-
-            <!--A - FORM COMPLETION INFORMATION-->
-            <div class="card mb-2">
-                <div class="card-body">
-                    <div class="form-group">
-                        <h4 class="card-title h4 text-uppercase">
-                            Form Completion Information
-                        </h4>
-
-                        <div>
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 500">
-                                1. Date
-                            </label>
-
-                            <input asp-for="Answers.A1"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="date" />
-
-                            <span asp-validation-for="Answers.A1"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 500">
-                                2. Name and Contact Information for person primarily responsible for completing questionnaire
-                            </label>
-                            <br />
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400">
-                                a. Name
-                            </label>
-
-                            <input asp-for="Answers.A2A"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
-
-                            <span asp-validation-for="Answers.A2A"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400">
-                                b. E-mail
-                            </label>
-
-                            <input asp-for="Answers.A2B"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="email" />
-
-                            <span asp-validation-for="Answers.A2B"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400">
-                                c. Telephone
-                            </label>
-                            <br />
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400; font-size: smaller">
-                                c.1 Landline
-                            </label>
-
-                            <input asp-for="Answers.A2C1"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="tel" />
-
-                            <span asp-validation-for="Answers.A2C1"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400; font-size: smaller">
-                                c.2 Cell
-                            </label>
-
-                            <input asp-for="Answers.A2C2"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="tel" />
-
-                            <span asp-validation-for="Answers.A2C2"
-                                  class="text-danger">
-                            </span>
-                        </div>
+                        Because our reputation, like yours, is so important,
+                        we have adopted a third party representative questionnaire
+                        for our important third parties to complete as part of a
+                        standardized due diligence process.
                     </div>
                 </div>
             </div>
 
-            <!--B - BUSINESS INFORMATION-->
-            <div class="card mb-2">
-                <div class="card-body">
-                    <div class="form-group">
-                        <h4 class="card-title h4 text-uppercase">
-                            Business Information
-                        </h4>
+            <div class="card">
+                <div class="card-body text-justify">
+                    Please complete this questionnaire in its entirety,
+                    responding to each question or request for information.
+                    Upon completion, please submit (button below)
+                    this form along with the following requested documents
+                    <span style="font-weight: bold;">A-E</span> :
 
-                        <div>
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 500">
-                                1. Your organization’s Full Legal Name, hereafter to be referred to as COMPANY
-                            </label>
+                </div>
+            </div>
 
-                            <input asp-for="Answers.B1"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
+            <div class="alert alert-info mt-3 mb-3">
+                <div class="text-justify"
+                     style="font-style: italic;">
+                    Any information provided through this questionnaire and/or originated during our due diligence process
+                    (“Confidential Information”) shall be treated confidentially.
+                    We hereby agree to
+                    (i) keep such Confidential Information under strict confidentiality and
+                    use it exclusively for the purpose of the due diligence process; and
+                    (ii) allow access to such
+                    Confidential Information only to our employees who need to access to the same,
+                    for the purposes of the due diligence process, or to external counsel contracted specifically for such purpose,
+                    provided parties shall always be subject to a non-disclosure commitment.
+                    <br />
+                    Confidential Information shall not include any information which:
+                    (i) was known or in our possession before the date of its disclosure;
+                    (ii) is legitimately in or subsequently comes into the public domain or made available to the
+                    public in any way other than by breach by us or our  confidentiality obligations hereunder;
+                    (iii) has been rightfully received without restriction on disclosure or use from a third party,
+                    whom we reasonably believe to be authorized to make such disclosure;
+                    (iv) which the disclosure has been authorized in writing by the disclosing party; or
+                    (v) the disclosure is required by law or by virtue of a judicial, court or administrative order,
+                    provided that such disclosure is limited to the extent strictly necessary to comply with said order or legal requirement.
+                </div>
 
-                            <span asp-validation-for="Answers.B1"
-                                  class="text-danger">
-                            </span>
-                        </div>
+                <div class="text-center">
+                    <strong>
+                        For questions or clarifications, please contact:
+                        <a href="mailto:legalcompliance@thermon.com">LegalCompliance@thermon.com</a>
+                    </strong>
+                </div>
+            </div>
 
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 500">
-                                2. Please provide the following information of COMPANY
-                            </label>
-                            <br />
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400">
-                                a. Tax number
-                            </label>
 
-                            <input asp-for="Answers.B2A"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
+            <!--MAIN FORM-->
+            <div>
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger">
+                </div>
 
-                            <span asp-validation-for="Answers.B2A"
-                                  class="text-danger">
-                            </span>
-                        </div>
+                <!--A - FORM COMPLETION INFORMATION-->
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <h4 class="card-title h4 text-uppercase">
+                                Form Completion Information
+                            </h4>
 
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400">
-                                b. Main office address
-                            </label>
+                            <div>
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 500">
+                                    1. Date
+                                </label>
 
-                            <textarea asp-for="Answers.B2B"
-                                      class="form-control form-control-sm col-md-6">
-                            </textarea>
+                                <input asp-for="Answers.A1"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="date" />
 
-                            <span asp-validation-for="Answers.B2B"
-                                  class="text-danger">
-                            </span>
-                        </div>
+                                <span asp-validation-for="Answers.A1"
+                                      class="text-danger">
+                                </span>
+                            </div>
 
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400">
-                                c. Address of any other location in the country from which COMPANY will be providing services
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 500">
+                                    2. Name and Contact Information for person primarily responsible for completing questionnaire
+                                </label>
                                 <br />
-                                If none, please indicate
-                            </label>
-
-                            <textarea asp-for="Answers.B2C"
-                                      class="form-control form-control-sm col-md-6">
-                            </textarea>
-
-                            <span asp-validation-for="Answers.B2C"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400">
-                                d. Telephone
-                            </label>
-                            <br />
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400; font-size: smaller;">
-                                d.1 Landline
-                            </label>
-
-                            <input asp-for="Answers.B2D1"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="tel" />
-
-                            <span asp-validation-for="Answers.B2D1"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400; font-size: smaller;">
-                                d.2 Cell
-                            </label>
-
-                            <input asp-for="Answers.B2D2"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="tel" />
-
-                            <span asp-validation-for="Answers.B2D2"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400;">
-                                e. Email
-                            </label>
-
-                            <input asp-for="Answers.B2E"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="email" />
-
-                            <span asp-validation-for="Answers.B2E"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400;">
-                                f. Website
-                            </label>
-
-                            <input asp-for="Answers.B2F"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="url" />
-
-                            <span asp-validation-for="Answers.B2F"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 500;">
-                                If COMPANY is an individual, provide the following information
-                            </label>
-                            <br />
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400;">
-                                a. Person's name
-                            </label>
-
-                            <input asp-for="Answers.B2Oa"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
-
-                            <span asp-validation-for="Answers.B2Oa"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400;">
-                                b. Date of birth
-                            </label>
-
-                            <input asp-for="Answers.B2Ob"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="date" />
-
-                            <span asp-validation-for="Answers.B2Ob"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400;">
-                                c. ID number
-                            </label>
-
-                            <input asp-for="Answers.B2Oc"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
-
-                            <span asp-validation-for="Answers.B2Oc"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400;">
-                                d. Tax number
-                            </label>
-
-                            <input asp-for="Answers.B2Od"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
-
-                            <span asp-validation-for="Answers.B2Od"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 500;">
-                                3. Please provide the following organizational information relating to COMPANY
-                            </label>
-                            <br />
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400; font-style: italic;">
-                                Request A: Please provide a copy of certificate of incorporation,
-                                bylaws or equivalent organization document
-                            </label>
-
-                            <div class="custom-file form-control form-control-sm col-md-6">
-                                <input asp-for="Answers.B3File"
-                                       type="file"
-                                       class="custom-file-input"
-                                       id="B3File">
-
-                                <label class="custom-file-label"
-                                       for="B3File">
-                                    Choose file
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400">
+                                    a. Name
                                 </label>
+
+                                <input asp-for="Answers.A2A"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="text" />
+
+                                <span asp-validation-for="Answers.A2A"
+                                      class="text-danger">
+                                </span>
                             </div>
 
-                            <span asp-validation-for="Answers.B3File"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400;">
-                                a. COMPANY business structure (e.g. corporation, partnership, etc.)
-                            </label>
-
-                            <input asp-for="Answers.B3A"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
-
-                            <span asp-validation-for="Answers.B3A"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400;">
-                                b. Approximate establishment date and legal jurisdiction of formation
-                            </label>
-
-                            <input asp-for="Answers.B3B1"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="date" />
-
-                            <span asp-validation-for="Answers.B3B1"
-                                  class="text-danger">
-                            </span>
-
-                            <input asp-for="Answers.B3B2"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="text" />
-
-                            <span asp-validation-for="Answers.B3B2"
-                                  class="text-danger">
-                            </span>
-
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400;">
-                                c. Approximate number of employees
-                            </label>
-
-                            <input asp-for="Answers.B3C"
-                                   class="form-control form-control-sm col-md-6"
-                                   type="number" />
-
-                            <span asp-validation-for="Answers.B3C"
-                                  class="text-danger">
-                            </span>
-
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400;">
-                                d. Ownership
-                            </label>
-                            <br />
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400; font-size:smaller">
-                                d.1 Does any governmental or government entity hold equity interest in the COMPANY?
-                            </label>
-
-                            <div class="form-check">
-                                <input asp-for="Answers.B3D1A"
-                                       class="form-check-input"
-                                       type="radio"
-                                       id="B3D1Aa"
-                                       value="Yes">
-                                <label class="form-check-label"
-                                       for="B3D1Aa">
-                                    Yes
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400">
+                                    b. E-mail
                                 </label>
+
+                                <input asp-for="Answers.A2B"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="email" />
+
+                                <span asp-validation-for="Answers.A2B"
+                                      class="text-danger">
+                                </span>
                             </div>
 
-                            <div class="form-check">
-                                <input asp-for="Answers.B3D1A"
-                                       class="form-check-input"
-                                       type="radio"
-                                       id="B3D1Ab"
-                                       value="No">
-                                <label class="form-check-label"
-                                       for="B3D1Ab">
-                                    No
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400">
+                                    c. Telephone
                                 </label>
+                                <br />
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400; font-size: smaller">
+                                    c.1 Landline
+                                </label>
+
+                                <input asp-for="Answers.A2C1"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="tel" />
+
+                                <span asp-validation-for="Answers.A2C1"
+                                      class="text-danger">
+                                </span>
                             </div>
 
-                            <span asp-validation-for="Answers.B3D1A"
-                                  class="text-danger">
-                            </span>
-
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400; font-size:smaller">
-                                If yes, the governmental’s equity interest in the COMPANY is
-                            </label>
-
-                            <div class="form-check">
-                                <input asp-for="Answers.B3D1B"
-                                       class="form-check-input"
-                                       type="radio"
-                                       id="B3D1Ba"
-                                       value="Majority">
-                                <label class="form-check-label"
-                                       for="B3D1Ba">
-                                    Majority
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400; font-size: smaller">
+                                    c.2 Cell
                                 </label>
+
+                                <input asp-for="Answers.A2C2"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="tel" />
+
+                                <span asp-validation-for="Answers.A2C2"
+                                      class="text-danger">
+                                </span>
                             </div>
-
-                            <div class="form-check">
-                                <input asp-for="Answers.B3D1B"
-                                       class="form-check-input"
-                                       type="radio"
-                                       id="B3D1Bb"
-                                       value="Minority">
-                                <label class="form-check-label"
-                                       for="B3D1Bb">
-                                    Minority
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <input asp-for="Answers.B3D1B"
-                                       class="form-check-input"
-                                       type="radio"
-                                       id="B3D1Bc"
-                                       value="None">
-                                <label class="form-check-label"
-                                       for="B3D1Bc">
-                                    None
-                                </label>
-                            </div>
-
-                            <span asp-validation-for="Answers.B3D1B"
-                                  class="text-danger">
-                            </span>
-
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400; font-size:smaller">
-                                d.2 Does the COMPANY have shares listed on a stock exchange?
-                            </label>
-
-                            <div class="form-check">
-                                <input asp-for="Answers.B3D2"
-                                       class="form-check-input"
-                                       type="radio"
-                                       id="B3D2a"
-                                       value="Yes">
-                                <label class="form-check-label"
-                                       for="B3D2a">
-                                    Yes
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <input asp-for="Answers.B3D2"
-                                       class="form-check-input"
-                                       type="radio"
-                                       id="B3D2b"
-                                       value="No">
-                                <label class="form-check-label"
-                                       for="B3D2b">
-                                    No
-                                </label>
-                            </div>
-
-                            <span asp-validation-for="Answers.B3D2"
-                                  class="text-danger">
-                            </span>
-
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 500;">
-                                4. Please provide the following business information relating to COMPANY
-                            </label>
-                            <br />
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400; font-style: italic;">
-                                Request B: Please provide a copy of any business brochures or annual report
-                            </label>
-                            <br />
-
-                            <div class="custom-file form-control form-control-sm col-md-6">
-                                <input asp-for="Answers.B4File"
-                                       type="file"
-                                       class="custom-file-input"
-                                       id="B4File">
-
-                                <label class="custom-file-label"
-                                       for="B4File">
-                                    Choose file
-                                </label>
-                            </div>
-
-                            <span asp-validation-for="Answers.B4File"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400">
-                                a. Describe your core business activities
-                            </label>
-
-                            <textarea asp-for="Answers.B4A"
-                                      class="form-control form-control-sm col-md-6">
-                            </textarea>
-
-                            <span asp-validation-for="Answers.B4A"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400">
-                                b. Other operating businesses that have controlling interest in you or you control
-                            </label>
-
-                            <textarea asp-for="Answers.B4B"
-                                      class="form-control form-control-sm col-md-6">
-                            </textarea>
-
-                            <span asp-validation-for="Answers.B4B"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400">
-                                c. Countries in which you operate or provide services
-                            </label>
-
-                            <input asp-for="Answers.B4C"
-                                   class="form-control form-control-sm col-md-6" />
-
-                            <span asp-validation-for="Answers.B4C"
-                                  class="text-danger">
-                            </span>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 500;">
-                                5. Do you have business financial statements?
-                            </label>
-
-                            <div class="form-check">
-                                <input asp-for="Answers.B5"
-                                       class="form-check-input"
-                                       type="radio"
-                                       id="B5a"
-                                       value="Yes">
-                                <label class="form-check-label"
-                                       for="B5a">
-                                    Yes
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <input asp-for="Answers.B5"
-                                       class="form-check-input"
-                                       type="radio"
-                                       id="B5b"
-                                       value="No">
-                                <label class="form-check-label"
-                                       for="B5b">
-                                    No
-                                </label>
-                            </div>
-
-                            <span asp-validation-for="Answers.B5"
-                                  class="text-danger">
-                            </span>
-
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="text-justify mb-0"
-                                   style="font-weight: 400; font-style: italic;">
-                                Request C: please provide copies of most recent audited financial statements
-                                and the most recent unaudited and/or interim financial statements
-                            </label>
-                            <br />
-
-                            <div class="custom-file form-control form-control-sm col-md-6">
-                                <input asp-for="Answers.B5File"
-                                       type="file"
-                                       class="custom-file-input"
-                                       id="B5File">
-
-                                <label class="custom-file-label"
-                                       for="B5File">
-                                    Choose file
-                                </label>
-                            </div>
-
-                            <span asp-validation-for="Answers.B5File"
-                                  class="text-danger">
-                            </span>
                         </div>
                     </div>
                 </div>
+
+                <!--B - BUSINESS INFORMATION-->
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <h4 class="card-title h4 text-uppercase">
+                                Business Information
+                            </h4>
+
+                            <div>
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 500">
+                                    1. Your organization’s Full Legal Name, hereafter to be referred to as COMPANY
+                                </label>
+
+                                <input asp-for="Answers.B1"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="text" />
+
+                                <span asp-validation-for="Answers.B1"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 500">
+                                    2. Please provide the following information of COMPANY
+                                </label>
+                                <br />
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400">
+                                    a. Tax number
+                                </label>
+
+                                <input asp-for="Answers.B2A"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="text" />
+
+                                <span asp-validation-for="Answers.B2A"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400">
+                                    b. Main office address
+                                </label>
+
+                                <textarea asp-for="Answers.B2B"
+                                          class="form-control form-control-sm col-md-6">
+                            </textarea>
+
+                                <span asp-validation-for="Answers.B2B"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400">
+                                    c. Address of any other location in the country from which COMPANY will be providing services
+                                    <br />
+                                    If none, please indicate
+                                </label>
+
+                                <textarea asp-for="Answers.B2C"
+                                          class="form-control form-control-sm col-md-6">
+                            </textarea>
+
+                                <span asp-validation-for="Answers.B2C"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400">
+                                    d. Telephone
+                                </label>
+                                <br />
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400; font-size: smaller;">
+                                    d.1 Landline
+                                </label>
+
+                                <input asp-for="Answers.B2D1"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="tel" />
+
+                                <span asp-validation-for="Answers.B2D1"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400; font-size: smaller;">
+                                    d.2 Cell
+                                </label>
+
+                                <input asp-for="Answers.B2D2"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="tel" />
+
+                                <span asp-validation-for="Answers.B2D2"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400;">
+                                    e. Email
+                                </label>
+
+                                <input asp-for="Answers.B2E"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="email" />
+
+                                <span asp-validation-for="Answers.B2E"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400;">
+                                    f. Website
+                                </label>
+
+                                <input asp-for="Answers.B2F"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="url" />
+
+                                <span asp-validation-for="Answers.B2F"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 500;">
+                                    If COMPANY is an individual, provide the following information
+                                </label>
+                                <br />
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400;">
+                                    a. Person's name
+                                </label>
+
+                                <input asp-for="Answers.B2Oa"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="text" />
+
+                                <span asp-validation-for="Answers.B2Oa"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400;">
+                                    b. Date of birth
+                                </label>
+
+                                <input asp-for="Answers.B2Ob"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="date" />
+
+                                <span asp-validation-for="Answers.B2Ob"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400;">
+                                    c. ID number
+                                </label>
+
+                                <input asp-for="Answers.B2Oc"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="text" />
+
+                                <span asp-validation-for="Answers.B2Oc"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400;">
+                                    d. Tax number
+                                </label>
+
+                                <input asp-for="Answers.B2Od"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="text" />
+
+                                <span asp-validation-for="Answers.B2Od"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 500;">
+                                    3. Please provide the following organizational information relating to COMPANY
+                                </label>
+                                <br />
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400; font-style: italic;">
+                                    Request A: Please provide a copy of certificate of incorporation,
+                                    bylaws or equivalent organization document
+                                </label>
+
+                                <div class="custom-file form-control form-control-sm col-md-6">
+                                    <input asp-for="Answers.B3File"
+                                           type="file"
+                                           class="custom-file-input"
+                                           id="B3File">
+
+                                    <label class="custom-file-label"
+                                           for="B3File">
+                                        Choose file
+                                    </label>
+                                </div>
+
+                                <span asp-validation-for="Answers.B3File"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400;">
+                                    a. COMPANY business structure (e.g. corporation, partnership, etc.)
+                                </label>
+
+                                <input asp-for="Answers.B3A"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="text" />
+
+                                <span asp-validation-for="Answers.B3A"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400;">
+                                    b. Approximate establishment date and legal jurisdiction of formation
+                                </label>
+
+                                <input asp-for="Answers.B3B1"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="date" />
+
+                                <span asp-validation-for="Answers.B3B1"
+                                      class="text-danger">
+                                </span>
+
+                                <input asp-for="Answers.B3B2"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="text" />
+
+                                <span asp-validation-for="Answers.B3B2"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400;">
+                                    c. Approximate number of employees
+                                </label>
+
+                                <input asp-for="Answers.B3C"
+                                       class="form-control form-control-sm col-md-6"
+                                       type="number" />
+
+                                <span asp-validation-for="Answers.B3C"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400;">
+                                    d. Ownership
+                                </label>
+                                <br />
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400; font-size:smaller">
+                                    d.1 Does any governmental or government entity hold equity interest in the COMPANY?
+                                </label>
+
+                                <div class="form-check">
+                                    <input asp-for="Answers.B3D1A"
+                                           class="form-check-input"
+                                           type="radio"
+                                           id="B3D1Aa"
+                                           value="Yes">
+                                    <label class="form-check-label"
+                                           for="B3D1Aa">
+                                        Yes
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input asp-for="Answers.B3D1A"
+                                           class="form-check-input"
+                                           type="radio"
+                                           id="B3D1Ab"
+                                           value="No">
+                                    <label class="form-check-label"
+                                           for="B3D1Ab">
+                                        No
+                                    </label>
+                                </div>
+
+                                <span asp-validation-for="Answers.B3D1A"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400; font-size:smaller">
+                                    If yes, the governmental’s equity interest in the COMPANY is
+                                </label>
+
+                                <div class="form-check">
+                                    <input asp-for="Answers.B3D1B"
+                                           class="form-check-input"
+                                           type="radio"
+                                           id="B3D1Ba"
+                                           value="Majority">
+                                    <label class="form-check-label"
+                                           for="B3D1Ba">
+                                        Majority
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input asp-for="Answers.B3D1B"
+                                           class="form-check-input"
+                                           type="radio"
+                                           id="B3D1Bb"
+                                           value="Minority">
+                                    <label class="form-check-label"
+                                           for="B3D1Bb">
+                                        Minority
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input asp-for="Answers.B3D1B"
+                                           class="form-check-input"
+                                           type="radio"
+                                           id="B3D1Bc"
+                                           value="None">
+                                    <label class="form-check-label"
+                                           for="B3D1Bc">
+                                        None
+                                    </label>
+                                </div>
+
+                                <span asp-validation-for="Answers.B3D1B"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400; font-size:smaller">
+                                    d.2 Does the COMPANY have shares listed on a stock exchange?
+                                </label>
+
+                                <div class="form-check">
+                                    <input asp-for="Answers.B3D2"
+                                           class="form-check-input"
+                                           type="radio"
+                                           id="B3D2a"
+                                           value="Yes">
+                                    <label class="form-check-label"
+                                           for="B3D2a">
+                                        Yes
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input asp-for="Answers.B3D2"
+                                           class="form-check-input"
+                                           type="radio"
+                                           id="B3D2b"
+                                           value="No">
+                                    <label class="form-check-label"
+                                           for="B3D2b">
+                                        No
+                                    </label>
+                                </div>
+
+                                <span asp-validation-for="Answers.B3D2"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 500;">
+                                    4. Please provide the following business information relating to COMPANY
+                                </label>
+                                <br />
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400; font-style: italic;">
+                                    Request B: Please provide a copy of any business brochures or annual report
+                                </label>
+                                <br />
+
+                                <div class="custom-file form-control form-control-sm col-md-6">
+                                    <input asp-for="Answers.B4File"
+                                           type="file"
+                                           class="custom-file-input"
+                                           id="B4File">
+
+                                    <label class="custom-file-label"
+                                           for="B4File">
+                                        Choose file
+                                    </label>
+                                </div>
+
+                                <span asp-validation-for="Answers.B4File"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400">
+                                    a. Describe your core business activities
+                                </label>
+
+                                <textarea asp-for="Answers.B4A"
+                                          class="form-control form-control-sm col-md-6">
+                            </textarea>
+
+                                <span asp-validation-for="Answers.B4A"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400">
+                                    b. Other operating businesses that have controlling interest in you or you control
+                                </label>
+
+                                <textarea asp-for="Answers.B4B"
+                                          class="form-control form-control-sm col-md-6">
+                            </textarea>
+
+                                <span asp-validation-for="Answers.B4B"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400">
+                                    c. Countries in which you operate or provide services
+                                </label>
+
+                                <input asp-for="Answers.B4C"
+                                       class="form-control form-control-sm col-md-6" />
+
+                                <span asp-validation-for="Answers.B4C"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 500;">
+                                    5. Do you have business financial statements?
+                                </label>
+
+                                <div class="form-check">
+                                    <input asp-for="Answers.B5"
+                                           class="form-check-input"
+                                           type="radio"
+                                           id="B5a"
+                                           value="Yes">
+                                    <label class="form-check-label"
+                                           for="B5a">
+                                        Yes
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input asp-for="Answers.B5"
+                                           class="form-check-input"
+                                           type="radio"
+                                           id="B5b"
+                                           value="No">
+                                    <label class="form-check-label"
+                                           for="B5b">
+                                        No
+                                    </label>
+                                </div>
+
+                                <span asp-validation-for="Answers.B5"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="mt-2">
+                                <label class="text-justify mb-0"
+                                       style="font-weight: 400; font-style: italic;">
+                                    Request C: please provide copies of most recent audited financial statements
+                                    and the most recent unaudited and/or interim financial statements
+                                </label>
+                                <br />
+
+                                <div class="custom-file form-control form-control-sm col-md-6">
+                                    <input asp-for="Answers.B5File"
+                                           type="file"
+                                           class="custom-file-input"
+                                           id="B5File">
+
+                                    <label class="custom-file-label"
+                                           for="B5File">
+                                        Choose file
+                                    </label>
+                                </div>
+
+                                <span asp-validation-for="Answers.B5File"
+                                      class="text-danger">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <input asp-for="Answers.UniqueIdentifier"
+                       value="@Model.UniqueId"
+                       hidden />
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Submit
+                </button>
             </div>
-
-            <input asp-for="Answers.UniqueIdentifier"
-                   value="@Model.UniqueId"
-                   hidden />
-
-            <button type="submit"
-                    class="btn btn-primary">
-                Submit
-            </button>
         </form>
     </div>
 
