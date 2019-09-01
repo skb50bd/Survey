@@ -106,8 +106,7 @@ namespace Web.Pages.Invitation
             }
             catch (Exception e)
             {
-                Message = "Could not send email." + HtmlEncoder.Default.Encode("<br/>") +
-                          e.Message;
+                Message = e.Message;
                 return Page();
             }
 
