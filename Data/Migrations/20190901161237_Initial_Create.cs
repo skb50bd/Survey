@@ -48,6 +48,20 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Files",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FileName = table.Column<string>(nullable: true),
+                    Content = table.Column<byte[]>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Files", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SponsorResponses",
                 columns: table => new
                 {
@@ -80,18 +94,6 @@ namespace Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SponsorResponses", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ThirdPartyResponses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ThirdPartyResponses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -198,6 +200,143 @@ namespace Data.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ThirdPartyResponses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DocumentAId = table.Column<int>(nullable: true),
+                    DocumentBId = table.Column<int>(nullable: true),
+                    DocumentCId = table.Column<int>(nullable: true),
+                    DocumentDId = table.Column<int>(nullable: true),
+                    DocumentEId = table.Column<int>(nullable: true),
+                    A1 = table.Column<string>(nullable: true),
+                    A2A = table.Column<string>(nullable: true),
+                    A2B = table.Column<string>(nullable: true),
+                    A2C1 = table.Column<string>(nullable: true),
+                    A2C2 = table.Column<string>(nullable: true),
+                    B1 = table.Column<string>(nullable: true),
+                    B2A = table.Column<string>(nullable: true),
+                    B2B = table.Column<string>(nullable: true),
+                    B2C = table.Column<string>(nullable: true),
+                    B2D1 = table.Column<string>(nullable: true),
+                    B2D2 = table.Column<string>(nullable: true),
+                    B2E = table.Column<string>(nullable: true),
+                    B2F = table.Column<string>(nullable: true),
+                    B2Oa = table.Column<string>(nullable: true),
+                    B2Ob = table.Column<string>(nullable: true),
+                    B2Oc = table.Column<string>(nullable: true),
+                    B2Od = table.Column<string>(nullable: true),
+                    B3A = table.Column<string>(nullable: true),
+                    B3B1 = table.Column<string>(nullable: true),
+                    B3B2 = table.Column<string>(nullable: true),
+                    B3C = table.Column<string>(nullable: true),
+                    B3D1A = table.Column<string>(nullable: true),
+                    B3D1B = table.Column<string>(nullable: true),
+                    B3D2 = table.Column<string>(nullable: true),
+                    B4A = table.Column<string>(nullable: true),
+                    B4B = table.Column<string>(nullable: true),
+                    B4C = table.Column<string>(nullable: true),
+                    B5 = table.Column<string>(nullable: true),
+                    C1A = table.Column<string>(nullable: true),
+                    C1B = table.Column<string>(nullable: true),
+                    C1C = table.Column<string>(nullable: true),
+                    C1D = table.Column<string>(nullable: true),
+                    C1E = table.Column<string>(nullable: true),
+                    C1F1 = table.Column<string>(nullable: true),
+                    C1F2 = table.Column<string>(nullable: true),
+                    C2A = table.Column<string>(nullable: true),
+                    C2B = table.Column<string>(nullable: true),
+                    C2C = table.Column<string>(nullable: true),
+                    C2D = table.Column<string>(nullable: true),
+                    C2E = table.Column<string>(nullable: true),
+                    C2F1 = table.Column<string>(nullable: true),
+                    C2F2 = table.Column<string>(nullable: true),
+                    C3A = table.Column<string>(nullable: true),
+                    C3B = table.Column<string>(nullable: true),
+                    C3C = table.Column<string>(nullable: true),
+                    C3D = table.Column<string>(nullable: true),
+                    C3E = table.Column<string>(nullable: true),
+                    C3F1 = table.Column<string>(nullable: true),
+                    C3F2 = table.Column<string>(nullable: true),
+                    D1 = table.Column<string>(nullable: true),
+                    D2 = table.Column<string>(nullable: true),
+                    D3 = table.Column<string>(nullable: true),
+                    D4 = table.Column<string>(nullable: true),
+                    D4A = table.Column<string>(nullable: true),
+                    D4B = table.Column<string>(nullable: true),
+                    D4C = table.Column<string>(nullable: true),
+                    D4D = table.Column<string>(nullable: true),
+                    D5 = table.Column<string>(nullable: true),
+                    D6 = table.Column<string>(nullable: true),
+                    D6A = table.Column<string>(nullable: true),
+                    E1 = table.Column<string>(nullable: true),
+                    E1A = table.Column<string>(nullable: true),
+                    E2 = table.Column<string>(nullable: true),
+                    E3 = table.Column<string>(nullable: true),
+                    F1 = table.Column<string>(nullable: true),
+                    F2 = table.Column<string>(nullable: true),
+                    F3 = table.Column<string>(nullable: true),
+                    F4 = table.Column<string>(nullable: true),
+                    F5 = table.Column<string>(nullable: true),
+                    F6 = table.Column<string>(nullable: true),
+                    F7 = table.Column<string>(nullable: true),
+                    F8 = table.Column<string>(nullable: true),
+                    F9 = table.Column<string>(nullable: true),
+                    F10 = table.Column<string>(nullable: true),
+                    F11 = table.Column<string>(nullable: true),
+                    F12 = table.Column<string>(nullable: true),
+                    F13A = table.Column<string>(nullable: true),
+                    F13B = table.Column<string>(nullable: true),
+                    F13C = table.Column<string>(nullable: true),
+                    F13D = table.Column<string>(nullable: true),
+                    G1 = table.Column<string>(nullable: true),
+                    G2A = table.Column<string>(nullable: true),
+                    G2B = table.Column<string>(nullable: true),
+                    G2C = table.Column<string>(nullable: true),
+                    G2D = table.Column<string>(nullable: true),
+                    H1 = table.Column<string>(nullable: true),
+                    H2 = table.Column<string>(nullable: true),
+                    H3 = table.Column<string>(nullable: true),
+                    H4 = table.Column<string>(nullable: true),
+                    H5 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ThirdPartyResponses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ThirdPartyResponses_Files_DocumentAId",
+                        column: x => x.DocumentAId,
+                        principalTable: "Files",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ThirdPartyResponses_Files_DocumentBId",
+                        column: x => x.DocumentBId,
+                        principalTable: "Files",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ThirdPartyResponses_Files_DocumentCId",
+                        column: x => x.DocumentCId,
+                        principalTable: "Files",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ThirdPartyResponses_Files_DocumentDId",
+                        column: x => x.DocumentDId,
+                        principalTable: "Files",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ThirdPartyResponses_Files_DocumentEId",
+                        column: x => x.DocumentEId,
+                        principalTable: "Files",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -316,6 +455,31 @@ namespace Data.Migrations
                 name: "IX_ThirdParties_UniqueIdentifier",
                 table: "ThirdParties",
                 column: "UniqueIdentifier");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ThirdPartyResponses_DocumentAId",
+                table: "ThirdPartyResponses",
+                column: "DocumentAId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ThirdPartyResponses_DocumentBId",
+                table: "ThirdPartyResponses",
+                column: "DocumentBId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ThirdPartyResponses_DocumentCId",
+                table: "ThirdPartyResponses",
+                column: "DocumentCId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ThirdPartyResponses_DocumentDId",
+                table: "ThirdPartyResponses",
+                column: "DocumentDId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ThirdPartyResponses_DocumentEId",
+                table: "ThirdPartyResponses",
+                column: "DocumentEId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -352,6 +516,9 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "ThirdPartyResponses");
+
+            migrationBuilder.DropTable(
+                name: "Files");
         }
     }
 }

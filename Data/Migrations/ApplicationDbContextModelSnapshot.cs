@@ -19,6 +19,21 @@ namespace Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Domain.File", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<byte[]>("Content");
+
+                    b.Property<string>("FileName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Files");
+                });
+
             modelBuilder.Entity("Domain.Sponsor", b =>
                 {
                     b.Property<int>("Id")
@@ -172,7 +187,9 @@ namespace Data.Migrations
 
                     b.Property<string>("B3A");
 
-                    b.Property<string>("B3B");
+                    b.Property<string>("B3B1");
+
+                    b.Property<string>("B3B2");
 
                     b.Property<string>("B3C");
 
@@ -254,6 +271,16 @@ namespace Data.Migrations
 
                     b.Property<string>("D6A");
 
+                    b.Property<int?>("DocumentAId");
+
+                    b.Property<int?>("DocumentBId");
+
+                    b.Property<int?>("DocumentCId");
+
+                    b.Property<int?>("DocumentDId");
+
+                    b.Property<int?>("DocumentEId");
+
                     b.Property<string>("E1");
 
                     b.Property<string>("E1A");
@@ -315,6 +342,16 @@ namespace Data.Migrations
                     b.Property<string>("H5");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DocumentAId");
+
+                    b.HasIndex("DocumentBId");
+
+                    b.HasIndex("DocumentCId");
+
+                    b.HasIndex("DocumentDId");
+
+                    b.HasIndex("DocumentEId");
 
                     b.ToTable("ThirdPartyResponses");
                 });
@@ -501,6 +538,29 @@ namespace Data.Migrations
                     b.HasOne("Domain.ThirdPartyResponse", "Response")
                         .WithMany()
                         .HasForeignKey("ResponseId");
+                });
+
+            modelBuilder.Entity("Domain.ThirdPartyResponse", b =>
+                {
+                    b.HasOne("Domain.File", "DocumentA")
+                        .WithMany()
+                        .HasForeignKey("DocumentAId");
+
+                    b.HasOne("Domain.File", "DocumentB")
+                        .WithMany()
+                        .HasForeignKey("DocumentBId");
+
+                    b.HasOne("Domain.File", "DocumentC")
+                        .WithMany()
+                        .HasForeignKey("DocumentCId");
+
+                    b.HasOne("Domain.File", "DocumentD")
+                        .WithMany()
+                        .HasForeignKey("DocumentDId");
+
+                    b.HasOne("Domain.File", "DocumentE")
+                        .WithMany()
+                        .HasForeignKey("DocumentEId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

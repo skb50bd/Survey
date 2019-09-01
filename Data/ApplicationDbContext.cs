@@ -27,6 +27,8 @@ namespace Data
 
         public DbSet<ThirdParty> ThirdParties { get; set; }
 
+        public DbSet<File> Files { get; set; }
+
         public DbSet<SponsorResponse> SponsorResponses { get; set; }
         public DbSet<ThirdPartyResponse> ThirdPartyResponses { get; set; }
     }
