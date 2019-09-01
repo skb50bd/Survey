@@ -55,8 +55,28 @@
                     responding to each question or request for information.
                     Upon completion, please submit (button below)
                     this form along with the following requested documents
-                    <span style="font-weight: bold;">A-E</span> :
+                    <span style="font-weight: bold;">A-E</span>:
 
+                    <div class="form-group">
+                        <h4 class="card-title h4 text-uppercase">
+                            Business Information
+                        </h4>
+
+                        <div>
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 500">
+                                1. Your organization’s Full Legal Name, hereafter to be referred to as COMPANY
+                            </label>
+
+                            <input asp-for="Answers.B1"
+                                   class="form-control form-control-sm col-md-6"
+                                   type="text" />
+
+                            <span asp-validation-for="Answers.B1"
+                                  class="text-danger">
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
 

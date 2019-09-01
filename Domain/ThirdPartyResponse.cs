@@ -6,6 +6,23 @@ namespace Domain
     {
         public int Id { get; set; }
 
+        #region Files
+        public int? DocumentAId { get; set; }
+        public File DocumentA { get; set; }
+
+        public int? DocumentBId { get; set; }
+        public File DocumentB { get; set; }
+
+        public int? DocumentCId { get; set; }
+        public File DocumentC { get; set; }
+
+        public int? DocumentDId { get; set; }
+        public File DocumentD { get; set; }
+
+        public int? DocumentEId { get; set; }
+        public File DocumentE { get; set; }
+        #endregion
+
         #region Form Completion Information
         public string A1 { get; set; }
         public string A2A { get; set; }
@@ -29,7 +46,6 @@ namespace Domain
         public string B2Oc { get; set; }
         public string B2Od { get; set; }
 
-        public byte[] B3File { get; set; }
         public string B3A { get; set; }
         public string B3B1 { get; set; }
         public string B3B2 { get; set; }
@@ -38,13 +54,11 @@ namespace Domain
         public string B3D1B { get; set; }
         public string B3D2 { get; set; }
 
-        public byte[] B4File { get; set; }
         public string B4A { get; set; }
         public string B4B { get; set; }
         public string B4C { get; set; }
 
         public string B5 { get; set; }
-        public byte[] B5File { get; set; }
         #endregion
 
         #region Reference Information
