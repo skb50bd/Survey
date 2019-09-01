@@ -102,9 +102,10 @@ namespace Domain
         #endregion
 
         #region Potential Conflicts Information
-        public string E1 { get; set; }
         public string E1A { get; set; }
-        public string E2 { get; set; }
+        public string E1B { get; set; }
+        public string E2A { get; set; }
+        public string E2B { get; set; }
         public string E3 { get; set; }
         #endregion
 

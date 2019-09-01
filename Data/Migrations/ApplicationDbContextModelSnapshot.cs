@@ -34,6 +34,39 @@ namespace Data.Migrations
                     b.ToTable("Files");
                 });
 
+            modelBuilder.Entity("Domain.ResponseSummary", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("D");
+
+                    b.Property<string>("G4A");
+
+                    b.Property<string>("G4B");
+
+                    b.Property<string>("I1");
+
+                    b.Property<string>("I2");
+
+                    b.Property<string>("I3");
+
+                    b.Property<string>("I4");
+
+                    b.Property<int?>("SponsorResponseId");
+
+                    b.Property<int?>("ThirdPartyResponseId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SponsorResponseId");
+
+                    b.HasIndex("ThirdPartyResponseId");
+
+                    b.ToTable("ResponseSummary");
+                });
+
             modelBuilder.Entity("Domain.Sponsor", b =>
                 {
                     b.Property<int>("Id")
@@ -48,6 +81,8 @@ namespace Data.Migrations
 
                     b.Property<int?>("ResponseId");
 
+                    b.Property<int?>("SummaryId");
+
                     b.Property<int>("ThirdPartyId");
 
                     b.Property<Guid>("UniqueIdentifier");
@@ -55,6 +90,8 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ResponseId");
+
+                    b.HasIndex("SummaryId");
 
                     b.HasIndex("ThirdPartyId");
 
@@ -281,11 +318,13 @@ namespace Data.Migrations
 
                     b.Property<int?>("DocumentEId");
 
-                    b.Property<string>("E1");
-
                     b.Property<string>("E1A");
 
-                    b.Property<string>("E2");
+                    b.Property<string>("E1B");
+
+                    b.Property<string>("E2A");
+
+                    b.Property<string>("E2B");
 
                     b.Property<string>("E3");
 
@@ -521,11 +560,26 @@ namespace Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Domain.ResponseSummary", b =>
+                {
+                    b.HasOne("Domain.SponsorResponse", "SponsorResponse")
+                        .WithMany()
+                        .HasForeignKey("SponsorResponseId");
+
+                    b.HasOne("Domain.ThirdPartyResponse", "ThirdPartyResponse")
+                        .WithMany()
+                        .HasForeignKey("ThirdPartyResponseId");
+                });
+
             modelBuilder.Entity("Domain.Sponsor", b =>
                 {
                     b.HasOne("Domain.SponsorResponse", "Response")
                         .WithMany()
                         .HasForeignKey("ResponseId");
+
+                    b.HasOne("Domain.ResponseSummary", "Summary")
+                        .WithMany()
+                        .HasForeignKey("SummaryId");
 
                     b.HasOne("Domain.ThirdParty", "ThirdParty")
                         .WithMany()

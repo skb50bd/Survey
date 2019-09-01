@@ -3,6 +3,14 @@
 @{
     ViewData["Title"] = "Invite";
 }
+                   
+@if (!string.IsNullOrWhiteSpace(Model.Message))
+{
+    <div class="alert alert-danger alert-dismissible" style="max-width: 50rem;">
+        <div class="alert-heading">Error</div>
+        @Model.Message
+    </div>
+}
 
 <div class="card" style="max-width: 50rem;">
     <div class="card-body">

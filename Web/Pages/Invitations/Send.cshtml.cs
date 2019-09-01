@@ -1,10 +1,12 @@
-﻿using Data;
+﻿using System;
+using Data;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 
@@ -34,6 +36,10 @@ namespace Web.Pages.Invitation
 
         [BindProperty]
         public InputModel Input { get; set; }
+
+        [TempData]
+        public string Message { get; set; }
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -83,34 +89,44 @@ namespace Web.Pages.Invitation
                     });
 
 
-            await _sender.SendEmailAsync(
-                sponsor.Email,
-                "Please Respond to the Survey",
-                sponsorInvitation
-            );
-
-            await _sender.SendEmailAsync(
-                thirdParty.Email,
-                "Please Respond to the Survey",
-                thirdPartyInvitation
+            try
+            {
+                await _sender.SendEmailAsync(
+                    sponsor.Email,
+                    "Please Respond to the Survey",
+                    sponsorInvitation
                 );
+
+                await _sender.SendEmailAsync(
+                    thirdParty.Email,
+                    "Please Respond to the Survey",
+                    thirdPartyInvitation
+                );
+
+            }
+            catch (Exception e)
+            {
+                Message = "Could not send email." + HtmlEncoder.Default.Encode("<br/>") +
+                          e.Message;
+                return Page();
+            }
 
             return RedirectToPage("./Index");
         }
+    }
 
-        public class InputModel
-        {
-            public string SponsorName { get; set; }
+    public class InputModel
+    {
+        public string SponsorName { get; set; }
 
-            [Required]
-            [DataType(DataType.EmailAddress)]
-            public string SponsorEmail { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string SponsorEmail { get; set; }
 
-            public string ThirdPartyName { get; set; }
+        public string ThirdPartyName { get; set; }
 
-            [Required]
-            [DataType(DataType.EmailAddress)]
-            public string ThirdPartyEmail { get; set; }
-        }
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string ThirdPartyEmail { get; set; }
     }
 }

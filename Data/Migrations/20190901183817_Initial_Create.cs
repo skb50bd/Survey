@@ -273,9 +273,10 @@ namespace Data.Migrations
                     D5 = table.Column<string>(nullable: true),
                     D6 = table.Column<string>(nullable: true),
                     D6A = table.Column<string>(nullable: true),
-                    E1 = table.Column<string>(nullable: true),
                     E1A = table.Column<string>(nullable: true),
-                    E2 = table.Column<string>(nullable: true),
+                    E1B = table.Column<string>(nullable: true),
+                    E2A = table.Column<string>(nullable: true),
+                    E2B = table.Column<string>(nullable: true),
                     E3 = table.Column<string>(nullable: true),
                     F1 = table.Column<string>(nullable: true),
                     F2 = table.Column<string>(nullable: true),
@@ -340,6 +341,39 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ResponseSummary",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    SponsorResponseId = table.Column<int>(nullable: true),
+                    ThirdPartyResponseId = table.Column<int>(nullable: true),
+                    D = table.Column<string>(nullable: true),
+                    G4A = table.Column<string>(nullable: true),
+                    G4B = table.Column<string>(nullable: true),
+                    I1 = table.Column<string>(nullable: true),
+                    I2 = table.Column<string>(nullable: true),
+                    I3 = table.Column<string>(nullable: true),
+                    I4 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ResponseSummary", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ResponseSummary_SponsorResponses_SponsorResponseId",
+                        column: x => x.SponsorResponseId,
+                        principalTable: "SponsorResponses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ResponseSummary_ThirdPartyResponses_ThirdPartyResponseId",
+                        column: x => x.ThirdPartyResponseId,
+                        principalTable: "ThirdPartyResponses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ThirdParties",
                 columns: table => new
                 {
@@ -373,7 +407,8 @@ namespace Data.Migrations
                     UniqueIdentifier = table.Column<Guid>(nullable: false),
                     HasResponded = table.Column<bool>(nullable: false),
                     ResponseId = table.Column<int>(nullable: true),
-                    ThirdPartyId = table.Column<int>(nullable: false)
+                    ThirdPartyId = table.Column<int>(nullable: false),
+                    SummaryId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -382,6 +417,12 @@ namespace Data.Migrations
                         name: "FK_Sponsors_SponsorResponses_ResponseId",
                         column: x => x.ResponseId,
                         principalTable: "SponsorResponses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Sponsors_ResponseSummary_SummaryId",
+                        column: x => x.SummaryId,
+                        principalTable: "ResponseSummary",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -432,9 +473,24 @@ namespace Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ResponseSummary_SponsorResponseId",
+                table: "ResponseSummary",
+                column: "SponsorResponseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ResponseSummary_ThirdPartyResponseId",
+                table: "ResponseSummary",
+                column: "ThirdPartyResponseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Sponsors_ResponseId",
                 table: "Sponsors",
                 column: "ResponseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sponsors_SummaryId",
+                table: "Sponsors",
+                column: "SummaryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sponsors_ThirdPartyId",
@@ -509,10 +565,13 @@ namespace Data.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "SponsorResponses");
+                name: "ResponseSummary");
 
             migrationBuilder.DropTable(
                 name: "ThirdParties");
+
+            migrationBuilder.DropTable(
+                name: "SponsorResponses");
 
             migrationBuilder.DropTable(
                 name: "ThirdPartyResponses");

@@ -1,14 +1,21 @@
 ﻿@page "{id:int}"
 @model Web.Pages.Responses.SponsorModel
 @{
-    ViewData["Title"] = "Sponsor";
+    ViewData["Title"] = "Sponsor Response";
 }
 
 <div class="card">
     <div class="card-body">
-        <h1 class="card-header display-4">
+        <h1 class="card-title display-4">
             Sponsor Response
-        </h1>
+        </h1>   
+        <h4 class="card-subtitle text-muted mt-2 mb-2"
+            style="font-weight: 400">
+            @Model.Sponsor.Name - 
+            <a href="mailto:@Model.Sponsor.Email">
+                @Model.Sponsor.Email
+            </a>
+        </h4>
 
         <table class="table table-striped">
             <thead>
@@ -82,7 +89,7 @@
 
                 <tr>
                     <td>
-                        4. Adress
+                        4. Address
                     </td>
                     <td>@Model.SResponse.C4</td>
                 </tr>
@@ -91,21 +98,30 @@
                     <td>
                         5. Website
                     </td>
-                    <td>@Model.SResponse.C5</td>
+                    <td>
+                        <a href="@Model.SResponse.C5"
+                           target="_blank">
+                             @Model.SResponse.C5
+                        </a>
+                    </td>
                 </tr>
 
                 <tr>
                     <td>
-                        6. Promary Contact at TPR
+                        6. Primary Contact at TPR
                     </td>
                     <td>@Model.SResponse.C6</td>
                 </tr>
 
                 <tr>
                     <td>
-                        7. Email Adress of the Primary Contact
+                        7. Email Address of the Primary Contact
                     </td>
-                    <td>@Model.SResponse.C7</td>
+                    <td>
+                        <a href="mailto:@Model.SResponse.C7">
+                            @Model.SResponse.C7
+                        </a>
+                    </td>
                 </tr>
 
                 <tr>
@@ -180,14 +196,22 @@
                     <td>
                         2. Email of Primary Person Responsible/Creator of this Form
                     </td>
-                    <td>@Model.SResponse.F2</td>
+                    <td>
+                        <a href="mailto:@Model.SResponse.F2">
+                            @Model.SResponse.F2
+                        </a>
+                    </td>
                 </tr>
 
                 <tr>
                     <td>
                         3. Email of supervisor for the Primary Person Responsible
                     </td>
-                    <td>@Model.SResponse.F3</td>
+                    <td>
+                        <a href="mailto:@Model.SResponse.F3">
+                            @Model.SResponse.F3
+                        </a>
+                    </td>
                 </tr>
 
                 <tr>
@@ -205,9 +229,12 @@
 
                 <tr>
                     <td>
-                        2. Email Adress
+                        2. Email Address
                     </td>
-                    <td>@Model.SResponse.G2
+                    <td>
+                    <a href="mailto:@Model.SResponse.G2">
+                        @Model.SResponse.G2
+                    </a>
                     <td>
                 </tr>
 

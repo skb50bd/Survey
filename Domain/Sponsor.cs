@@ -7,5 +7,8 @@
 
         public int ThirdPartyId { get; set; }
         public ThirdParty ThirdParty { get; set; }
+
+        public int? SummaryId { get; set; }
+        public ResponseSummary Summary { get; set; }
     }
 }

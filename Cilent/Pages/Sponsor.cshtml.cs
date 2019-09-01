@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.IO;
-using AutoMapper;
+﻿using AutoMapper;
 using Data;
 using Domain;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using static System.IO.File;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace Client.Pages
 {
@@ -271,7 +265,7 @@ namespace Client.Pages
         };
 
         public SponsorModel(
-            IMapper mapper, 
+            IMapper mapper,
             ApplicationDbContext ctx)
         {
             _mapper = mapper;
@@ -318,7 +312,7 @@ namespace Client.Pages
             await _ctx.SaveChangesAsync();
 
             return RedirectToPagePermanent(
-                "./ThankYou", 
+                "./ThankYou",
                 new
                 {
                     name = sponsor.Name
@@ -331,7 +325,7 @@ namespace Client.Pages
         public string UniqueIdentifier { get; set; }
 
         #region Type of TPR
-        public string A1 { get; set; } 
+        public string A1 { get; set; }
         #endregion
 
         #region Business Information
@@ -344,7 +338,8 @@ namespace Client.Pages
         public string C1 { get; set; }
         public IList<string> C2 { get; set; }
         public string C3 { get; set; }
-        public string C4 { get; set; } 
+
+        public string C4 { get; set; }
 
         [DataType(DataType.Url)]
         public string C5 { get; set; }
@@ -384,7 +379,7 @@ namespace Client.Pages
         public string G2 { get; set; }
 
         [DataType(DataType.Date)]
-        public string G3 { get; set; } 
+        public string G3 { get; set; }
         #endregion
     }
 }
