@@ -1,0 +1,84 @@
+﻿@model Client.Pages.ThirdPartyModel
+
+<div class="alert alert-info mt-3 mb-3">
+    <div class="text-justify">
+        <div>
+            Thermon is committed to business integrity through
+            promoting trust to enhance and grow our business relationships.
+            Our commitment to integrity is outlined in the
+            Thermon Way that is available for you and your colleagues
+            to view at <a href="https://ir.thermon.com/corporate-governance">
+                ir.thermon.com/corporate-governance
+            </a>.
+            <br />
+            Because our reputation, like yours, is so important,
+            we have adopted a third party representative questionnaire
+            for our important third parties to complete as part of a
+            standardized due diligence process.
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body text-justify">
+        Please complete this questionnaire in its entirety,
+        responding to each question or request for information.
+        Upon completion, please submit (button below)
+        this form along with the following requested documents
+        <span style="font-weight: bold;">A-E</span>:
+
+        <div class="form-group">
+            <h4 class="card-title h4 text-uppercase">
+                Business Information
+            </h4>
+
+            <div>
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    1. Your organization’s Full Legal Name, hereafter to be referred to as COMPANY
+                </label>
+
+                <input asp-for="Answers.B1"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="Answers.B1"
+                      class="text-danger">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-info mt-3 mb-3">
+    <div class="text-justify"
+         style="font-style: italic;">
+        Any information provided through this questionnaire and/or originated during our due diligence process
+        (“Confidential Information”) shall be treated confidentially.
+        We hereby agree to
+        (i) keep such Confidential Information under strict confidentiality and
+        use it exclusively for the purpose of the due diligence process; and
+        (ii) allow access to such
+        Confidential Information only to our employees who need to access to the same,
+        for the purposes of the due diligence process, or to external counsel contracted specifically for such purpose,
+        provided parties shall always be subject to a non-disclosure commitment.
+        <br />
+        Confidential Information shall not include any information which:
+        (i) was known or in our possession before the date of its disclosure;
+        (ii) is legitimately in or subsequently comes into the public domain or made available to the
+        public in any way other than by breach by us or our  confidentiality obligations hereunder;
+        (iii) has been rightfully received without restriction on disclosure or use from a third party,
+        whom we reasonably believe to be authorized to make such disclosure;
+        (iv) which the disclosure has been authorized in writing by the disclosing party; or
+        (v) the disclosure is required by law or by virtue of a judicial, court or administrative order,
+        provided that such disclosure is limited to the extent strictly necessary to comply with said order or legal requirement.
+    </div>
+
+    <div class="text-center">
+        <strong>
+            For questions or clarifications, please contact:
+            <a href="mailto:legalcompliance@thermon.com">LegalCompliance@thermon.com</a>
+        </strong>
+    </div>
+</div>
+

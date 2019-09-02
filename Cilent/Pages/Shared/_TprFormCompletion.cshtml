@@ -1,0 +1,96 @@
+﻿@model Client.Pages.ThirdPartyModel 
+
+<div class="card mb-2">
+    <div class="card-body">
+        <div class="form-group">
+            <h4 class="card-title h4 text-uppercase">
+                Form Completion Information
+            </h4>
+
+            <div>
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    1. Date
+                </label>
+
+                <input asp-for="Answers.A1"
+                       class="form-control form-control-sm col-md-6"
+                       type="date" />
+
+                <span asp-validation-for="Answers.A1"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    2. Name and Contact Information for person primarily responsible for completing questionnaire
+                </label>
+                <br />
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    a. Name
+                </label>
+
+                <input asp-for="Answers.A2A"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="Answers.A2A"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    b. E-mail
+                </label>
+
+                <input asp-for="Answers.A2B"
+                       class="form-control form-control-sm col-md-6"
+                       type="email" />
+
+                <span asp-validation-for="Answers.A2B"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    c. Telephone
+                </label>
+                <br />
+                <label class="text-justify mb-0"
+                       style="font-weight: 400; font-size: smaller">
+                    c.1 Landline
+                </label>
+
+                <input asp-for="Answers.A2C1"
+                       class="form-control form-control-sm col-md-6"
+                       type="tel" />
+
+                <span asp-validation-for="Answers.A2C1"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400; font-size: smaller">
+                    c.2 Cell
+                </label>
+
+                <input asp-for="Answers.A2C2"
+                       class="form-control form-control-sm col-md-6"
+                       type="tel" />
+
+                <span asp-validation-for="Answers.A2C2"
+                      class="text-danger">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

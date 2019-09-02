@@ -13,9 +13,29 @@ namespace Client.Pages
 
         public string UniqueId { get; set; }
     }
+
+
+
     public class ThirdPartyResponseInput
     {
         public string UniqueIdentifier { get; set; }
+        
+        #region Files
+        [DataType(DataType.Upload)]
+        public IFormFile DocumentA { get; set; }
+
+        [DataType(DataType.Upload)]
+        public IFormFile DocumentB { get; set; }
+
+        [DataType(DataType.Upload)]
+        public IFormFile DocumentC { get; set; }
+
+        [DataType(DataType.Upload)]
+        public IFormFile DocumentD { get; set; }
+
+        [DataType(DataType.Upload)]
+        public IFormFile DocumentE { get; set; }
+        #endregion
 
         #region Form Completion Information
         [DataType(DataType.Date)]
@@ -40,55 +60,80 @@ namespace Client.Pages
         public string B2C { get; set; }
         public string B2D1 { get; set; }
         public string B2D2 { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string B2E { get; set; }
+
+        [DataType(DataType.Url)]
         public string B2F { get; set; }
 
         public string B2Oa { get; set; }
+
+        [DataType(DataType.Date)]
         public string B2Ob { get; set; }
         public string B2Oc { get; set; }
         public string B2Od { get; set; }
 
-        public IFormFile B3File { get; set; }
+
         public string B3A { get; set; }
+
+        [DataType(DataType.Date)]
         public string B3B1 { get; set; }
         public string B3B2 { get; set; }
-        public string B3C { get; set; }
+
+        public int B3C { get; set; }
         public string B3D1A { get; set; }
         public string B3D1B { get; set; }
         public string B3D2 { get; set; }
 
-        public IFormFile B4File { get; set; }
         public string B4A { get; set; }
         public string B4B { get; set; }
         public string B4C { get; set; }
 
         public string B5 { get; set; }
-        public IFormFile B5File { get; set; }
         #endregion
 
         #region Reference Information
         public string C1A { get; set; }
         public string C1B { get; set; }
         public string C1C { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string C1D { get; set; }
         public string C1E { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
         public string C1F1 { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
         public string C1F2 { get; set; }
 
         public string C2A { get; set; }
         public string C2B { get; set; }
         public string C2C { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string C2D { get; set; }
         public string C2E { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
         public string C2F1 { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
         public string C2F2 { get; set; }
 
         public string C3A { get; set; }
         public string C3B { get; set; }
         public string C3C { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string C3D { get; set; }
         public string C3E { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
         public string C3F1 { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
         public string C3F2 { get; set; }
         #endregion
 
@@ -107,9 +152,10 @@ namespace Client.Pages
         #endregion
 
         #region Potential Conflicts Information
-        public string E1 { get; set; }
-        public IList<string> E1A { get; set; }
-        public string E2 { get; set; }
+        public string E1A { get; set; }
+        public IList<string> E1B { get; set; }
+        public string E2A { get; set; }
+        public string E2B { get; set; }
         public string E3 { get; set; }
         #endregion
 
@@ -141,8 +187,13 @@ namespace Client.Pages
         #endregion
 
         #region Signature and Certification
+        public bool H0 { get; set; }
         public string H1 { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string H2 { get; set; }
+
+        [DataType(DataType.Date)]
         public string H3 { get; set; }
         public string H4 { get; set; }
         public string H5 { get; set; }
