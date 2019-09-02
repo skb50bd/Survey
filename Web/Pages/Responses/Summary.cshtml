@@ -1,0 +1,277 @@
+﻿@page
+@model Web.Pages.Responses.SummaryModel
+@{
+    ViewData["Title"] = "Summary Response";
+}
+
+<h1>Summary</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title display-4">
+            Sponsor Response
+        </h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Response</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th colspan="2">
+                        A. BUSINESS INFORMATION
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        1. Type of Third Party Representative ("TPR")
+                    </th>
+                    <td>@Model.ResponseSummary.A1</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        2. Thermon Product Line Involved
+                    </th>
+                    <td>@Model.ResponseSummary.A2</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        3. Primary Region Involved
+                    </th>
+                    <td>@Model.ResponseSummary.A3</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        4. Will services provided relate to a Thermon “Greenfield” project?
+                    </th>
+                    <td>@Model.ResponseSummary.A4</td>
+                </tr>
+
+                <tr>
+                    <th colspan="2">
+                        C. DATE SPONSOR FORM SUBMITTED
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        1. Date
+                    </th>
+                    <td>@Model.ResponseSummary.C</td>
+                </tr>
+
+                <tr>
+                    <th colspan="2">
+                        D. STATUS OF FORM
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        1. Status
+                    </th>
+                    <td>@Model.ResponseSummary.D</td>
+                </tr>
+
+                <tr>
+                    <th colspan="2">
+                        E. THIRD PARTY
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        1. Full Legal Name
+                    </th>
+                    <td>@Model.ResponseSummary.E1</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        2. Tax ID or Equivalent
+                    </th>
+                    <td>@Model.ResponseSummary.E2</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        3. Main Office Adress
+                    </th>
+                    <td>@Model.ResponseSummary.E3</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        5. Website
+                    </th>
+                    <td>
+                        <a href="@Model.ResponseSummary.E5">
+                            @Model.ResponseSummary.E5
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        6. For Government Agency Agent, type of Services or Items being offered
+                    </th>
+                    <td>@Model.ResponseSummary.E6</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        7.  Primary reason TPR was selected versus another TPR
+                    </th>
+                    <td>@Model.ResponseSummary.E7</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        8.  Summary of TPR`s experience
+                    </th>
+                    <td>@Model.ResponseSummary.E8</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        9.  Process used in selection of TPR
+                    </th>
+                    <td>@Model.ResponseSummary.E9</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        10. Does any government or government related entity hold an equity interest in the TPR
+                    </th>
+                    <td>@Model.ResponseSummary.E10</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        11. Does the TPR have equity or debtsecurities listed on a public exchange
+                    </th>
+                    <td>@Model.ResponseSummary.E11</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        12. Has the TPR or a key employee of the TPR ever held a higher level position in the government, at a government controlled entity or in the military
+                    </th>
+                    <td>@Model.ResponseSummary.E12</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        13. Does a key third party representative or immediate family member work in a higher level position for any government or government controlled entity, customer or potential customer
+                    </th>
+                    <td>@Model.ResponseSummary.E13</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        14. Where there any “Yes” responses in the Internal Request
+                    </th>
+                    <td>@Model.ResponseSummary.E14</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        15. Will any sub-agent be used
+                    </th>
+                    <td>@Model.ResponseSummary.E15</td>
+                </tr>
+
+                <tr>
+                    <th colspan="2">
+                        G. INTERNAL INFORMATION
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        1. Person primarily responsible for the TPR relationship
+                    </th>
+                    <td>@Model.ResponseSummary.G1</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        2. Email of Primary Person Responsible
+                    </th>
+                    <td>@Model.ResponseSummary.G2</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        3. Supervisor of Primary Person Responsible
+                    </th>
+                    <td>@Model.ResponseSummary.G3</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        4. Was an additional Due Diligence Report required to be completed
+                    </th>
+                    <td>@Model.ResponseSummary.G4A</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        If so, was it obtained
+                    </th>
+                    <td>@Model.ResponseSummary.G4B</td>
+                </tr>
+
+                <tr>
+                    <th colspan="2">
+                        H. SUPPORTING DOCUMENTATION
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        Documents
+                    </th>
+                    <td>Download</td>
+                </tr>
+
+                <tr>
+                    <th colspan="2">
+                        I. COMPLIANCE APPROVAL, IF REQUIRED
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        Approval
+                    </th>
+                    <td>@Model.ResponseSummary.I1</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <td>@Model.ResponseSummary.I2</td>
+                </tr>
+
+                <tr>
+                    <th>
+                        Comments
+                    </th>
+                    <td>@Model.ResponseSummary.I3</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
