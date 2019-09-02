@@ -9,11 +9,32 @@ namespace Web.Pages.Responses
 {
     public class SummaryModel : PageModel
     {
-        public ResponseSummary ResponseSummary { get; set; }
+        private readonly ApplicationDbContext _ctx;
 
-        public void OnGet()
+        public SummaryModel(
+            ApplicationDbContext ctx)
         {
+            _ctx = ctx;
+        }
 
+        public Sponsor Sponsor { get; set; }
+        public ResponseSummary ResponseSummary => Sponsor.Summary;
+        public ThirdParty Tpr => Sponsor.ThirdParty;
+        
+        public async Task<IActionResult> OnGetAsync(int id)
+        {
+            Sponsor = 
+                await _ctx.Sponsors
+                          .Include(s => s.ThirdParty)
+                          .Include(s => s.Summary)
+                          .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (Sponsor?.Summary is null)
+            {
+                return NotFound();
+            }
+
+            return Page();
         }
     }
 }

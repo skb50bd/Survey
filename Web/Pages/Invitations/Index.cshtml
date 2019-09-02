@@ -21,7 +21,7 @@
 
 
 
-        <table class="table table-sm table-hover table-striped">
+        <table class="table table-sm table-hover table-striped table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th></th>
@@ -49,11 +49,14 @@
                             Sponsor
                             <br />
                             Third Party
+                            <br />
+                            <em>Summary</em>
                         </td>
                         <td style="font-weight: bold">
                             @sp.Name
                             <br />
                             @sp.ThirdParty.Name
+                            <br />
                         </td>
                         <td>
                             <a href="mailto:@sp.Email">
@@ -65,6 +68,8 @@
                             <a href="mailto:@sp.ThirdParty.Email">
                                 @sp.ThirdParty.Email
                             </a>
+                            <br />
+
                         </td>
                         <td>
                             @if (sp.HasResponded)
@@ -82,6 +87,7 @@
                                 </a>
                             }
                             <br />
+
                             @if (sp.ThirdParty.HasResponded)
                             {
                                 <span class="text-success"
@@ -96,11 +102,27 @@
                                     Link
                                 </a>
                             }
+                            <br />
+
+                            @if (sp.SummaryId is null)
+                            {
+                                <a asp-page="/Summary/Index"
+                                   asp-route-id="@sp.Id">Link</a>
+                            }
+                            else
+                            {
+                                <span class="text-success"
+                                      style="font-weight: bold">
+                                    N/A
+                                </span>
+                            }
+
                         </td>
                         <td>
                             @if (sp.HasResponded)
                             {
-                                <a href="@Url.Page("/Responses/Sponsor", new {id = sp.Id})"
+                                <a asp-page="/Responses/Sponsor"
+                                   asp-route-id="@sp.Id"
                                    target="_blank">
                                     Link
                                 </a>
@@ -113,9 +135,11 @@
                                 </span>
                             }
                             <br />
+
                             @if (sp.ThirdParty.HasResponded)
                             {
-                                <a href="@Url.Page("/Responses/ThirdParty", new {id = sp.ThirdPartyId})"
+                                <a asp-page="/Responses/ThirdParty"
+                                   asp-route-id="@sp.ThirdPartyId"
                                    target="_blank">
                                     Link
                                 </a>
@@ -127,6 +151,24 @@
                                     N/A
                                 </span>
                             }
+                            <br />
+
+                            @if (sp.SummaryId is null)
+                            {
+                                <span class="text-danger"
+                                      style="font-weight: bold">
+                                    N/A
+                                </span>
+                            }
+                            else
+                            {
+                                <a asp-page="Responses/Summary"
+                                   asp-route-id="@sp.Id"
+                                   target="_blank">
+                                    Link
+                                </a>
+                            }
+
                         </td>
                     </tr>
                 }

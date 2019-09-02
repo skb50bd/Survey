@@ -1,11 +1,12 @@
 ﻿using Data;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 
 namespace Web.Pages.Invitations
@@ -19,15 +20,20 @@ namespace Web.Pages.Invitations
 
         private readonly ApplicationDbContext _ctx;
 
-        public IndexModel(ApplicationDbContext ctx, IConfiguration config)
+        public IndexModel(
+            ApplicationDbContext ctx,
+            IConfiguration config)
         {
             _ctx = ctx;
             ClientBase = config["ClientBase"];
         }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
-            Sponsors = _ctx.Sponsors.Include(s => s.ThirdParty).ToList();
+            Sponsors = await _ctx.Sponsors
+                                 .Include(s => s.ThirdParty)
+                                 .ToListAsync();
+            return Page();
         }
     }
 }

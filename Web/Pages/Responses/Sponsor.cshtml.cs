@@ -25,7 +25,7 @@ namespace Web.Pages.Responses
                                 .Include(s => s.Response)
                                 .FirstOrDefaultAsync(s => s.Id == id);
 
-            if (Sponsor is null || !Sponsor.HasResponded)
+            if (Sponsor?.Response is null)
             {
                 return NotFound();
             }
