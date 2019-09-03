@@ -1,10 +1,10 @@
 ﻿@page "{id:int}"
 @model Web.Pages.Summary.IndexModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Due Diligence Summary Form";
 
     var listA = new List<Q2DA>
-{
+    {
         new Q2DA("1. Type of Third Party Representative (“TPR”)", Model.ResponseSummary.A1),
         new Q2DA("2. Thermon Product Line Involved", Model.ResponseSummary.A2),
         new Q2DA("3. Primary Region Involved", Model.ResponseSummary.A3),
@@ -12,12 +12,12 @@
     };
 
     var listC = new List<Q2DA>
-{
+    {
         new Q2DA("Date", Model.ResponseSummary.C)
     };
 
     var listE = new List<Q2DA>
-{
+    {
         new Q2DA("1. Full Legal Name", Model.ResponseSummary.E1),
         new Q2DA("2. Tax ID or Equivalent", Model.ResponseSummary.E2),
         new Q2DA("3. Main Office Address", Model.ResponseSummary.E3),
@@ -36,7 +36,7 @@
     };
 
     var listG = new List<Q2DA>
-{
+    {
         new Q2DA("1. Person primarily responsible for the TPR relationship", Model.ResponseSummary.G1),
         new Q2DA("2. Email of Primary Person Responsible", Model.ResponseSummary.G2),
         new Q2DA("3. Supervisor of Primary Person Responsible ", Model.ResponseSummary.G3),
@@ -44,9 +44,9 @@
 }
 
 <h1 class="display-4 text-center mb-3">
-    Due Diligence Summary Form
+    @ViewData["Title"]
 </h1>
-           
+
 <div class="card">
     <div class="card-header p-0 pr-2">
         <table class="table table-borderless table-hover m-1">
@@ -111,261 +111,265 @@
                 </tr>
             </tbody>
         </table>
-    </div> 
+    </div>
 
-    <div class="card-body">   
+    <div class="card-body">
         <form method="post">
-        <h4 class="card-title">
-            A. Business Information
-        </h4>
-        @foreach (var a in listA)
-        {
-            <partial name="AnsweredQuestion" for="@a" />
-        }
+            <input asp-for="Input.UniqueIdentifier"
+                   value="@Model.UniqueId"
+                   hidden />
 
-        <hr />
-        <h4 class="card-title">
-            C. Date Sponsor Form Submitted
-        </h4>
-        @foreach (var a in listC)
-        {
-            <partial name="AnsweredQuestion" for="@a" />
-        }
+            <h4 class="card-title">
+                A. Business Information
+            </h4>
+            @foreach (var a in listA)
+            {
+                <partial name="AnsweredQuestion" for="@a" />
+            }
 
-        <hr />
-        <h4 class="card-title mb-0">
-            D. Status of Form
-        </h4>
-        <div class="form-group">
-            <div class="form-check">
-                <input asp-for="Input.D"
-                       class="form-check-input"
-                       type="radio"
-                       id="Da"
-                       value="Open">
-                <label class="form-check-label"
-                       for="Da">
-                    Open
-                </label>
+            <hr />
+            <h4 class="card-title">
+                C. Date Sponsor Form Submitted
+            </h4>
+            @foreach (var a in listC)
+            {
+                <partial name="AnsweredQuestion" for="@a" />
+            }
+
+            <hr />
+            <h4 class="card-title mb-0">
+                D. Status of Form
+            </h4>
+            <div class="form-group">
+                <div class="form-check">
+                    <input asp-for="Input.D"
+                           class="form-check-input"
+                           type="radio"
+                           id="Da"
+                           value="Open">
+                    <label class="form-check-label"
+                           for="Da">
+                        Open
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input asp-for="Input.D"
+                           class="form-check-input"
+                           type="radio"
+                           id="Db"
+                           value="Completed">
+                    <label class="form-check-label"
+                           for="Db">
+                        Completed
+                    </label>
+                </div>
             </div>
-            <div class="form-check">
-                <input asp-for="Input.D"
-                       class="form-check-input"
-                       type="radio"
-                       id="Db"
-                       value="Completed">
-                <label class="form-check-label"
-                       for="Db">
-                    Completed
+
+            <hr />
+            <h4 class="card-title">
+                E. Third Party
+            </h4>
+            @foreach (var a in listE)
+            {
+                <partial name="AnsweredQuestion" for="@a" />
+            }
+
+            <hr />
+            <h4 class="card-title">
+                G. Internal Information
+            </h4>
+            @foreach (var a in listG)
+            {
+                <partial name="AnsweredQuestion" for="@a" />
+            }
+
+            <div class="form-group">
+                <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
+                    4. Was an additional Due Diligence Report required to be completed
                 </label>
+                <div class="form-check">
+                    <input asp-for="Input.G4A"
+                           class="form-check-input"
+                           type="radio"
+                           id="G4Aa"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="G4Aa">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input asp-for="Input.G4A"
+                           class="form-check-input"
+                           type="radio"
+                           id="G4Ab"
+                           value="No">
+                    <label class="form-check-label"
+                           for="G4Ab">
+                        No
+                    </label>
+                </div>
             </div>
-        </div>
 
-        <hr />
-        <h4 class="card-title">
-            E. Third Party
-        </h4>
-        @foreach (var a in listE)
-        {
-            <partial name="AnsweredQuestion" for="@a" />
-        }
-
-        <hr />
-        <h4 class="card-title">
-            G. Internal Information
-        </h4>
-        @foreach (var a in listG)
-        {
-            <partial name="AnsweredQuestion" for="@a" />
-        }
-
-        <div class="form-group">
-            <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
-                4. Was an additional Due Diligence Report required to be completed
-            </label>
-            <div class="form-check">
-                <input asp-for="Input.G4A"
-                       class="form-check-input"
-                       type="radio"
-                       id="G4Aa"
-                       value="Yes">
-                <label class="form-check-label"
-                       for="G4Aa">
-                    Yes
+            <div class="form-group">
+                <label class="mb-0 text-justify" style="font-weight: 500">
+                    If so, was it obtained
                 </label>
+                <div class="form-check">
+                    <input asp-for="Input.G4B"
+                           class="form-check-input"
+                           type="radio"
+                           id="G4Ba"
+                           value="N/A">
+                    <label class="form-check-label"
+                           for="G4Ba">
+                        N/A
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input asp-for="Input.G4B"
+                           class="form-check-input"
+                           type="radio"
+                           id="G4Bb"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="G4Bb">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input asp-for="Input.G4B"
+                           class="form-check-input"
+                           type="radio"
+                           id="G4Bc"
+                           value="No">
+                    <label class="form-check-label"
+                           for="G4Bc">
+                        No
+                    </label>
+                </div>
             </div>
-            <div class="form-check">
-                <input asp-for="Input.G4A"
-                       class="form-check-input"
-                       type="radio"
-                       id="G4Ab"
-                       value="No">
-                <label class="form-check-label"
-                       for="G4Ab">
-                    No
+
+
+            <hr />
+            <h4 class="card-title">
+                H. Supporting Documentation
+            </h4>
+            <div>
+                @{ var disabled = Model.ResponseSummary.H1 is null ? "disabled" : ""; }
+                <a class="btn btn-block btn-link btn-secondary text-white @disabled"
+                   asp-controller="Files"
+                   asp-action="Get"
+                   asp-route-id="@Model.ResponseSummary.H1">
+                    (A) Certificate
+                </a>
+
+                @{ disabled = Model.ResponseSummary.H2 is null ? "disabled" : ""; }
+                <a class="btn btn-block btn-link btn-secondary text-white @disabled"
+                   asp-controller="Files"
+                   asp-action="Get"
+                   asp-route-id="@Model.ResponseSummary.H2">
+                    (B) Business Brochures / Annual Report
+                </a>
+
+                @{ disabled = Model.ResponseSummary.H3 is null ? "disabled" : ""; }
+                <a class="btn btn-block btn-link btn-secondary text-white @disabled"
+                   asp-controller="Files"
+                   asp-action="Get"
+                   asp-route-id="@Model.ResponseSummary.H3">
+                    (C) Financial Statements
+                </a>
+
+                @{ disabled = Model.ResponseSummary.H4 is null ? "disabled" : ""; }
+                <a class="btn btn-block btn-link btn-secondary text-white @disabled"
+                   asp-controller="Files"
+                   asp-action="Get"
+                   asp-route-id="@Model.ResponseSummary.H4">
+                    (D) CV
+                </a>
+
+                @{ disabled = Model.ResponseSummary.H5 is null ? "disabled" : ""; }
+                <a class="btn btn-block btn-link btn-secondary text-white @disabled"
+                   asp-controller="Files"
+                   asp-action="Get"
+                   asp-route-id="@Model.ResponseSummary.H5">
+                    (E) Policies
+                </a>
+            </div>
+
+            <hr />
+            <h4 class="card-title">
+                I. Compliance Approval, If Required
+            </h4>
+            <div class="form-group">
+                <div class="form-check">
+                    <input asp-for="Input.I1"
+                           class="form-check-input"
+                           type="radio"
+                           id="I1a"
+                           value="Approved">
+                    <label class="form-check-label"
+                           for="I1a">
+                        Approved
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input asp-for="Input.I1"
+                           class="form-check-input"
+                           type="radio"
+                           id="I1b"
+                           value="Not Approved">
+                    <label class="form-check-label"
+                           for="I1b">
+                        Not Approved
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
+                    Date of Approval
                 </label>
-            </div>
-        </div>
+                <input asp-for="Input.I2"
+                       class="form-control form-control-sm col-md-6"
+                       type="date" />
 
-        <div class="form-group">
-            <label class="mb-0 text-justify" style="font-weight: 500">
-                If so, was it obtained
-            </label>
-            <div class="form-check">
-                <input asp-for="Input.G4B"
-                       class="form-check-input"
-                       type="radio"
-                       id="G4Ba"
-                       value="N/A">
-                <label class="form-check-label"
-                       for="G4Ba">
-                    N/A
+                <span asp-validation-for="Input.I2"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
+                    Expected date for renewal
                 </label>
+                <input asp-for="Input.I3"
+                       class="form-control form-control-sm col-md-6"
+                       type="date" />
+
+                <span asp-validation-for="Input.I3"
+                      class="text-danger">
+                </span>
             </div>
-            <div class="form-check">
-                <input asp-for="Input.G4B"
-                       class="form-check-input"
-                       type="radio"
-                       id="G4Bb"
-                       value="Yes">
-                <label class="form-check-label"
-                       for="G4Bb">
-                    Yes
+
+            <div class="form-group">
+                <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
+                    Any additional comments from Approver
                 </label>
-            </div>
-            <div class="form-check">
-                <input asp-for="Input.G4B"
-                       class="form-check-input"
-                       type="radio"
-                       id="G4Bc"
-                       value="No">
-                <label class="form-check-label"
-                       for="G4Bc">
-                    No
-                </label>
-            </div>
-        </div>
-
-
-        <hr />
-        <h4 class="card-title">
-            H. Supporting Documentation
-        </h4>
-        <div>
-            @{ var disabled = Model.ResponseSummary.H1 is null ? "disabled" : ""; }
-            <a class="btn btn-block btn-link btn-secondary text-white @disabled"
-               asp-controller="Files"
-               asp-action="Get"
-               asp-route-id="@Model.ResponseSummary.H1">
-                (A) Certificate
-            </a>
-
-            @{ disabled = Model.ResponseSummary.H2 is null ? "disabled" : ""; }
-            <a class="btn btn-block btn-link btn-secondary text-white @disabled"
-               asp-controller="Files"
-               asp-action="Get"
-               asp-route-id="@Model.ResponseSummary.H2">
-                (B) Business Brochures / Annual Report
-            </a>
-
-            @{ disabled = Model.ResponseSummary.H3 is null ? "disabled" : ""; }
-            <a class="btn btn-block btn-link btn-secondary text-white @disabled"
-               asp-controller="Files"
-               asp-action="Get"
-               asp-route-id="@Model.ResponseSummary.H3">
-                (C) Finalcial Statements
-            </a>
-
-            @{ disabled = Model.ResponseSummary.H4 is null ? "disabled" : ""; }
-            <a class="btn btn-block btn-link btn-secondary text-white @disabled"
-               asp-controller="Files"
-               asp-action="Get"
-               asp-route-id="@Model.ResponseSummary.H4">
-                (D) CV
-            </a>
-
-            @{ disabled = Model.ResponseSummary.H5 is null ? "disabled" : ""; }
-            <a class="btn btn-block btn-link btn-secondary text-white @disabled"
-               asp-controller="Files"
-               asp-action="Get"
-               asp-route-id="@Model.ResponseSummary.H5">
-                (E) Policies
-            </a>
-        </div>
-
-        <hr />
-        <h4 class="card-title">
-            I. Compliance Approval, If Required
-        </h4>
-        <div class="form-group">
-            <div class="form-check">
-                <input asp-for="Input.I1"
-                       class="form-check-input"
-                       type="radio"
-                       id="I1a"
-                       value="Approved">
-                <label class="form-check-label"
-                       for="I1a">
-                    Approved
-                </label>
-            </div>
-            <div class="form-check">
-                <input asp-for="Input.I1"
-                       class="form-check-input"
-                       type="radio"
-                       id="I1b"
-                       value="Not Approved">
-                <label class="form-check-label"
-                       for="I1b">
-                    Not Approved
-                </label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
-                Date of Approval
-            </label>
-            <input asp-for="Input.I2"
-                   class="form-control form-control-sm col-md-6"
-                   type="date" />
-
-            <span asp-validation-for="Input.I2"
-                  class="text-danger">
-            </span>
-        </div>
-
-        <div class="form-group">
-            <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
-                Expected date for renewal
-            </label>
-            <input asp-for="Input.I3"
-                   class="form-control form-control-sm col-md-6"
-                   type="date" />
-
-            <span asp-validation-for="Input.I3"
-                  class="text-danger">
-            </span>
-        </div>
-
-        <div class="form-group">
-            <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
-                Any additional comments from Approver
-            </label>
-            <textarea asp-for="Input.I4"
-                      class="form-control form-control-sm col-md-6">
+                <textarea asp-for="Input.I4"
+                          class="form-control form-control-sm col-md-6">
             </textarea>
-            <span asp-validation-for="Input.I4"
-                  class="text-danger">
-            </span>
-        </div>
-        
-        
-        <button type="submit"
-                class="btn btn-primary">
-            Submit
-        </button>
+                <span asp-validation-for="Input.I4"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Submit
+            </button>
 
         </form>
-        </div>
+    </div>
 </div>

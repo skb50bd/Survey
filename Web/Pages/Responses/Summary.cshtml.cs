@@ -33,6 +33,14 @@ namespace Web.Pages.Responses
             {
                 return NotFound();
             }
+            var summary =
+                await _ctx.ResponseSummaries
+                          .Include(rs => rs.SponsorResponse)
+                          .Include(rs => rs.ThirdPartyResponse)
+                          .FirstOrDefaultAsync(
+                               rs => rs.Id == ResponseSummary.Id);
+            Sponsor.Summary.SponsorResponse = summary.SponsorResponse;
+            Sponsor.Summary.ThirdPartyResponse = summary.ThirdPartyResponse;
 
             return Page();
         }

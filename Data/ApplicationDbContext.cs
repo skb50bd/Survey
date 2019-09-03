@@ -1,8 +1,7 @@
-﻿using System;
-using System.Linq;
-using Domain;
+﻿using Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Data
 {
@@ -39,5 +38,7 @@ namespace Data
 
         public DbSet<SponsorResponse> SponsorResponses { get; set; }
         public DbSet<ThirdPartyResponse> ThirdPartyResponses { get; set; }
+        public DbSet<ResponseSummary> ResponseSummaries { get; set; }
+
     }
 }

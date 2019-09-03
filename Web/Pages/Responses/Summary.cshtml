@@ -10,7 +10,7 @@
             Summary Response
         </h1>
         <div>
-            <table class="table table-borderless table-hover table-striped mt-1">
+            <table class="table table-borderless table-hover m-1">
                 <tbody>
                     <tr>
                         <td>Sponsor</td>
@@ -24,11 +24,21 @@
                     <tr>
                         <td>Sponsor Response</td>
                         <td>
-                            <a asp-page="/Responses/Sponsor"
-                               asp-route-id="@Model.Sponsor.Id"
-                               target="_blank">
-                                Link
-                            </a>
+                            @if (Model.Sponsor.ResponseId is null)
+                            {
+                                <span class="text-danger"
+                                      style="font-weight: bold">
+                                    N/A
+                                </span>
+                            }
+                            else
+                            {
+                                <a asp-page="/Responses/Sponsor"
+                                   asp-route-id="@Model.Sponsor.Id"
+                                   target="_blank">
+                                    Link
+                                </a>
+                            }
                         </td>
                     </tr>
                     <tr>
@@ -41,24 +51,34 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>TPR Response</td>
+                        <td>Third Party Representative Response</td>
                         <td>
-                            <a asp-page="/Responses/ThirdParty"
-                               asp-route-id="@Model.Tpr.Id"
-                               target="_blank">
-                                Link
-                            </a>
+                            @if (Model.Tpr.ResponseId is null)
+                            {
+                                <span class="text-danger"
+                                      style="font-weight: bold">
+                                    N/A
+                                </span>
+                            }
+                            else
+                            {
+                                <a asp-page="/Responses/ThirdParty"
+                                   asp-route-id="@Model.Tpr.Id"
+                                   target="_blank">
+                                    Link
+                                </a>
+                            }
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <table class="table table-striped table-hover">
-            <thead>
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
                 <tr>
-                    <th>Question</th>
-                    <th>Response</th>
+                    <th class="w-75">Question</th>
+                    <th class="w-25 text-right">Response</th>
                 </tr>
             </thead>
 
@@ -70,31 +90,31 @@
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         1. Type of Third Party Representative ("TPR")
-                    </th>
-                    <td>@Model.ResponseSummary.A1</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.A1</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         2. Thermon Product Line Involved
-                    </th>
-                    <td>@Model.ResponseSummary.A2</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.A2</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         3. Primary Region Involved
-                    </th>
-                    <td>@Model.ResponseSummary.A3</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.A3</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         4. Will services provided relate to a Thermon “Greenfield” project?
-                    </th>
-                    <td>@Model.ResponseSummary.A4</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.A4</td>
                 </tr>
 
                 <tr>
@@ -104,10 +124,10 @@
                 </tr>
 
                 <tr>
-                    <th>
-                        1. Date
-                    </th>
-                    <td>@Model.ResponseSummary.C</td>
+                    <td>
+                        Date
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.C</td>
                 </tr>
 
                 <tr>
@@ -117,10 +137,10 @@
                 </tr>
 
                 <tr>
-                    <th>
-                        1. Status
-                    </th>
-                    <td>@Model.ResponseSummary.D</td>
+                    <td>
+                        Status
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.D</td>
                 </tr>
 
                 <tr>
@@ -130,31 +150,37 @@
                 </tr>
 
                 <tr>
-                    <th>
-                        1. Full Legal Name
-                    </th>
-                    <td>@Model.ResponseSummary.E1</td>
-                </tr>
-
-                <tr>
-                    <th>
-                        2. Tax ID or Equivalent
-                    </th>
-                    <td>@Model.ResponseSummary.E2</td>
-                </tr>
-
-                <tr>
-                    <th>
-                        3. Main Office Address
-                    </th>
-                    <td>@Model.ResponseSummary.E3</td>
-                </tr>
-
-                <tr>
-                    <th>
-                        5. Website
-                    </th>
                     <td>
+                        1. Full Legal Name
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        2. Tax ID or Equivalent
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E2</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        3. Main Office Address
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E3</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        4. Country (s) Services or Items being provided
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E4</td>
+                </tr>
+                <tr>
+                    <td>
+                        5. Website
+                    </td>
+                    <td class="text-right">
                         <a href="@Model.ResponseSummary.E5">
                             @Model.ResponseSummary.E5
                         </a>
@@ -162,73 +188,74 @@
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         6. For Government Agency Agent, type of Services or Items being offered
-                    </th>
-                    <td>@Model.ResponseSummary.E6</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E6</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         7.  Primary reason TPR was selected versus another TPR
-                    </th>
-                    <td>@Model.ResponseSummary.E7</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E7</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         8.  Summary of TPR`s experience
-                    </th>
-                    <td>@Model.ResponseSummary.E8</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E8</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         9.  Process used in selection of TPR
-                    </th>
-                    <td>@Model.ResponseSummary.E9</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E9</td>
                 </tr>
 
                 <tr>
-                    <th>
-                        10. Does any government or government related entity hold an equity interest in the TPR
-                    </th>
-                    <td>@Model.ResponseSummary.E10</td>
+                    <td>
+                        10. Does any government or government related entity 
+                        hold an equity interest in the TPR
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E10</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         11. Does the TPR have equity or debt securities listed on a public exchange
-                    </th>
-                    <td>@Model.ResponseSummary.E11</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E11</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         12. Has the TPR or a key employee of the TPR ever held a higher level position in the government, at a government controlled entity or in the military
-                    </th>
-                    <td>@Model.ResponseSummary.E12</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E12</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         13. Does a key third party representative or immediate family member work in a higher level position for any government or government controlled entity, customer or potential customer
-                    </th>
-                    <td>@Model.ResponseSummary.E13</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E13</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         14. Where there any “Yes” responses in the Internal Request
-                    </th>
-                    <td>@Model.ResponseSummary.E14</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E14</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         15. Will any sub-agent be used
-                    </th>
-                    <td>@Model.ResponseSummary.E15</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.E15</td>
                 </tr>
 
                 <tr>
@@ -238,38 +265,42 @@
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         1. Person primarily responsible for the TPR relationship
-                    </th>
-                    <td>@Model.ResponseSummary.G1</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.G1</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         2. Email of Primary Person Responsible
-                    </th>
-                    <td>@Model.ResponseSummary.G2</td>
+                    </td>
+                    <td class="text-right">
+                        <a href="mailto:@Model.ResponseSummary.G2">
+                            @Model.ResponseSummary.G2
+                        </a>
+                    </td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         3. Supervisor of Primary Person Responsible
-                    </th>
-                    <td>@Model.ResponseSummary.G3</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.G3</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         4. Was an additional Due Diligence Report required to be completed
-                    </th>
-                    <td>@Model.ResponseSummary.G4A</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.G4A</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         If so, was it obtained
-                    </th>
-                    <td>@Model.ResponseSummary.G4B</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.G4B</td>
                 </tr>
 
                 <tr>
@@ -279,10 +310,47 @@
                 </tr>
 
                 <tr>
-                    <th>
-                        Documents
-                    </th>
-                    <td>Download</td>
+                    <td colspan="2">
+                        @{ var disabled = Model.ResponseSummary.H1 is null ? "disabled" : ""; }
+                        <a class="btn btn-sm btn-block btn-link btn-secondary text-white @disabled"
+                           asp-controller="Files"
+                           asp-action="Get"
+                           asp-route-id="@Model.ResponseSummary.H1">
+                            (A) Certificate
+                        </a>
+
+                        @{ disabled = Model.ResponseSummary.H2 is null ? "disabled" : ""; }
+                        <a class="btn btn-sm btn-block btn-link btn-secondary text-white @disabled"
+                           asp-controller="Files"
+                           asp-action="Get"
+                           asp-route-id="@Model.ResponseSummary.H2">
+                            (B) Business Brochures / Annual Report
+                        </a>
+
+                        @{ disabled = Model.ResponseSummary.H3 is null ? "disabled" : ""; }
+                        <a class="btn btn-sm btn-block btn-link btn-secondary text-white @disabled"
+                           asp-controller="Files"
+                           asp-action="Get"
+                           asp-route-id="@Model.ResponseSummary.H3">
+                            (C) Financial Statements
+                        </a>
+
+                        @{ disabled = Model.ResponseSummary.H4 is null ? "disabled" : ""; }
+                        <a class="btn btn-sm btn-block btn-link btn-secondary text-white @disabled"
+                           asp-controller="Files"
+                           asp-action="Get"
+                           asp-route-id="@Model.ResponseSummary.H4">
+                            (D) CV
+                        </a>
+
+                        @{ disabled = Model.ResponseSummary.H5 is null ? "disabled" : ""; }
+                        <a class="btn btn-sm btn-block btn-link btn-secondary text-white @disabled"
+                           asp-controller="Files"
+                           asp-action="Get"
+                           asp-route-id="@Model.ResponseSummary.H5">
+                            (E) Policies
+                        </a>
+                    </td>
                 </tr>
 
                 <tr>
@@ -292,24 +360,31 @@
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         Approval
-                    </th>
-                    <td>@Model.ResponseSummary.I1</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.I1</td>
                 </tr>
 
                 <tr>
-                    <th>
+                    <td>
                         Date
-                    </th>
-                    <td>@Model.ResponseSummary.I2</td>
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.I2</td>
                 </tr>
 
                 <tr>
-                    <th>
-                        Comments
-                    </th>
-                    <td>@Model.ResponseSummary.I3</td>
+                    <td>
+                        Expected date for renewal
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.I3</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Additional comments from Approver
+                    </td>
+                    <td class="text-right">@Model.ResponseSummary.I4</td>
                 </tr>
             </tbody>
         </table>

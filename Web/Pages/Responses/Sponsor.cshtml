@@ -8,20 +8,20 @@
     <div class="card-body">
         <h1 class="card-title display-4">
             Sponsor Response
-        </h1>   
+        </h1>
         <h4 class="card-subtitle text-muted mt-2 mb-2"
             style="font-weight: 400">
-            @Model.Sponsor.Name - 
+            @Model.Sponsor.Name -
             <a href="mailto:@Model.Sponsor.Email">
                 @Model.Sponsor.Email
             </a>
         </h4>
 
-        <table class="table table-striped table-hover">
-            <thead>
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
                 <tr>
-                    <th>Question</th>
-                    <th>Response</th>
+                    <th class="w-75">Question</th>
+                    <th class="w-25 text-right">Response</th>
                 </tr>
             </thead>
 
@@ -30,7 +30,7 @@
                     <th>
                         A. TYPE OF TPR REPRESENTATIVE
                     </th>
-                    <td>@Model.SResponse.A1</td>
+                    <td class="text-right">@Model.SResponse.A1</td>
                 </tr>
 
                 <tr>
@@ -43,21 +43,21 @@
                     <td>
                         1. Product Line Involved
                     </td>
-                    <td>@Model.SResponse.B1</td>
+                    <td class="text-right">@Model.SResponse.B1</td>
                 </tr>
 
                 <tr>
                     <td>
                         2.  Region Involved
                     </td>
-                    <td>@Model.SResponse.B2</td>
+                    <td class="text-right">@Model.SResponse.B2</td>
                 </tr>
 
                 <tr>
                     <td>
                         3.  Will services provided relate to a Thermon “Greenfield” project?
                     </td>
-                    <td>@Model.SResponse.B3</td>
+                    <td class="text-right">@Model.SResponse.B3</td>
                 </tr>
 
                 <tr>
@@ -70,38 +70,38 @@
                     <td>
                         1. Full Legal Name
                     </td>
-                    <td>@Model.SResponse.C1</td>
+                    <td class="text-right">@Model.SResponse.C1</td>
                 </tr>
 
                 <tr>
                     <td>
                         2. Country(s) where services will be provided
                     </td>
-                    <td>@Model.SResponse.C2</td>
+                    <td class="text-right">@Model.SResponse.C2</td>
                 </tr>
 
                 <tr>
                     <td>
                         3. For Government Agency Agent, type of Services being provided
                     </td>
-                    <td>@Model.SResponse.C3</td>
+                    <td class="text-right">@Model.SResponse.C3</td>
                 </tr>
 
                 <tr>
                     <td>
                         4. Address
                     </td>
-                    <td>@Model.SResponse.C4</td>
+                    <td class="text-right">@Model.SResponse.C4</td>
                 </tr>
 
                 <tr>
                     <td>
                         5. Website
                     </td>
-                    <td>
+                    <td class="text-right">
                         <a href="@Model.SResponse.C5"
                            target="_blank">
-                             @Model.SResponse.C5
+                            @Model.SResponse.C5
                         </a>
                     </td>
                 </tr>
@@ -110,14 +110,14 @@
                     <td>
                         6. Primary Contact at TPR
                     </td>
-                    <td>@Model.SResponse.C6</td>
+                    <td class="text-right">@Model.SResponse.C6</td>
                 </tr>
 
                 <tr>
                     <td>
                         7. Email Address of the Primary Contact
                     </td>
-                    <td>
+                    <td class="text-right">
                         <a href="mailto:@Model.SResponse.C7">
                             @Model.SResponse.C7
                         </a>
@@ -134,21 +134,21 @@
                     <td>
                         1.  The primary reason(s) the TPR was selected versus another TPR
                     </td>
-                    <td>@Model.SResponse.D1</td>
+                    <td class="text-right">@Model.SResponse.D1</td>
                 </tr>
 
                 <tr>
                     <td>
                         2.  Describe the TPR`s experience including length of time in business, particular expertise       and include names of other companies that work with them
                     </td>
-                    <td>@Model.SResponse.D2</td>
+                    <td class="text-right">@Model.SResponse.D2</td>
                 </tr>
 
                 <tr>
                     <td>
                         3.  Briefly describe the process that was used in the selection of the TPR (obtained recommendations, interviewed them, formal tender, etc.)
                     </td>
-                    <td>@Model.SResponse.D3</td>
+                    <td class="text-right">@Model.SResponse.D3</td>
                 </tr>
 
 
@@ -162,21 +162,21 @@
                     <td>
                         1. Is there any concern regarding the reputation of the TRP from a business integrity or compliance standpoint.  For example, has the TPR faced allegations of bribery, kickbacks, fraud or other wrongdoings?
                     </td>
-                    <td>@Model.SResponse.E1</td>
+                    <td class="text-right">@Model.SResponse.E1</td>
                 </tr>
 
                 <tr>
                     <td>
                         2. Did a representative of the customer or a government official recommend (without us requesting a recommendation) or insist that we use the TPR?
                     </td>
-                    <td>@Model.SResponse.E2</td>
+                    <td class="text-right">@Model.SResponse.E2</td>
                 </tr>
 
                 <tr>
                     <td>
                         3. Has the TPR requested that they receive payment: 1) in a jurisdiction other than the country in which the services are being provided or the country of their corporate headquarters, 2) to an account that does not appear to be their company`s business account or 3) to a party that is not part of the contract?
                     </td>
-                    <td>@Model.SResponse.E3</td>
+                    <td class="text-right">@Model.SResponse.E3</td>
                 </tr>
 
                 <tr>
@@ -189,14 +189,14 @@
                     <td>
                         1. Thermon employee primarily responsible for the TPR relationship (“Primary Person Responsible”)
                     </td>
-                    <td>@Model.SResponse.F1</td>
+                    <td class="text-right">@Model.SResponse.F1</td>
                 </tr>
 
                 <tr>
                     <td>
                         2. Email of Primary Person Responsible/Creator of this Form
                     </td>
-                    <td>
+                    <td class="text-right">
                         <a href="mailto:@Model.SResponse.F2">
                             @Model.SResponse.F2
                         </a>
@@ -207,7 +207,7 @@
                     <td>
                         3. Email of supervisor for the Primary Person Responsible
                     </td>
-                    <td>
+                    <td class="text-right">
                         <a href="mailto:@Model.SResponse.F3">
                             @Model.SResponse.F3
                         </a>
@@ -224,17 +224,17 @@
                     <td>
                         1. Full Name and Title
                     </td>
-                    <td>@Model.SResponse.G1</td>
+                    <td class="text-right">@Model.SResponse.G1</td>
                 </tr>
 
                 <tr>
                     <td>
                         2. Email Address
                     </td>
-                    <td>
-                    <a href="mailto:@Model.SResponse.G2">
-                        @Model.SResponse.G2
-                    </a>
+                    <td class="text-right">
+                        <a href="mailto:@Model.SResponse.G2">
+                            @Model.SResponse.G2
+                        </a>
                     <td>
                 </tr>
 
@@ -242,9 +242,8 @@
                     <td>
                         3.Date
                     </td>
-                    <td>@Model.SResponse.G3</td>
+                    <td class="text-right">@Model.SResponse.G3</td>
                 </tr>
-
             </tbody>
         </table>
     </div>
