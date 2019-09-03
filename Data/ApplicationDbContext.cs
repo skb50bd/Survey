@@ -1,15 +1,22 @@
 ﻿using System;
+using System.Linq;
 using Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public sealed class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            var pm = Database.GetPendingMigrations();
+            if (pm.Any())
+            {
+                Database.Migrate();
+            }
+
             Database.EnsureCreated();
         }
 

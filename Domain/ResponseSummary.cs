@@ -64,11 +64,11 @@
         #endregion
 
         #region Supporting Documentation
-        public File H1 => ThirdPartyResponse.DocumentA;
-        public File H2 => ThirdPartyResponse.DocumentB;
-        public File H3 => ThirdPartyResponse.DocumentC;
-        public File H4 => ThirdPartyResponse.DocumentD;
-        public File H5 => ThirdPartyResponse.DocumentE;
+        public int? H1 => ThirdPartyResponse?.DocumentAId;
+        public int? H2 => ThirdPartyResponse?.DocumentBId;
+        public int? H3 => ThirdPartyResponse?.DocumentCId;
+        public int? H4 => ThirdPartyResponse?.DocumentDId;
+        public int? H5 => ThirdPartyResponse?.DocumentEId;
         #endregion
 
         #region Compliance Approval

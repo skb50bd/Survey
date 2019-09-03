@@ -2,23 +2,370 @@
 @model Web.Pages.Summary.IndexModel
 @{
     ViewData["Title"] = "Index";
+
+    var listA = new List<Q2DA>
+{
+        new Q2DA("1. Type of Third Party Representative (“TPR”)", Model.ResponseSummary.A1),
+        new Q2DA("2. Thermon Product Line Involved", Model.ResponseSummary.A2),
+        new Q2DA("3. Primary Region Involved", Model.ResponseSummary.A3),
+        new Q2DA("4. Will services provided relate to a Thermon “Greenfield” project?", Model.ResponseSummary.A4),
+    };
+
+    var listC = new List<Q2DA>
+{
+        new Q2DA("Date", Model.ResponseSummary.C)
+    };
+
+    var listE = new List<Q2DA>
+{
+        new Q2DA("1. Full Legal Name", Model.ResponseSummary.E1),
+        new Q2DA("2. Tax ID or Equivalent", Model.ResponseSummary.E2),
+        new Q2DA("3. Main Office Address", Model.ResponseSummary.E3),
+        new Q2DA("4. Country (s) Services or Items being provided", Model.ResponseSummary.E4),
+        new Q2DA("5. Website", Model.ResponseSummary.E5),
+        new Q2DA("6. For Government Agency Agent, type of Services or Items being offered", Model.ResponseSummary.E6),
+        new Q2DA("7. Primary reason TPR was selected versus another TPR", Model.ResponseSummary.E7),
+        new Q2DA("8. Summary of TPR`s experience", Model.ResponseSummary.E8),
+        new Q2DA("9. Process used in selection of TPR", Model.ResponseSummary.E9),
+        new Q2DA("10. Does any government or government related entity hold an equity interest in the TPR", Model.ResponseSummary.E10),
+        new Q2DA("11. Does the TPR have equity or debt securities listed on a public exchange", Model.ResponseSummary.E11),
+        new Q2DA("12. Has the TPR or a key employee of the TPR ever held a higher level position in the government, at a government controlled entity or in the military", Model.ResponseSummary.E12),
+        new Q2DA("13. Does a key third party representative or immediate family member work in a higher level position for any government or government controlled entity, customer or potential customer", Model.ResponseSummary.E13),
+        new Q2DA("14. Where there any “Yes” responses in the Internal Request Form", Model.ResponseSummary.E14),
+        new Q2DA("15. Will any sub-agent be used", Model.ResponseSummary.E15),
+    };
+
+    var listG = new List<Q2DA>
+{
+        new Q2DA("1. Person primarily responsible for the TPR relationship", Model.ResponseSummary.G1),
+        new Q2DA("2. Email of Primary Person Responsible", Model.ResponseSummary.G2),
+        new Q2DA("3. Supervisor of Primary Person Responsible ", Model.ResponseSummary.G3),
+    };
 }
 
 <h1 class="display-4 text-center mb-3">
     Due Diligence Summary Form
 </h1>
-      
+           
 <div class="card">
-    <div class="card-body">
+    <div class="card-header p-0 pr-2">
+        <table class="table table-borderless table-hover m-1">
+            <tbody>
+                <tr>
+                    <td>Sponsor</td>
+                    <td>
+                        <strong>@Model.Sponsor.Name</strong> -
+                        <a href="mailto:@Model.Sponsor.Email">
+                            <em>@Model.Sponsor.Email</em>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sponsor Response</td>
+                    <td>
+                        @if (Model.Sponsor.ResponseId is null)
+                        {
+                            <span class="text-danger"
+                                  style="font-weight: bold">
+                                N/A
+                            </span>
+                        }
+                        else
+                        {
+                            <a asp-page="/Responses/Sponsor"
+                               asp-route-id="@Model.Sponsor.Id"
+                               target="_blank">
+                                Link
+                            </a>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Third Party Representative</td>
+                    <td>
+                        <strong>@Model.Tpr.Name</strong> -
+                        <a href="mailto:@Model.Tpr.Email">
+                            <em>@Model.Tpr.Email</em>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Third Party Representative Response</td>
+                    <td>
+                        @if (Model.Tpr.ResponseId is null)
+                        {
+                            <span class="text-danger"
+                                  style="font-weight: bold">
+                                N/A
+                            </span>
+                        }
+                        else
+                        {
+                            <a asp-page="/Responses/ThirdParty"
+                               asp-route-id="@Model.Tpr.Id"
+                               target="_blank">
+                                Link
+                            </a>
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+
+    <div class="card-body">   
+        <form method="post">
         <h4 class="card-title">
             A. Business Information
-        </h4>                                  
-        
+        </h4>
+        @foreach (var a in listA)
+        {
+            <partial name="AnsweredQuestion" for="@a" />
+        }
+
+        <hr />
+        <h4 class="card-title">
+            C. Date Sponsor Form Submitted
+        </h4>
+        @foreach (var a in listC)
+        {
+            <partial name="AnsweredQuestion" for="@a" />
+        }
+
+        <hr />
+        <h4 class="card-title mb-0">
+            D. Status of Form
+        </h4>
         <div class="form-group">
-            <label>
-                A. Type of TPR Representative
-            </label>                          
-            <p>Answer: @Model.ResponseSummary.A1 </p>
+            <div class="form-check">
+                <input asp-for="Input.D"
+                       class="form-check-input"
+                       type="radio"
+                       id="Da"
+                       value="Open">
+                <label class="form-check-label"
+                       for="Da">
+                    Open
+                </label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Input.D"
+                       class="form-check-input"
+                       type="radio"
+                       id="Db"
+                       value="Completed">
+                <label class="form-check-label"
+                       for="Db">
+                    Completed
+                </label>
+            </div>
         </div>
-    </div>
+
+        <hr />
+        <h4 class="card-title">
+            E. Third Party
+        </h4>
+        @foreach (var a in listE)
+        {
+            <partial name="AnsweredQuestion" for="@a" />
+        }
+
+        <hr />
+        <h4 class="card-title">
+            G. Internal Information
+        </h4>
+        @foreach (var a in listG)
+        {
+            <partial name="AnsweredQuestion" for="@a" />
+        }
+
+        <div class="form-group">
+            <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
+                4. Was an additional Due Diligence Report required to be completed
+            </label>
+            <div class="form-check">
+                <input asp-for="Input.G4A"
+                       class="form-check-input"
+                       type="radio"
+                       id="G4Aa"
+                       value="Yes">
+                <label class="form-check-label"
+                       for="G4Aa">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Input.G4A"
+                       class="form-check-input"
+                       type="radio"
+                       id="G4Ab"
+                       value="No">
+                <label class="form-check-label"
+                       for="G4Ab">
+                    No
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="mb-0 text-justify" style="font-weight: 500">
+                If so, was it obtained
+            </label>
+            <div class="form-check">
+                <input asp-for="Input.G4B"
+                       class="form-check-input"
+                       type="radio"
+                       id="G4Ba"
+                       value="N/A">
+                <label class="form-check-label"
+                       for="G4Ba">
+                    N/A
+                </label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Input.G4B"
+                       class="form-check-input"
+                       type="radio"
+                       id="G4Bb"
+                       value="Yes">
+                <label class="form-check-label"
+                       for="G4Bb">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Input.G4B"
+                       class="form-check-input"
+                       type="radio"
+                       id="G4Bc"
+                       value="No">
+                <label class="form-check-label"
+                       for="G4Bc">
+                    No
+                </label>
+            </div>
+        </div>
+
+
+        <hr />
+        <h4 class="card-title">
+            H. Supporting Documentation
+        </h4>
+        <div>
+            @{ var disabled = Model.ResponseSummary.H1 is null ? "disabled" : ""; }
+            <a class="btn btn-block btn-link btn-secondary text-white @disabled"
+               asp-controller="Files"
+               asp-action="Get"
+               asp-route-id="@Model.ResponseSummary.H1">
+                (A) Certificate
+            </a>
+
+            @{ disabled = Model.ResponseSummary.H2 is null ? "disabled" : ""; }
+            <a class="btn btn-block btn-link btn-secondary text-white @disabled"
+               asp-controller="Files"
+               asp-action="Get"
+               asp-route-id="@Model.ResponseSummary.H2">
+                (B) Business Brochures / Annual Report
+            </a>
+
+            @{ disabled = Model.ResponseSummary.H3 is null ? "disabled" : ""; }
+            <a class="btn btn-block btn-link btn-secondary text-white @disabled"
+               asp-controller="Files"
+               asp-action="Get"
+               asp-route-id="@Model.ResponseSummary.H3">
+                (C) Finalcial Statements
+            </a>
+
+            @{ disabled = Model.ResponseSummary.H4 is null ? "disabled" : ""; }
+            <a class="btn btn-block btn-link btn-secondary text-white @disabled"
+               asp-controller="Files"
+               asp-action="Get"
+               asp-route-id="@Model.ResponseSummary.H4">
+                (D) CV
+            </a>
+
+            @{ disabled = Model.ResponseSummary.H5 is null ? "disabled" : ""; }
+            <a class="btn btn-block btn-link btn-secondary text-white @disabled"
+               asp-controller="Files"
+               asp-action="Get"
+               asp-route-id="@Model.ResponseSummary.H5">
+                (E) Policies
+            </a>
+        </div>
+
+        <hr />
+        <h4 class="card-title">
+            I. Compliance Approval, If Required
+        </h4>
+        <div class="form-group">
+            <div class="form-check">
+                <input asp-for="Input.I1"
+                       class="form-check-input"
+                       type="radio"
+                       id="I1a"
+                       value="Approved">
+                <label class="form-check-label"
+                       for="I1a">
+                    Approved
+                </label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Input.I1"
+                       class="form-check-input"
+                       type="radio"
+                       id="I1b"
+                       value="Not Approved">
+                <label class="form-check-label"
+                       for="I1b">
+                    Not Approved
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
+                Date of Approval
+            </label>
+            <input asp-for="Input.I2"
+                   class="form-control form-control-sm col-md-6"
+                   type="date" />
+
+            <span asp-validation-for="Input.I2"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
+                Expected date for renewal
+            </label>
+            <input asp-for="Input.I3"
+                   class="form-control form-control-sm col-md-6"
+                   type="date" />
+
+            <span asp-validation-for="Input.I3"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label class="mb-0 text-justify" style="font-size: larger; font-weight: 500">
+                Any additional comments from Approver
+            </label>
+            <textarea asp-for="Input.I4"
+                      class="form-control form-control-sm col-md-6">
+            </textarea>
+            <span asp-validation-for="Input.I4"
+                  class="text-danger">
+            </span>
+        </div>
+        
+        
+        <button type="submit"
+                class="btn btn-primary">
+            Submit
+        </button>
+
+        </form>
+        </div>
 </div>
