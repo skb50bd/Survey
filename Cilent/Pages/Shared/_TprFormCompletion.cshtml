@@ -1,7 +1,7 @@
-﻿@model Client.Pages.ThirdPartyModel 
+﻿@model Client.Pages.ThirdPartyResponseInput
 
 <div class="card mb-2">
-    <div class="card-body">
+    <div class="card-body pb-0">
         <div class="form-group">
             <h4 class="card-title h4 text-uppercase">
                 Form Completion Information
@@ -13,11 +13,11 @@
                     1. Date
                 </label>
 
-                <input asp-for="Answers.A1"
+                <input asp-for="A1"
                        class="form-control form-control-sm col-md-6"
                        type="date" />
 
-                <span asp-validation-for="Answers.A1"
+                <span asp-validation-for="A1"
                       class="text-danger">
                 </span>
             </div>
@@ -33,11 +33,11 @@
                     a. Name
                 </label>
 
-                <input asp-for="Answers.A2A"
+                <input asp-for="A2A"
                        class="form-control form-control-sm col-md-6"
                        type="text" />
 
-                <span asp-validation-for="Answers.A2A"
+                <span asp-validation-for="A2A"
                       class="text-danger">
                 </span>
             </div>
@@ -48,11 +48,11 @@
                     b. E-mail
                 </label>
 
-                <input asp-for="Answers.A2B"
+                <input asp-for="A2B"
                        class="form-control form-control-sm col-md-6"
                        type="email" />
 
-                <span asp-validation-for="Answers.A2B"
+                <span asp-validation-for="A2B"
                       class="text-danger">
                 </span>
             </div>
@@ -68,11 +68,11 @@
                     c.1 Landline
                 </label>
 
-                <input asp-for="Answers.A2C1"
+                <input asp-for="A2C1"
                        class="form-control form-control-sm col-md-6"
                        type="tel" />
 
-                <span asp-validation-for="Answers.A2C1"
+                <span asp-validation-for="A2C1"
                       class="text-danger">
                 </span>
             </div>
@@ -83,11 +83,11 @@
                     c.2 Cell
                 </label>
 
-                <input asp-for="Answers.A2C2"
+                <input asp-for="A2C2"
                        class="form-control form-control-sm col-md-6"
                        type="tel" />
 
-                <span asp-validation-for="Answers.A2C2"
+                <span asp-validation-for="A2C2"
                       class="text-danger">
                 </span>
             </div>

@@ -1,1 +1,253 @@
-﻿
+﻿@model Client.Pages.ThirdPartyResponseInput
+
+<div class="card mb-2">
+    <div class="card-body pb-0">
+        <div class="form-group">
+            <h4 class="card-title h4 text-uppercase">
+                Reference Information
+            </h4>
+
+            <div>
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    Please provide
+                    two(2) external business references and
+                    one(1) external financial reference to be contacted by us.
+                </label>
+                <br />
+                <br />
+
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    1. Business Reference #1
+                </label>
+                <br />
+
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    a. Company Name
+                </label>
+
+                <input asp-for="C1A"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="C1A"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    b. Contact Person
+                </label>
+
+                <input asp-for="C1B"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="C1B"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    c. Job Title
+                </label>
+
+                <input asp-for="C1C"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="C1C"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    d. E-mail
+                </label>
+
+                <input asp-for="C1D"
+                       class="form-control form-control-sm col-md-6"
+                       type="email" />
+
+                <span asp-validation-for="C1D"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    e. Address
+                </label>
+
+                <input asp-for="C1E"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="C1E"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    f. Telephone
+                </label>
+                <br />
+                <label class="text-justify mb-0"
+                       style="font-weight: 400; font-size: small;">
+                    f.1 Landline
+                </label>
+
+                <input asp-for="C1F1"
+                       class="form-control form-control-sm col-md-6"
+                       type="tel" />
+
+                <span asp-validation-for="C1F1"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400; font-size: small;">
+                    f.2 Cell
+                </label>
+
+                <input asp-for="C1F2"
+                       class="form-control form-control-sm col-md-6"
+                       type="tel" />
+
+                <span asp-validation-for="C1F2"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    1. Business Reference #2
+                </label>
+                <br />
+
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    a. Company Name
+                </label>
+
+                <input asp-for="C2A"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="C2A"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    b. Contact Person
+                </label>
+
+                <input asp-for="C2B"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="C2B"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    c. Job Title
+                </label>
+
+                <input asp-for="C2C"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="C2C"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    d. E-mail
+                </label>
+
+                <input asp-for="C2D"
+                       class="form-control form-control-sm col-md-6"
+                       type="email" />
+
+                <span asp-validation-for="C2D"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    e. Address
+                </label>
+
+                <input asp-for="C2E"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="C2E"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    f. Telephone
+                </label>
+                <br />
+                <label class="text-justify mb-0"
+                       style="font-weight: 400; font-size: small;">
+                    f.1 Landline
+                </label>
+
+                <input asp-for="C2F1"
+                       class="form-control form-control-sm col-md-6"
+                       type="tel" />
+
+                <span asp-validation-for="C2F1"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400; font-size: small;">
+                    f.2 Cell
+                </label>
+
+                <input asp-for="C2F2"
+                       class="form-control form-control-sm col-md-6"
+                       type="tel" />
+
+                <span asp-validation-for="C2F2"
+                      class="text-danger">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

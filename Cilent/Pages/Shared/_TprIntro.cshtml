@@ -1,4 +1,4 @@
-﻿@model Client.Pages.ThirdPartyModel
+﻿@model Client.Pages.ThirdPartyResponseInput
 
 <div class="alert alert-info mt-3 mb-3">
     <div class="text-justify">
@@ -20,31 +20,117 @@
 </div>
 
 <div class="card">
-    <div class="card-body text-justify">
+    <div class="card-body text-justify pb-0">
         Please complete this questionnaire in its entirety,
         responding to each question or request for information.
         Upon completion, please submit (button below)
         this form along with the following requested documents
         <span style="font-weight: bold;">A-E</span>:
 
-        <div class="form-group">
-            <h4 class="card-title h4 text-uppercase">
-                Business Information
-            </h4>
-
-            <div>
+        <div class="mt-2">
+            <div class="form-group">
                 <label class="text-justify mb-0"
                        style="font-weight: 500">
-                    1. Your organization’s Full Legal Name, hereafter to be referred to as COMPANY
+                    A. Copy of certificate of incorporation, bylaws or equivalent organization document
                 </label>
+                <br />
 
-                <input asp-for="Answers.B1"
-                       class="form-control form-control-sm col-md-6"
-                       type="text" />
+                <div class="custom-file form-control form-control-sm col-md-6">
+                    <input type="file"
+                           class="custom-file-input"
+                           asp-for="DocumentA"
+                           id="documentA">
 
-                <span asp-validation-for="Answers.B1"
-                      class="text-danger">
-                </span>
+                    <label class="custom-file-label"
+                           for="documentA">
+                        Choose file...
+                    </label>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    B.	Copy of any business brochures or latest annual report
+                </label>
+                <br />
+
+                <div class="custom-file form-control form-control-sm col-md-6">
+                    <input type="file"
+                           class="custom-file-input"
+                           asp-for="DocumentB"
+                           id="documentB">
+
+                    <label class="custom-file-label"
+                           for="documentB">
+                        Choose file...
+                    </label>
+                    @*<div class="invalid-feedback">Example invalid custom file feedback</div>*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    C.	Copies of most recent audited financial statements
+                    and the most recent unaudited and/or interim financial statements
+                </label>
+                <br />
+
+                <div class="custom-file form-control form-control-sm col-md-6">
+                    <input type="file"
+                           class="custom-file-input"
+                           asp-for="DocumentC"
+                           id="documentC">
+
+                    <label class="custom-file-label"
+                           for="documentC">
+                        Choose file...
+                    </label>
+                    @*<div class="invalid-feedback">Example invalid custom file feedback</div>*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    D. CV or professional biography for all COMPANY Leaders (as defined below)
+                </label>
+                <br />
+
+                <div class="custom-file form-control form-control-sm col-md-6">
+                    <input type="file"
+                           class="custom-file-input"
+                           asp-for="DocumentD"
+                           id="documentD">
+
+                    <label class="custom-file-label"
+                           for="documentD">
+                        Choose file...
+                    </label>
+                    @*<div class="invalid-feedback">Example invalid custom file feedback</div>*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    E. Copy of Code of Conduct and other related anti-corruption polices or guidelines
+                </label>
+                <br />
+
+                <div class="custom-file form-control form-control-sm col-md-6">
+                    <input type="file"
+                           class="custom-file-input"
+                           asp-for="DocumentE"
+                           id="documentE">
+
+                    <label class="custom-file-label"
+                           for="documentE">
+                        Choose file...
+                    </label>
+                    @*<div class="invalid-feedback">Example invalid custom file feedback</div>*@
+                </div>
             </div>
         </div>
     </div>
@@ -81,4 +167,3 @@
         </strong>
     </div>
 </div>
-

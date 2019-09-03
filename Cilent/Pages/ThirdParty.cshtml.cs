@@ -9,7 +9,7 @@ namespace Client.Pages
     public class ThirdPartyModel : PageModel
     {
         [BindProperty]
-        public ThirdPartyResponseInput Answers { get; set; }
+        public ThirdPartyResponseInput Input { get; set; }
 
         public string UniqueId { get; set; }
     }

@@ -1,7 +1,7 @@
-﻿@model Client.Pages.ThirdPartyModel
+﻿@model Client.Pages.ThirdPartyResponseInput
 
 <div class="card mb-2">
-    <div class="card-body">
+    <div class="card-body pb-0">
         <div class="form-group">
             <h4 class="card-title h4 text-uppercase">
                 Business Information
@@ -13,11 +13,11 @@
                     1. Your organization’s Full Legal Name, hereafter to be referred to as COMPANY
                 </label>
 
-                <input asp-for="Answers.B1"
+                <input asp-for="B1"
                        class="form-control form-control-sm col-md-6"
                        type="text" />
 
-                <span asp-validation-for="Answers.B1"
+                <span asp-validation-for="B1"
                       class="text-danger">
                 </span>
             </div>
@@ -33,11 +33,11 @@
                     a. Tax number
                 </label>
 
-                <input asp-for="Answers.B2A"
+                <input asp-for="B2A"
                        class="form-control form-control-sm col-md-6"
                        type="text" />
 
-                <span asp-validation-for="Answers.B2A"
+                <span asp-validation-for="B2A"
                       class="text-danger">
                 </span>
             </div>
@@ -48,11 +48,11 @@
                     b. Main office address
                 </label>
 
-                <textarea asp-for="Answers.B2B"
+                <textarea asp-for="B2B"
                           class="form-control form-control-sm col-md-6">
                             </textarea>
 
-                <span asp-validation-for="Answers.B2B"
+                <span asp-validation-for="B2B"
                       class="text-danger">
                 </span>
             </div>
@@ -65,11 +65,11 @@
                     If none, please indicate
                 </label>
 
-                <textarea asp-for="Answers.B2C"
+                <textarea asp-for="B2C"
                           class="form-control form-control-sm col-md-6">
                             </textarea>
 
-                <span asp-validation-for="Answers.B2C"
+                <span asp-validation-for="B2C"
                       class="text-danger">
                 </span>
             </div>
@@ -85,11 +85,11 @@
                     d.1 Landline
                 </label>
 
-                <input asp-for="Answers.B2D1"
+                <input asp-for="B2D1"
                        class="form-control form-control-sm col-md-6"
                        type="tel" />
 
-                <span asp-validation-for="Answers.B2D1"
+                <span asp-validation-for="B2D1"
                       class="text-danger">
                 </span>
             </div>
@@ -100,11 +100,11 @@
                     d.2 Cell
                 </label>
 
-                <input asp-for="Answers.B2D2"
+                <input asp-for="B2D2"
                        class="form-control form-control-sm col-md-6"
                        type="tel" />
 
-                <span asp-validation-for="Answers.B2D2"
+                <span asp-validation-for="B2D2"
                       class="text-danger">
                 </span>
             </div>
@@ -115,11 +115,11 @@
                     e. Email
                 </label>
 
-                <input asp-for="Answers.B2E"
+                <input asp-for="B2E"
                        class="form-control form-control-sm col-md-6"
                        type="email" />
 
-                <span asp-validation-for="Answers.B2E"
+                <span asp-validation-for="B2E"
                       class="text-danger">
                 </span>
             </div>
@@ -130,11 +130,11 @@
                     f. Website
                 </label>
 
-                <input asp-for="Answers.B2F"
+                <input asp-for="B2F"
                        class="form-control form-control-sm col-md-6"
                        type="url" />
 
-                <span asp-validation-for="Answers.B2F"
+                <span asp-validation-for="B2F"
                       class="text-danger">
                 </span>
             </div>
@@ -150,11 +150,11 @@
                     a. Person's name
                 </label>
 
-                <input asp-for="Answers.B2Oa"
+                <input asp-for="B2Oa"
                        class="form-control form-control-sm col-md-6"
                        type="text" />
 
-                <span asp-validation-for="Answers.B2Oa"
+                <span asp-validation-for="B2Oa"
                       class="text-danger">
                 </span>
             </div>
@@ -165,11 +165,11 @@
                     b. Date of birth
                 </label>
 
-                <input asp-for="Answers.B2Ob"
+                <input asp-for="B2Ob"
                        class="form-control form-control-sm col-md-6"
                        type="date" />
 
-                <span asp-validation-for="Answers.B2Ob"
+                <span asp-validation-for="B2Ob"
                       class="text-danger">
                 </span>
             </div>
@@ -180,11 +180,11 @@
                     c. ID number
                 </label>
 
-                <input asp-for="Answers.B2Oc"
+                <input asp-for="B2Oc"
                        class="form-control form-control-sm col-md-6"
                        type="text" />
 
-                <span asp-validation-for="Answers.B2Oc"
+                <span asp-validation-for="B2Oc"
                       class="text-danger">
                 </span>
             </div>
@@ -195,55 +195,32 @@
                     d. Tax number
                 </label>
 
-                <input asp-for="Answers.B2Od"
+                <input asp-for="B2Od"
                        class="form-control form-control-sm col-md-6"
                        type="text" />
 
-                <span asp-validation-for="Answers.B2Od"
+                <span asp-validation-for="B2Od"
                       class="text-danger">
                 </span>
             </div>
 
-            @*<div class="mt-2">
-                    <label class="text-justify mb-0"
-                           style="font-weight: 500;">
-                        3. Please provide the following organizational information relating to COMPANY
-                    </label>
-                    <br />
-                    <label class="text-justify mb-0"
-                           style="font-weight: 400; font-style: italic;">
-                        Request A: Please provide a copy of certificate of incorporation,
-                        bylaws or equivalent organization document
-                    </label>
-
-                    <div class="custom-file form-control form-control-sm col-md-6">
-                        <input asp-for="Answers.B3File"
-                               type="file"
-                               class="custom-file-input"
-                               id="B3File">
-
-                        <label class="custom-file-label"
-                               for="B3File">
-                            Choose file
-                        </label>
-                    </div>
-
-                    <span asp-validation-for="Answers.B3File"
-                          class="text-danger">
-                    </span>
-                </div>*@
-
             <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    3. Please provide the following organizational information relating to COMPANY
+                </label>
+                <br/>
+
                 <label class="text-justify mb-0"
                        style="font-weight: 400;">
                     a. COMPANY business structure (e.g. corporation, partnership, etc.)
                 </label>
 
-                <input asp-for="Answers.B3A"
+                <input asp-for="B3A"
                        class="form-control form-control-sm col-md-6"
                        type="text" />
 
-                <span asp-validation-for="Answers.B3A"
+                <span asp-validation-for="B3A"
                       class="text-danger">
                 </span>
             </div>
@@ -253,23 +230,35 @@
                        style="font-weight: 400;">
                     b. Approximate establishment date and legal jurisdiction of formation
                 </label>
+                <br/>
 
-                <input asp-for="Answers.B3B1"
+                <label class="text-justify mb-0"
+                       style="font-weight: 400; font-size: small;">
+                    b.1 Date
+                </label>
+
+                <input asp-for="B3B1"
                        class="form-control form-control-sm col-md-6"
                        type="date" />
 
-                <span asp-validation-for="Answers.B3B1"
+                <span asp-validation-for="B3B1"
                       class="text-danger">
                 </span>
+            </div>
 
-                <input asp-for="Answers.B3B2"
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400; font-size: small;">
+                    b.2 Jurisdiction
+                </label>
+
+                <input asp-for="B3B2"
                        class="form-control form-control-sm col-md-6"
                        type="text" />
 
-                <span asp-validation-for="Answers.B3B2"
+                <span asp-validation-for="B3B2"
                       class="text-danger">
                 </span>
-
             </div>
 
             <div class="mt-2">
@@ -278,11 +267,11 @@
                     c. Approximate number of employees
                 </label>
 
-                <input asp-for="Answers.B3C"
+                <input asp-for="B3C"
                        class="form-control form-control-sm col-md-6"
                        type="number" />
 
-                <span asp-validation-for="Answers.B3C"
+                <span asp-validation-for="B3C"
                       class="text-danger">
                 </span>
 
@@ -300,7 +289,7 @@
                 </label>
 
                 <div class="form-check">
-                    <input asp-for="Answers.B3D1A"
+                    <input asp-for="B3D1A"
                            class="form-check-input"
                            type="radio"
                            id="B3D1Aa"
@@ -312,7 +301,7 @@
                 </div>
 
                 <div class="form-check">
-                    <input asp-for="Answers.B3D1A"
+                    <input asp-for="B3D1A"
                            class="form-check-input"
                            type="radio"
                            id="B3D1Ab"
@@ -323,10 +312,9 @@
                     </label>
                 </div>
 
-                <span asp-validation-for="Answers.B3D1A"
+                <span asp-validation-for="B3D1A"
                       class="text-danger">
                 </span>
-
             </div>
 
             <div class="mt-2">
@@ -336,7 +324,7 @@
                 </label>
 
                 <div class="form-check">
-                    <input asp-for="Answers.B3D1B"
+                    <input asp-for="B3D1B"
                            class="form-check-input"
                            type="radio"
                            id="B3D1Ba"
@@ -348,7 +336,7 @@
                 </div>
 
                 <div class="form-check">
-                    <input asp-for="Answers.B3D1B"
+                    <input asp-for="B3D1B"
                            class="form-check-input"
                            type="radio"
                            id="B3D1Bb"
@@ -360,7 +348,7 @@
                 </div>
 
                 <div class="form-check">
-                    <input asp-for="Answers.B3D1B"
+                    <input asp-for="B3D1B"
                            class="form-check-input"
                            type="radio"
                            id="B3D1Bc"
@@ -371,7 +359,7 @@
                     </label>
                 </div>
 
-                <span asp-validation-for="Answers.B3D1B"
+                <span asp-validation-for="B3D1B"
                       class="text-danger">
                 </span>
 
@@ -384,7 +372,7 @@
                 </label>
 
                 <div class="form-check">
-                    <input asp-for="Answers.B3D2"
+                    <input asp-for="B3D2"
                            class="form-check-input"
                            type="radio"
                            id="B3D2a"
@@ -396,7 +384,7 @@
                 </div>
 
                 <div class="form-check">
-                    <input asp-for="Answers.B3D2"
+                    <input asp-for="B3D2"
                            class="form-check-input"
                            type="radio"
                            id="B3D2b"
@@ -407,52 +395,29 @@
                     </label>
                 </div>
 
-                <span asp-validation-for="Answers.B3D2"
+                <span asp-validation-for="B3D2"
                       class="text-danger">
                 </span>
 
             </div>
 
-            @*<div class="mt-2">
-                    <label class="text-justify mb-0"
-                           style="font-weight: 500;">
-                        4. Please provide the following business information relating to COMPANY
-                    </label>
-                    <br />
-                    <label class="text-justify mb-0"
-                           style="font-weight: 400; font-style: italic;">
-                        Request B: Please provide a copy of any business brochures or annual report
-                    </label>
-                    <br />
-
-                    <div class="custom-file form-control form-control-sm col-md-6">
-                        <input asp-for="Answers.B4File"
-                               type="file"
-                               class="custom-file-input"
-                               id="B4File">
-
-                        <label class="custom-file-label"
-                               for="B4File">
-                            Choose file
-                        </label>
-                    </div>
-
-                    <span asp-validation-for="Answers.B4File"
-                          class="text-danger">
-                    </span>
-                </div>*@
-
             <div class="mt-2">
                 <label class="text-justify mb-0"
-                       style="font-weight: 400">
+                       style="font-weight: 500;">
+                    4. Please provide the following business information relating to COMPANY
+                </label>
+                <br />
+                
+                <label class="text-justify mb-0"
+                             style="font-weight: 400">
                     a. Describe your core business activities
                 </label>
 
-                <textarea asp-for="Answers.B4A"
+                <textarea asp-for="B4A"
                           class="form-control form-control-sm col-md-6">
                             </textarea>
 
-                <span asp-validation-for="Answers.B4A"
+                <span asp-validation-for="B4A"
                       class="text-danger">
                 </span>
             </div>
@@ -463,11 +428,11 @@
                     b. Other operating businesses that have controlling interest in you or you control
                 </label>
 
-                <textarea asp-for="Answers.B4B"
+                <textarea asp-for="B4B"
                           class="form-control form-control-sm col-md-6">
                             </textarea>
 
-                <span asp-validation-for="Answers.B4B"
+                <span asp-validation-for="B4B"
                       class="text-danger">
                 </span>
             </div>
@@ -478,10 +443,10 @@
                     c. Countries in which you operate or provide services
                 </label>
 
-                <input asp-for="Answers.B4C"
+                <input asp-for="B4C"
                        class="form-control form-control-sm col-md-6" />
 
-                <span asp-validation-for="Answers.B4C"
+                <span asp-validation-for="B4C"
                       class="text-danger">
                 </span>
             </div>
@@ -493,7 +458,7 @@
                 </label>
 
                 <div class="form-check">
-                    <input asp-for="Answers.B5"
+                    <input asp-for="B5"
                            class="form-check-input"
                            type="radio"
                            id="B5a"
@@ -505,7 +470,7 @@
                 </div>
 
                 <div class="form-check">
-                    <input asp-for="Answers.B5"
+                    <input asp-for="B5"
                            class="form-check-input"
                            type="radio"
                            id="B5b"
@@ -516,36 +481,11 @@
                     </label>
                 </div>
 
-                <span asp-validation-for="Answers.B5"
+                <span asp-validation-for="B5"
                       class="text-danger">
                 </span>
 
             </div>
-
-            @*<div class="mt-2">
-                    <label class="text-justify mb-0"
-                           style="font-weight: 400; font-style: italic;">
-                        Request C: please provide copies of most recent audited financial statements
-                        and the most recent unaudited and/or interim financial statements
-                    </label>
-                    <br />
-
-                    <div class="custom-file form-control form-control-sm col-md-6">
-                        <input asp-for="Answers.B5File"
-                               type="file"
-                               class="custom-file-input"
-                               id="B5File">
-
-                        <label class="custom-file-label"
-                               for="B5File">
-                            Choose file
-                        </label>
-                    </div>
-
-                    <span asp-validation-for="Answers.B5File"
-                          class="text-danger">
-                    </span>
-                </div>*@
         </div>
     </div>
 </div>

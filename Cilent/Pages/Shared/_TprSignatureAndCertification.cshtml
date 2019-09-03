@@ -1,1 +1,127 @@
-﻿
+﻿@model Client.Pages.ThirdPartyResponseInput
+
+<div class="card mb-2">
+    <div class="card-body pb-0">
+        <div class="form-group">
+            <h4 class="card-title h4 text-uppercase">
+                Signature and Certification
+            </h4>
+
+            <div>
+                <label class="text-justify"
+                       style="font-weight: 400; font-style: italic; font-size: small;">
+                    I HEREBY DECLARE THAT THE INFORMATION PROVIDED HEREIN IS,
+                    TO THE BEST OF MY CURRENT KNOWLEDGE AND BELIEF, ACCURATE,
+                    UPDATED AND COMPLETE.
+                    I HEREBY DULY AUTHORIZE YOUR COMPANY AND/OR ITS REPRESENTATIVES
+                    AND/OR ITS AGENTS, FOR THE PERIOD OF 180 DAYS, TO VERIFY
+                    THE INFORMATION PROVIDED HEREIN, INCLUDING ALL REFERENCES;
+                    CRIMINAL AND/OR COURT RECORDS; CONDUCT AND/OR CONTRACT
+                    INVESTIGATIVE REPORTS WHICH CAN INCLUDE CREDIT STANDING,
+                    CREDIT CAPACITY, CHARACTER AND/OR GENERAL REPUTATION,
+                    EDUCATION BACKGROUND, EMPLOYMENT/WORK HISTORY AND CREDIT HISTORY,
+                    AMONG OTHERS AND HEREBY HOLD HARMLESS ALL OF THE PERSONS AND
+                    AGENCIES PROVIDING SUCH INFORMATION FROM ANY AND ALL CLAIMS AND
+                    DAMAGES CONNECTED WITH THEIR RELEASE OF INFORMATION.
+                    I HEREBY AGREE TO PROMPTLY INFORM YOU REGARDING ANY MATERIAL CHANGE
+                    TO THE INFORMATION PROVIDED, UNTIL THE EXECUTION OF THE RELATED
+                    AGREEMENT IN CONNECTION WITH THE BUSINESS RELATIONSHIP INTENDED
+                    BETWEEN THE PARTIES.
+                    <br />
+                    I HEREBY ACKNOWLEDGE THAT THIS QUESTIONNAIRE WILL BE
+                    DEEMED TO BE DULY EXECUTED BY MY COMPLETING THIS FORM,
+                    AND EITHER ELECTRONICALLY TYPING IN MY NAME ON THE SIGNATURE LINE,
+                    OR PRINTING, SIGNING AND SENDING BACK A COMPLETED FORM.
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input"
+                       asp-for="H0"
+                       id="H0"
+                       type="checkbox">
+                <label class="form-check-label"
+                       for="H0">
+                    <strong>Virtual Signature </strong>
+                </label>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    Full Name
+                </label>
+
+                <input asp-for="H1"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="H1"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    Email Address
+                </label>
+
+                <input asp-for="H2"
+                       class="form-control form-control-sm col-md-6"
+                       type="email" />
+
+                <span asp-validation-for="H2"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    Date
+                </label>
+
+                <input asp-for="H3"
+                       class="form-control form-control-sm col-md-6"
+                       type="date" />
+
+                <span asp-validation-for="H3"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    Company Name, if applicable
+                </label>
+
+                <input asp-for="H4"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="H4"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    Title, if applicable
+                </label>
+
+                <input asp-for="H5"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="H5"
+                      class="text-danger">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

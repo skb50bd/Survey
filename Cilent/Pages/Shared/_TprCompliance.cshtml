@@ -1,1 +1,600 @@
-﻿
+﻿@model Client.Pages.ThirdPartyResponseInput
+
+<div class="card mb-2">
+    <div class="card-body pb-0">
+        <div class="form-group">
+            <h4 class="card-title h4 text-uppercase">
+                Compliance Information
+            </h4>
+
+            <div>
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    1. Does the COMPANY currently have
+                    a written policy addressing ethical
+                    business practices and the prevention of bribery?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F1"
+                           class="form-check-input"
+                           type="radio"
+                           id="F1a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F1a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F1"
+                           class="form-check-input"
+                           type="radio"
+                           id="F1b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F1b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F1"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    If yes, please download per page one of Questionnaire
+                </label>
+                <br />
+
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    2. In which country will you seek to be paid for services?
+                </label>
+
+                <input asp-for="F2"
+                       class="form-control form-control-sm col-md-6"
+                       type="text" />
+
+                <span asp-validation-for="F2"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    3. Please indicate preferred method of payment
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F3"
+                           class="form-check-input"
+                           type="radio"
+                           id="F3a"
+                           value="Check">
+                    <label class="form-check-label"
+                           for="F3a">
+                        Check
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F3"
+                           class="form-check-input"
+                           type="radio"
+                           id="F3b"
+                           value="Wire Transfer">
+                    <label class="form-check-label"
+                           for="F3b">
+                        Wire Transfer
+                    </label>
+                </div>
+
+                <span asp-validation-for="F3"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    4. Has the COMPANY, any COMPANY Leader or COMPANY
+                    Employee ever been convicted of violating any rules
+                    or regulations governing the purchase or sale of goods or services?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F4"
+                           class="form-check-input"
+                           type="radio"
+                           id="F4a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F4a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F4"
+                           class="form-check-input"
+                           type="radio"
+                           id="F4b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F4b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F4"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    5. Has the COMPANY, any COMPANY Leader or COMPANY
+                    Employee ever been found guilty of violating any
+                    law governing donations, contributions, honoraria,
+                    or any other form of remuneration to any government official?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F5"
+                           class="form-check-input"
+                           type="radio"
+                           id="F5a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F5a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F5"
+                           class="form-check-input"
+                           type="radio"
+                           id="F5b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F5b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F5"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    6. Has the COMPANY, any COMPANY Leader or COMPANY
+                    Employee ever been found guilty of any violations
+                    of anti-corruption, securities, trading or tax laws?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F6"
+                           class="form-check-input"
+                           type="radio"
+                           id="F6a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F6a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F6"
+                           class="form-check-input"
+                           type="radio"
+                           id="F6b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F6b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F6"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    7. Has the COMPANY, any COMPANY Leader or COMPANY
+                    Employee ever been deposed or subpoenaed in connection
+                    with any litigation or investigation involving any
+                    law governing donations, contributions, honoraria,
+                    or any other form of remuneration to any government official?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F7"
+                           class="form-check-input"
+                           type="radio"
+                           id="F7a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F7a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F7"
+                           class="form-check-input"
+                           type="radio"
+                           id="F7b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F7b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F7"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    8. Has the COMPANY, any COMPANY Leader
+                    or COMPANY Employee ever been deposed,
+                    subpoenaed or asked to testify before
+                    any legislative body concerning fraud
+                    or abuse with regard to the purchase
+                    or sale of goods or services?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F8"
+                           class="form-check-input"
+                           type="radio"
+                           id="F8a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F8a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F8"
+                           class="form-check-input"
+                           type="radio"
+                           id="F8b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F8b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F8"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    9. Has the COMPANY, any COMPANY Leader
+                    or COMPANY Employee ever been found guilty
+                    of any violations of laws governing the
+                    regulation of antitrust practices or
+                    been deposed or subpoenaed in connection
+                    with any litigation or investigation
+                    involving such laws?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F9"
+                           class="form-check-input"
+                           type="radio"
+                           id="F9a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F9a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F9"
+                           class="form-check-input"
+                           type="radio"
+                           id="F9b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F9b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F9"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    10. Has the COMPANY, any COMPANY Leader
+                    or COMPANY Employee ever been mentioned
+                    by name in the press (i.e. article in
+                    newspaper, magazine or online vehicles)
+                    as having violated anti-corruption or
+                    anti-trust laws?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F10"
+                           class="form-check-input"
+                           type="radio"
+                           id="F10a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F10a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F10"
+                           class="form-check-input"
+                           type="radio"
+                           id="F10b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F10b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F10"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    11. Has the COMPANY, or any company in which
+                    your company owns more than a 10% interest
+                    ever been disbarred from competing for
+                    World Bank contracts?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F11"
+                           class="form-check-input"
+                           type="radio"
+                           id="F11a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F11a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F11"
+                           class="form-check-input"
+                           type="radio"
+                           id="F11b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F11b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F11"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    12. Has the COMPANY or any COMPANY
+                    Leader ever been the subject of
+                    any voluntary or involuntary
+                    bankruptcy or other similar proceeding?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F12"
+                           class="form-check-input"
+                           type="radio"
+                           id="F12a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F12a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F12"
+                           class="form-check-input"
+                           type="radio"
+                           id="F12b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F12b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F12"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    13. Is the COMPANY, any COMPANY
+                    Leader or COMPANY Employee
+                    currently named on any of the
+                    following lists?
+                </label>
+                <br />
+                <label class="text-justify mb-0"
+                       style="font-weight: 400;">
+                    a. The Specially Designated Nationals List (the “SDN”)
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F13A"
+                           class="form-check-input"
+                           type="radio"
+                           id="F13Aa"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F13Aa">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F13A"
+                           class="form-check-input"
+                           type="radio"
+                           id="F13Ab"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F13Ab">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F13A"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400;">
+                    b. The Specially Designated Global Terrorist List
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F13B"
+                           class="form-check-input"
+                           type="radio"
+                           id="F13Ba"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F13Ba">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F13B"
+                           class="form-check-input"
+                           type="radio"
+                           id="F13Bb"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F13Bb">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F13B"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400;">
+                    c. The Specially Designated Narcotics Traffickers List or Kingpin List
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F13C"
+                           class="form-check-input"
+                           type="radio"
+                           id="F13Ca"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F13Ca">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F13C"
+                           class="form-check-input"
+                           type="radio"
+                           id="F13Cb"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F13Cb">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F13C"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400;">
+                    d. Any U.S., EU, or other country or region Denied Party Lists
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="F13D"
+                           class="form-check-input"
+                           type="radio"
+                           id="F13Da"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="F13Da">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="F13D"
+                           class="form-check-input"
+                           type="radio"
+                           id="F13Db"
+                           value="No">
+                    <label class="form-check-label"
+                           for="F13Db">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="F13D"
+                      class="text-danger">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
