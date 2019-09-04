@@ -88,7 +88,7 @@ namespace Client.Pages
             );
         }
 
-        public async Task<File> SaveFile(IFormFile formFile)
+        public static async Task<File> SaveFile(IFormFile formFile)
         {
 
             if (!(formFile?.Length > 0)) return null;
