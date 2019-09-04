@@ -4,3 +4,872 @@
     ViewData["Title"] = "Third Party Response";
 }
 
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title display-4">
+            Sponsor Response
+        </h1>
+
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="w-75">Question</th>
+                    <th class="w-25 text-right">Response</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!--#region Supporting Documentation-->
+                <tr>
+                    <th colspan="2">
+                        FIle Download
+                    </th>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        @{ var disabled = Model.TprResonse.DocumentAId is null ? "disabled" : ""; }
+                        <a class="btn btn-sm btn-block btn-link btn-secondary text-white @disabled"
+                           asp-controller="Files"
+                           asp-action="Get"
+                           asp-route-id="@Model.TprResonse.DocumentAId">
+                            (A) Certificate
+                        </a>
+
+                        @{ disabled = Model.TprResonse.DocumentBId is null ? "disabled" : ""; }
+                        <a class="btn btn-sm btn-block btn-link btn-secondary text-white @disabled"
+                           asp-controller="Files"
+                           asp-action="Get"
+                           asp-route-id="@Model.TprResonse.DocumentBId">
+                            (A) Certificate
+                        </a>
+
+                        @{ disabled = Model.TprResonse.DocumentCId is null ? "disabled" : ""; }
+                        <a class="btn btn-sm btn-block btn-link btn-secondary text-white @disabled"
+                           asp-controller="Files"
+                           asp-action="Get"
+                           asp-route-id="@Model.TprResonse.DocumentCId">
+                            (A) Certificate
+                        </a>
+
+                        @{ disabled = Model.TprResonse.DocumentDId is null ? "disabled" : ""; }
+                        <a class="btn btn-sm btn-block btn-link btn-secondary text-white @disabled"
+                           asp-controller="Files"
+                           asp-action="Get"
+                           asp-route-id="@Model.TprResonse.DocumentDId">
+                            (A) Certificate
+                        </a>
+
+                        @{ disabled = Model.TprResonse.DocumentEId is null ? "disabled" : ""; }
+                        <a class="btn btn-sm btn-block btn-link btn-secondary text-white @disabled"
+                           asp-controller="Files"
+                           asp-action="Get"
+                           asp-route-id="@Model.TprResonse.DocumentEId">
+                            (A) Certificate
+                        </a>
+                    </td>
+                </tr>
+                <!--#endregion-->
+                <!--#region Form Completion-->
+                <tr>
+                    <th colspan="2">
+                        FORM COMPLETION INFORMATION
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Date
+                    </td>
+                    <td class="text-right">@Model.TprResonse.A1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. Name
+                    </td>
+                    <td class="text-right">@Model.TprResonse.A2A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. E-Mail
+                    </td>
+                    <td class="text-right">@Model.TprResonse.A2B</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        c. Telephone
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c.1. Landline
+                    </td>
+                    <td class="text-right">@Model.TprResonse.A2C1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c.2. Cell
+                    </td>
+                    <td class="text-right">@Model.TprResonse.A2C2</td>
+                </tr>
+                <!--#endregion-->
+                <!--#region Business Information-->
+                <tr>
+                    <th colspan="2">Business Information</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        1. Your organization’s Full Legal Name, hereafter to be referred to as COMPANY
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B1</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        2. COMPANY Information
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. Tax number/Jurisdiction:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. Main office address:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2B</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c. Address of any other location in the country from which COMPANY will be providing services.
+                        If none, please indicate.
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2C</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        d. Telephone
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d.1. Landline
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2D1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d.2. Cell
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2D2</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        e. E-mail:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2E</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        f. Website
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2F</td>
+                </tr>
+
+                <tr>
+                    <th colspan="2">Company Information if it is am Individual</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. Personal Name
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2Oa</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. Date of Birth
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2Ob</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c. ID number
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2Oc</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d. Tax number/Juristriction
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B2Od</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        organizational information relating to COMPANY:
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. COMPANY business structure
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B3A</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        b. Approximate establishment date and legal jurisdiction of formation
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b.1. Date
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B3B1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b.2 Jurisdiction
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B3B2</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c. Approximate number of employees:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B3C</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        d. Ownership
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d.1) Does any governmental or government entity hold equity interest in the COMPANY?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B3D1A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        If yes, the governmental’s equity interest in the COMPANY is:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B3D1B</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d.2) Does the COMPANY have securities listed on a public exchange?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B3D2</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        4. Please provide the following business information relating to COMPANY
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. Describe your core business activities
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B4A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. Other operating businesses that have controlling interest in you or you control:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B4B</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c. Countries in which you operate or provide services:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B4C</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        5. Do you have business financial statements?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.B5</td>
+                </tr>
+                <!--#endregion Business Information-->
+                <!-- #region Reference Information -->
+                <tr>
+                    <th colspan="2">REFERENCE INFORMATION </th>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        1. Business Reference #1
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. Company Name
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C1A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. Contact Person
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C1B</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c. Job Title:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C1C</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d.E-mail
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C1D</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        e. Adress
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C1E</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        f. Telephone
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        f.1. Landline
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C1F1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        f.2. Cell
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C1F1</td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="2">
+                        2. Business Reference #2
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. Company Name
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C2A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. Contact Person
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C2B</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c. Job Title:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C2C</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d.E-mail
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C2D</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        e. Adress
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C2E</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        f. Telephone
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        f.1. Landline
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C2F1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        f.2. Cell
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C2F1</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        3. External Financial Reference
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. Company Name
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C3A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. Contact Person
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C3B</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c. Job Title:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C3C</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d.E-mail
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C3D</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        e. Adress
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C3E</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        f. Telephone
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        f.1. Landline
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C3F1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        f.2. Cell
+                    </td>
+                    <td class="text-right">@Model.TprResonse.C3F1</td>
+                </tr>
+                <!-- #endregion -->
+                <!--#region Personal Information-->
+                <tr>
+                    <th colspan="2">Personbal Information</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        1. Please list all partners, directors and/or greater than 10% owners/shareholders (collectively, the “COMPANY Leaders”).
+                        Do not provide any information that may not be allowed under your applicable data privacy laws and regulations
+                    </td>
+                    <td>@Model.TprResonse.D1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        2. Please list all employees who will interact with government officials or government owned companies, when working with us (the “COMPANY Employees”).
+                    </td>
+                    <td>@Model.TprResonse.D2</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        3. Does any COMPANY Leader or COMPANY Employee hold or maintain additional ownership (more than a nominal amount),
+                        directorships and/or employment outside your primary business?
+                    </td>
+                    <td>@Model.TprResonse.D3</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        4. Has any COMPANY Leader or COMPANY Employee ever held a job in the government or was any COMPANY Leader or COMPANY Employee an officer in the military?
+                    </td>
+                    <td>@Model.TprResonse.D4</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. Name
+                    </td>
+                    <td>@Model.TprResonse.D4A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. Last Title
+                    </td>
+                    <td>@Model.TprResonse.D4B</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c. Employment/position hire date
+                    </td>
+                    <td>@Model.TprResonse.D4C</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d. Employment/position termination date:
+                    </td>
+                    <td>@Model.TprResonse.D4D</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        5. Are there any local laws applicable to any COMPANY Leader or COMPANY Employee which place restrictions on individuals after they leave public service?
+                    </td>
+                    <td>@Model.TprResonse.D5</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        6. Does any person, entity, government or government agency not listed as an COMPANY Leader or COMPANY Employee have any management right or
+                        financial interest (other than less than 10%/passive shareholder) in your business?
+                    </td>
+                    <td>@Model.TprResonse.D6</td>
+                </tr>
+                <!--#endregion-->
+                <!--#region Potential Conflicts-->
+
+                <tr>
+                    <th colspan="2">
+                        POTENTIAL CONFLICTS INFORMATION
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        1. Does any COMPANY Leader or COMPANY Employee hold any position with or have any duties for any political party,
+                        political campaign or active candidate for political office?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.E1A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Please inform who
+                    </td>
+                    <td class="text-right">@Model.TprResonse.E1B</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        2. Are any family members of any COMPANY Leader or COMPANY Employee:
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. Employed or otherwise engaged in any capacity by any government or government controlled company, or serves as an officer in the military?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.E2A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. Employed by or have duties for any political party, campaign or is a candidate for political office?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.E2B</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        3. Will the COMPANY, any COMPANY Leader or COMPANY Employee solicit business from any government agency or government controlled company?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.E3</td>
+                </tr>
+                <!--#endregion-->
+                <!--#region Compliance Information-->
+                <tr>
+                    <th colspan="2">
+                        COMPLIANCE INFORMATION
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        1. Does the COMPANY currently have a written policy addressing ethical business practices and the prevention of bribery?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        2. In which country will you seek to be paid for services?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F2</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        3. Please indicate preferred method of payment:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F3</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        4. Has the COMPANY, any COMPANY Leader or COMPANY Employee ever been convicted of violating any rules or regulations governing the purchase or
+                        sale of goods or services?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F4</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        5. Has the COMPANY, any COMPANY Leader or COMPANY Employee ever been found guilty of violating any law governing donations,
+                        contributions, honoraria, or any other form of remuneration to any government official?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F5</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        6. Has the COMPANY, any COMPANY Leader or COMPANY Employee ever been found guilty of any violations of anticorruption, securities, trading or tax laws?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F6</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        7. Has the COMPANY, any COMPANY Leader or COMPANY Employee ever been deposed or subpoenaed in connection with any
+                        litigation or investigation involving any law governing donations, contributions, honoraria, or any
+                        other form of remuneration to any government official?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F7</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        8. Has the COMPANY, any COMPANY Leader or COMPANY Employee ever been deposed, subpoenaed or asked to testify before any
+                        legislative body concerning fraud or abuse with regard to the purchase or sale of goods or services?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F8</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        9. Has the COMPANY, any COMPANY Leader or COMPANY Employee ever been found guilty of any violations of laws governing the regulation of antitrust practices or
+                        been deposed or subpoenaed in connection with any litigation or investigation involving such laws?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F9</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        10. Has the COMPANY, any COMPANY Leader or COMPANY Employee ever been mentioned by name in the press
+                        (i.e. article in newspaper, magazine or online vehicles) as having violated anti-corruption or anti-trust laws?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F10</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        11. Has the COMPANY, or any company in which your company owns more than a 10% interest ever been disbarred from competing for World Bank contracts? ?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F11</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        12. Has the COMPANY or any COMPANY Leader ever been the subject of any voluntary or involuntary bankruptcy or other similar proceeding?
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F12</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        13. Is the COMPANY, any COMPANY Leader or COMPANY Employee currently named on any of the following lists?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. The Specially Designated Nationals List (the “SDN”):
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F13A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. The Specially Designated Global Terrorist List:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F13B</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c. The Specially Designated Narcotics Traffickers List or Kingpin List:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F13C</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d. Any U.S., EU, or other country or region Denied Party Lists:
+                    </td>
+                    <td class="text-right">@Model.TprResonse.F13D</td>
+                </tr>
+                <!--#endregion-->
+                <!--#region Sub Agent Information-->
+                <tr>
+                    <th colspan="2">
+                        SUB-AGENT INFORMATION
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Will any sub-agent (defined as a third-party person or COMPANY not on your company payroll)
+                        be used or contracted with to interact with government officials or government controlled companies on your or our behalf?
+                        Note: Interaction may include direct face-to-face, telephone communications, filing papers in person or other electronic means,
+                        obtaining documentation directly or direct payment of a duty or fee.
+                    </td>
+                    <td class="text-right">@Model.TprResonse.G1</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        If yes, for each sub-agent, please provide the following information (please note, due diligence may be required for sub-agents):
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        a. Sub-agent business name
+                    </td>
+                    <td class="text-right">@Model.TprResonse.G2A</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        b. Primary sub-agent contact
+                    </td>
+                    <td class="text-right">@Model.TprResonse.G2B</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        c. Sub-agent e-mail
+                    </td>
+                    <td class="text-right">@Model.TprResonse.G2C</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        d. Services to be provided by sub-agent
+                    </td>
+                    <td class="text-right">@Model.TprResonse.G2D</td>
+                </tr>
+                <!--#endregion-->
+                <!--#region Signature & Certification-->
+                <tr>
+                    <th colspan="2">
+                        SIGNATURE AND CERTIFICATION
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Full Name
+                    </td>
+                    <td class="text-right">@Model.TprResonse.H1</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        E-mail Adress
+                    </td>
+                    <td class="text-right">@Model.TprResonse.H2</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Date
+                    </td>
+                    <td class="text-right">@Model.TprResonse.H3</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Company Name, if applicable
+                    </td>
+                    <td class="text-right">@Model.TprResonse.H4</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Title, if applicable
+                    </td>
+                    <td class="text-right">@Model.TprResonse.H5</td>
+                </tr>
+                <!--#endregion-->
+            </tbody>
+
+
+        </table>
+    </div>
+</div>
