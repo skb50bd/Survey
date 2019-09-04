@@ -3,23 +3,116 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Threading.Tasks;
+using AutoMapper;
+using Data;
+using Domain;
+using Microsoft.EntityFrameworkCore;
+using File = Domain.File;
 
 namespace Client.Pages
 {
     public class ThirdPartyModel : PageModel
     {
+        private readonly IMapper _mapper;
+        private readonly ApplicationDbContext _ctx;
+
+        public ThirdPartyModel(
+            IMapper mapper,
+            ApplicationDbContext ctx)
+        {
+            _mapper = mapper;
+            _ctx = ctx;
+        }
+
+        public string UniqueId { get; set; }
+        public async Task<IActionResult> OnGetAsync(string uid)
+        {
+            if (uid == null)
+                return NotFound();
+
+            var thirdParty =
+                await _ctx.ThirdParties.FirstOrDefaultAsync(
+                    s => s.UniqueIdentifier.ToString() == uid);
+
+            var isValid = !thirdParty?.HasResponded ?? false;
+
+            if (!isValid)
+                return NotFound();
+
+            UniqueId = uid;
+
+            return Page();
+        }
+
+
+
         [BindProperty]
         public ThirdPartyResponseInput Input { get; set; }
 
-        public string UniqueId { get; set; }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            var response = _mapper.Map<ThirdPartyResponse>(Input);
+            var thirdParty = await _ctx.ThirdParties.FirstOrDefaultAsync(
+                s => s.UniqueIdentifier.ToString() ==
+                     Input.UniqueIdentifier);
+
+            var fileA = await SaveFile(Input.DocumentA);
+            var fileB = await SaveFile(Input.DocumentB);
+            var fileC = await SaveFile(Input.DocumentC);
+            var fileD = await SaveFile(Input.DocumentD);
+            var fileE = await SaveFile(Input.DocumentE);
+
+            response.DocumentA = fileA;
+            response.DocumentB = fileB;
+            response.DocumentC = fileC;
+            response.DocumentD = fileD;
+            response.DocumentE = fileE;
+
+            thirdParty.Response = response;
+            thirdParty.HasResponded = true;
+            await _ctx.SaveChangesAsync();
+
+            return RedirectToPagePermanent(
+                "./ThankYou",
+                new
+                {
+                    name = thirdParty.Name
+                }
+            );
+        }
+
+        public static async Task<File> SaveFile(IFormFile formFile)
+        {
+
+            if (!(formFile?.Length > 0)) return null;
+
+            File file;
+            using (var memoryStream = new MemoryStream())
+            {
+                await formFile.CopyToAsync(memoryStream);
+                var byteArray = memoryStream.ToArray();
+                file = new File
+                {
+                    Content  = byteArray,
+                    FileName = formFile.FileName
+                };
+            }
+
+            return file;
+        }
     }
-
-
 
     public class ThirdPartyResponseInput
     {
         public string UniqueIdentifier { get; set; }
-        
+
         #region Files
         [DataType(DataType.Upload)]
         public IFormFile DocumentA { get; set; }
@@ -81,7 +174,7 @@ namespace Client.Pages
         public string B3B1 { get; set; }
         public string B3B2 { get; set; }
 
-        public int B3C { get; set; }
+        public string B3C { get; set; }
         public string B3D1A { get; set; }
         public string B3D1B { get; set; }
         public string B3D2 { get; set; }
@@ -199,5 +292,4 @@ namespace Client.Pages
         public string H5 { get; set; }
         #endregion
     }
-
 }

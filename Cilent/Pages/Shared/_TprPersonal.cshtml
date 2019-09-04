@@ -1,1 +1,291 @@
-﻿
+﻿@model Client.Pages.ThirdPartyResponseInput
+
+<div class="card mb-2">
+    <div class="card-body pb-0">
+        <div class="form-group">
+            <h4 class="card-title h4 text-uppercase">
+                Personal Information
+            </h4>
+
+            <div>
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    1. Please list all partners, directors and/or
+                    greater than 10% owners/shareholders
+                    (collectively, the “<strong><em>COMPANY Leaders</em></strong>”).
+                    Do not provide any information that may not
+                    be allowed under your applicable data privacy
+                    laws and regulations.
+                </label>
+
+                <div id="D1">
+                    <div>
+                        <input name="Input.D1.Index" value="0" hidden />
+                        <input name="Input.D1[0]"
+                               class="form-control form-control-sm col-md-6 d1-entry"
+                               placeholder="Name of Company Leader"
+                               type="text" />
+                    </div>
+                </div>
+                <button id="D1-add"
+                        class="btn btn-outline-secondary btn-sm mt-1">
+                    Add More
+                </button>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    2. Please list all employees who will
+                    interact with government officials or
+                    government owned companies, when working
+                    with us (the “
+                    <strong><em>COMPANY Employees</em></strong>”).
+                </label>
+
+                <div id="D2">
+                    <div>
+                        <input name="Input.D2.Index" value="0" hidden />
+                        <input name="Input.D2[0]"
+                               class="form-control form-control-sm col-md-6 d2-entry"
+                               placeholder="Name of Company Employee"
+                               type="text" />
+                    </div>
+                </div>
+                <button id="D2-add"
+                        class="btn btn-outline-secondary btn-sm mt-1">
+                    Add More
+                </button>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    3. Does any COMPANY Leader or COMPANY Employee
+                    hold or maintain additional ownership
+                    (more than a nominal amount), directorships
+                    and/or employment outside your primary business?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="D3"
+                           class="form-check-input"
+                           type="radio"
+                           id="D3a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="D3a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="D3"
+                           class="form-check-input"
+                           type="radio"
+                           id="D3b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="D3b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="D3"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    4. Has any COMPANY Leader or COMPANY Employee
+                    ever held a job in the government or was any
+                    COMPANY Leader or COMPANY Employee an officer
+                    in the military?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="D4"
+                           class="form-check-input"
+                           type="radio"
+                           id="D4a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="D4a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="D4"
+                           class="form-check-input"
+                           type="radio"
+                           id="D4b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="D4b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="D4"
+                      class="text-danger">
+                </span>
+            </div>
+            
+            <div id="D4">
+                <div class="card mt-1">
+                    <div class="card-body pt-0">
+                        <input name="Input.D4A.Index" value="0" hidden />
+                        <input name="Input.D4B.Index" value="0" hidden />
+                        <input name="Input.D4C.Index" value="0" hidden />
+                        <input name="Input.D4D.Index" value="0" hidden />
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 400">
+                                a. Name
+                            </label>
+
+                            <input name="Input.D4A[0]"
+                                   class="form-control form-control-sm col-md-6 d4a-entry" 
+                                   type="text"/>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 400">
+                                b. Last Title
+                            </label>
+
+                            <input name="Input.D4B[0]"
+                                   class="form-control form-control-sm col-md-6 d4b-entry"
+                                   type="text"/>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 400">
+                                c. Employment/position hire date
+                            </label>
+
+                            <input name="Input.D4C[0]"
+                                   class="form-control form-control-sm col-md-6 d4c-entry"
+                                   type="date" />
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 400">
+                                d. Employment/position termination date
+                            </label>
+
+                            <input name="Input.D4D[0]"
+                                   class="form-control form-control-sm col-md-6 d4d-entry"
+                                   type="date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="D4-add"
+                    class="btn btn-outline-secondary btn-sm mt-1">
+                Add More
+            </button>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    5. Are there any local laws applicable
+                    to any COMPANY Leader or COMPANY Employee
+                    which place restrictions on individuals
+                    after they leave public service?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="D5"
+                           class="form-check-input"
+                           type="radio"
+                           id="D5a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="D5a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="D5"
+                           class="form-check-input"
+                           type="radio"
+                           id="D5b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="D5b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="D5"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500;">
+                    6. Does any person, entity, government
+                    or government agency not listed as an
+                    COMPANY Leader or COMPANY Employee
+                    have any management right or financial
+                    interest (other than less than 10%/passive
+                    shareholder) in your business?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="D6"
+                           class="form-check-input"
+                           type="radio"
+                           id="D6a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="D6a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="D6"
+                           class="form-check-input"
+                           type="radio"
+                           id="D6b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="D6b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="D6"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <div id="D6A">
+                    <div>
+                        <input name="Input.D6A.Index" value="0" hidden />
+                        <input name="Input.D6A[0]"
+                               class="form-control form-control-sm col-md-6 d6a-entry"
+                               placeholder="Name"
+                               type="text" />
+                    </div>
+                </div>
+                <button id="D6A-add"
+                        class="btn btn-outline-secondary btn-sm mt-1">
+                    Add More
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

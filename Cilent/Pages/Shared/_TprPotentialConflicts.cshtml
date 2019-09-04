@@ -1,1 +1,190 @@
-﻿
+﻿@model Client.Pages.ThirdPartyResponseInput
+
+<div class="card mb-2">
+    <div class="card-body pb-0">
+        <div class="form-group">
+            <h4 class="card-title h4 text-uppercase">
+                Potential Conflicts Information
+            </h4>
+
+            <div>
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    1. Does any COMPANY Leader or COMPANY Employee
+                    hold any position with or have any duties for
+                    any political party, political campaign or
+                    active candidate for political office?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="E1A"
+                           class="form-check-input"
+                           type="radio"
+                           id="E1Aa"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="E1Aa">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="E1A"
+                           class="form-check-input"
+                           type="radio"
+                           id="E1Ab"
+                           value="No">
+                    <label class="form-check-label"
+                           for="E1Ab">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="E1A"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    Please inform who
+                </label>
+                <div id="E1B">
+                    <div>
+                        <input name="Input.E1B.Index" value="0" hidden />
+                        <input name="Input.E1B[0]"
+                               class="form-control form-control-sm col-md-6 e1b-entry"   
+                               placeholder="Name of Company Leader or Employee"
+                               type="text"/>
+                    </div>
+                </div>
+
+                <button id="E1B-add"
+                        class="btn btn-outline-secondary btn-sm mt-1">
+                    Add More
+                </button>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    2. Are any family members of any
+                    COMPANY Leader or COMPANY Employee
+                </label>
+                <br />
+
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    a. Employed or otherwise engaged in
+                    any capacity by any government or
+                    government controlled company,
+                    or serves as an officer in the military?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="E2A"
+                           class="form-check-input"
+                           type="radio"
+                           id="E2Aa"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="E2Aa">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="E2A"
+                           class="form-check-input"
+                           type="radio"
+                           id="E2Ab"
+                           value="No">
+                    <label class="form-check-label"
+                           for="E2Ab">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="E2A"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 400">
+                    b. Employed by or have duties for
+                    any political party, campaign or
+                    is a candidate for political office?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="E2B"
+                           class="form-check-input"
+                           type="radio"
+                           id="E2Ba"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="E2Ba">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="E2B"
+                           class="form-check-input"
+                           type="radio"
+                           id="E2Bb"
+                           value="No">
+                    <label class="form-check-label"
+                           for="E2Bb">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="E2B"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mt-2">
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    3. Will the COMPANY, any COMPANY Leader
+                    or COMPANY Employee solicit business
+                    from any government agency or government
+                    controlled company?
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="E3"
+                           class="form-check-input"
+                           type="radio"
+                           id="E3a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="E3a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="E3"
+                           class="form-check-input"
+                           type="radio"
+                           id="E3b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="E3b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="E3"
+                      class="text-danger">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
