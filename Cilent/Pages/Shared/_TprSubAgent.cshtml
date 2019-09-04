@@ -1,1 +1,115 @@
-﻿
+﻿@model Client.Pages.ThirdPartyResponseInput
+
+<div class="card mb-2">
+    <div class="card-body pb-0">
+        <div class="form-group">
+            <h4 class="card-title h4 text-uppercase">
+                Sub-Agent Information
+            </h4>
+
+            <div>
+                <label class="text-justify mb-0"
+                       style="font-weight: 500">
+                    Will any sub-agent (defined as a third-party
+                    person or COMPANY not on your company payroll)
+                    be used or contracted with to interact with
+                    government officials or government controlled
+                    companies on your or our behalf?
+                    Note: Interaction may include direct face-to-face,
+                    telephone communications, filing papers in person
+                    or other electronic means, obtaining documentation
+                    directly or direct payment of a duty or fee.
+                </label>
+
+                <div class="form-check">
+                    <input asp-for="G1"
+                           class="form-check-input"
+                           type="radio"
+                           id="G1a"
+                           value="Yes">
+                    <label class="form-check-label"
+                           for="G1a">
+                        Yes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="G1"
+                           class="form-check-input"
+                           type="radio"
+                           id="G1b"
+                           value="No">
+                    <label class="form-check-label"
+                           for="G1b">
+                        No
+                    </label>
+                </div>
+
+                <span asp-validation-for="G1"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div id="G2">
+                <div class="card mt-1">
+                    <div class="card-body pt-0">
+                        <input name="Input.G2A.Index" value="0" hidden />
+                        <input name="Input.G2B.Index" value="0" hidden />
+                        <input name="Input.G2C.Index" value="0" hidden />
+                        <input name="Input.G2D.Index" value="0" hidden />
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 400">
+                                a. Sub-agent business name
+                            </label>
+
+                            <input name="Input.G2A[0]"
+                                   class="form-control form-control-sm col-md-6 g2a-entry"
+                                   type="text" />
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 400">
+                                b. Primary sub-agent contact
+                            </label>
+
+                            <input name="Input.G2B[0]"
+                                   class="form-control form-control-sm col-md-6 g2b-entry"
+                                   type="text" />
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 400">
+                                c. Sub-agent e-mail
+                            </label>
+
+                            <input name="Input.G2C[0]"
+                                   class="form-control form-control-sm col-md-6 g2c-entry"
+                                   type="text" />
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-justify mb-0"
+                                   style="font-weight: 400">
+                                d. Services to be provided by sub-agent
+                            </label>
+
+                            <textarea name="Input.G2D[0]"
+                                      class="form-control form-control-sm col-md-6 g2d-entry">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-outline-secondary btn-sm mt-1"
+                    id="G2-add">
+                Add More
+            </button>
+
+        </div>
+    </div>
+</div>
