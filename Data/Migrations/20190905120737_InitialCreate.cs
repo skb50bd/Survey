@@ -406,6 +406,7 @@ namespace Data.Migrations
                     Email = table.Column<string>(nullable: true),
                     UniqueIdentifier = table.Column<Guid>(nullable: false),
                     HasResponded = table.Column<bool>(nullable: false),
+                    CompanyName = table.Column<string>(nullable: true),
                     ResponseId = table.Column<int>(nullable: true),
                     ThirdPartyId = table.Column<int>(nullable: false),
                     SummaryId = table.Column<int>(nullable: true)

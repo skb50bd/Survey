@@ -34,7 +34,13 @@
             @foreach (var sp in Model.Sponsors)
             {
                 <tbody style="border-top: 2px solid black;">
-                    <tr>
+                <tr>
+                    <th colspan="5" style="font-size: larger;">
+                        @sp.CompanyName
+                    </th>
+                </tr> 
+
+                <tr>
                         <td>
                             Sponsor
                         </td>

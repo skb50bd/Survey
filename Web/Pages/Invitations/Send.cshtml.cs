@@ -53,6 +53,7 @@ namespace Web.Pages.Invitation
 
             var sponsor = new Sponsor
             {
+                CompanyName = Input.CompanyName,
                 Name = Input.SponsorName,
                 Email = Input.SponsorEmail,
                 ThirdParty = thirdParty
@@ -115,6 +116,8 @@ namespace Web.Pages.Invitation
 
     public class InputModel
     {
+        public string CompanyName { get; set; }
+
         public string SponsorName { get; set; }
 
         [Required]

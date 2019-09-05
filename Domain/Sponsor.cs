@@ -2,6 +2,8 @@
 {
     public class Sponsor: Responder
     {
+        public string CompanyName { get; set; }
+
         public int? ResponseId { get; set; }
         public SponsorResponse Response { get; set; }
 
