@@ -168,7 +168,7 @@
 
                 <tr>
                     <td>
-                        a. Tax number/Jurisdiction:
+                        a. Tax number/Jurisdiction
                     </td>
                     <td class="text-right">
                         @Model.TprResponse.B2A
@@ -177,7 +177,7 @@
 
                 <tr>
                     <td>
-                        b. Main office address:
+                        b. Main office address
                     </td>
                     <td class="text-right">
                         @Model.TprResponse.B2B
@@ -222,7 +222,7 @@
 
                 <tr>
                     <td>
-                        e. Email:
+                        e. Email
                     </td>
                     <td class="text-right">
                         <email>@Model.TprResponse.B2E</email>
@@ -281,8 +281,8 @@
                 </tr>
 
                 <tr>
-                    <td colspan="2">
-                        Organizational information relating to COMPANY:
+                    <td colspan="2" style="font-style:italic;">
+                        Organizational information relating to COMPANY
                     </td>
                 </tr>
 
@@ -322,7 +322,7 @@
 
                 <tr>
                     <td>
-                        c. Approximate number of employees:
+                        c. Approximate number of employees
                     </td>
                     <td class="text-right">
                         @Model.TprResponse.B3C
@@ -404,7 +404,7 @@
                             if (!string.IsNullOrWhiteSpace(countries[i]))
                             {
                                 <span>(@(i + 1)) @countries[i]</span>
-                                <br/>
+                                <br />
                             }
                         }
                     </td>
@@ -530,7 +530,7 @@
 
                 <tr>
                     <td>
-                        c. Job Title:
+                        c. Job Title
                     </td>
                     <td class="text-right">
                         @Model.TprResponse.C2C
@@ -580,7 +580,7 @@
                 </tr>
 
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" style="font-style: italic; font-weight: 500;">
                         3. External Financial Reference
                     </td>
                 </tr>
@@ -605,7 +605,7 @@
 
                 <tr>
                     <td>
-                        c. Job Title:
+                        c. Job Title
                     </td>
                     <td class="text-right">
                         @Model.TprResponse.C3C
@@ -664,7 +664,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         1. Please list all partners, directors
                         and/or greater than 10% owners/shareholders
                         (collectively, the “COMPANY Leaders”).
@@ -681,14 +681,14 @@
                             if (!string.IsNullOrWhiteSpace(names[i]))
                             {
                                 <span>(@(i + 1)) @names[i]</span>
-                                <br/>
+                                <br />
                             }
                         }
                     </td>
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         2. Please list all employees who will interact
                         with government officials or government owned
                         companies, when working with us (the “COMPANY Employees”).
@@ -702,14 +702,14 @@
                             if (!string.IsNullOrWhiteSpace(names[i]))
                             {
                                 <span>(@(i + 1)) @names[i]</span>
-                                <br/>
+                                <br />
                             }
                         }
                     </td>
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         3. Does any COMPANY Leader or COMPANY Employee
                         hold or maintain additional ownership
                         (more than a nominal amount),
@@ -722,7 +722,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         4. Has any COMPANY Leader or COMPANY Employee
                         ever held a job in the government or was any
                         COMPANY Leader or COMPANY Employee an officer
@@ -732,13 +732,21 @@
                         @Model.TprResponse.D4
                     </td>
                 </tr>
-
+                        
+            @{
+                var d4a = Model.TprResponse.D4A.Split("; ");
+                var d4b = Model.TprResponse.D4B.Split("; ");
+                var d4c = Model.TprResponse.D4C.Split("; ");
+                var d4d = Model.TprResponse.D4D.Split("; ");
+            }
+            @for (var i = 0; i < d4a.Length; i++)
+            {
                 <tr>
                     <td>
                         a. Name
                     </td>
                     <td class="text-right">
-                        @Model.TprResponse.D4A
+                        @d4a[i]
                     </td>
                 </tr>
 
@@ -747,7 +755,7 @@
                         b. Last Title
                     </td>
                     <td class="text-right">
-                        @Model.TprResponse.D4B
+                        @d4b[i]
                     </td>
                 </tr>
 
@@ -756,21 +764,22 @@
                         c. Employment/position hire date
                     </td>
                     <td class="text-right">
-                        @Model.TprResponse.D4C
+                        @d4c[i]
                     </td>
                 </tr>
 
-                <tr>
+                <tr style="border-bottom: 2px solid black;">
                     <td>
-                        d. Employment/position termination date:
+                        d. Employment/position termination date
                     </td>
                     <td class="text-right">
-                        @Model.TprResponse.D4D
+                        @d4d[i]
                     </td>
                 </tr>
+            }
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         5. Are there any local laws applicable to
                         any COMPANY Leader or COMPANY Employee which
                         place restrictions on individuals after they
@@ -782,7 +791,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         6. Does any person, entity, government
                         or government agency not listed as an
                         COMPANY Leader or COMPANY Employee have
@@ -805,7 +814,7 @@
                             if (!string.IsNullOrWhiteSpace(names[i]))
                             {
                                 <span>(@(i + 1)) @names[i]</span>
-                                <br/>
+                                <br />
                             }
                         }
                     </td>
@@ -821,7 +830,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         1. Does any COMPANY Leader or COMPANY
                         Employee hold any position with or
                         have any duties for any political party,
@@ -844,21 +853,21 @@
                             if (!string.IsNullOrWhiteSpace(names[i]))
                             {
                                 <span>(@(i + 1)) @names[i]</span>
-                                <br/>
+                                <br />
                             }
                         }
                     </td>
                 </tr>
 
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" class="text-justify">
                         2. Are any family members of
                         any COMPANY Leader or COMPANY Employee
                     </td>
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         a. Employed or otherwise engaged
                         in any capacity by any government
                         or government controlled company,
@@ -870,7 +879,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         b. Employed by or have duties for
                         any political party, campaign or
                         is a candidate for political office?
@@ -881,7 +890,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         3. Will the COMPANY, any COMPANY Leader
                         or COMPANY Employee solicit business
                         from any government agency or
@@ -902,7 +911,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         1. Does the COMPANY currently have a
                         written policy addressing ethical
                         business practices and the prevention of bribery?
@@ -913,7 +922,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         2. In which country will you seek to be paid for services?
                     </td>
                     <td class="text-right">
@@ -922,7 +931,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         3. Please indicate preferred method of payment
                     </td>
                     <td class="text-right">
@@ -931,7 +940,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         4. Has the COMPANY, any COMPANY Leader
                         or COMPANY Employee ever been convicted
                         of violating any rules or regulations
@@ -944,7 +953,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         5. Has the COMPANY, any COMPANY Leader
                         or COMPANY Employee ever been found
                         guilty of violating any law governing
@@ -958,7 +967,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         6. Has the COMPANY, any COMPANY Leader
                         or COMPANY Employee ever been found guilty
                         of any violations of anti-corruption,
@@ -970,7 +979,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         7. Has the COMPANY, any COMPANY Leader
                         or COMPANY Employee ever been deposed
                         or subpoenaed in connection with any
@@ -985,7 +994,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         8. Has the COMPANY, any COMPANY Leader
                         or COMPANY Employee ever been deposed,
                         subpoenaed or asked to testify before any
@@ -999,7 +1008,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         9. Has the COMPANY, any COMPANY Leader
                         or COMPANY Employee ever been found guilty
                         of any violations of laws governing the
@@ -1014,7 +1023,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         10. Has the COMPANY, any COMPANY Leader
                         or COMPANY Employee ever been mentioned
                         by name in the press
@@ -1028,7 +1037,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         11. Has the COMPANY, or any company
                         in which your company owns more than
                         a 10% interest ever been disbarred
@@ -1040,7 +1049,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         12. Has the COMPANY or any COMPANY Leader
                         ever been the subject of any voluntary or
                         involuntary bankruptcy or other similar
@@ -1052,7 +1061,7 @@
                 </tr>
 
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" class="text-justify">
                         13. Is the COMPANY, any COMPANY Leader
                         or COMPANY Employee currently named on
                         any of the following lists?
@@ -1060,9 +1069,9 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         a. The Specially Designated
-                        Nationals List (the “SDN”):
+                        Nationals List (the “SDN”)
                     </td>
                     <td class="text-right">
                         @Model.TprResponse.F13A
@@ -1070,9 +1079,9 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         b. The Specially Designated
-                        Global Terrorist List:
+                        Global Terrorist List
                     </td>
                     <td class="text-right">
                         @Model.TprResponse.F13B
@@ -1080,9 +1089,9 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         c. The Specially Designated Narcotics
-                        Traffickers List or Kingpin List:
+                        Traffickers List or Kingpin List
                     </td>
                     <td class="text-right">
                         @Model.TprResponse.F13C
@@ -1090,9 +1099,9 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="text-justify">
                         d. Any U.S., EU, or other country
-                        or region Denied Party Lists:
+                        or region Denied Party Lists
                     </td>
                     <td class="text-right">
                         @Model.TprResponse.F13D
@@ -1115,7 +1124,7 @@
                         be used or contracted with to interact with
                         government officials or government controlled
                         companies on your or our behalf?
-                        <br/>
+                        <br />
                         <em>Note:</em> Interaction may include direct
                         face-to-face, telephone communications,
                         filing papers in person or other electronic means,
@@ -1128,48 +1137,59 @@
                 </tr>
 
                 <tr>
-                    <td colspan="2" style="font-style: italic;">
+                    <td colspan="2" style="font-style: italic;" class="text-justify">
                         If yes, for each sub-agent, please provide
                         the following information (please note,
                         due diligence may be required for sub-agents)
                     </td>
                 </tr>
 
-                <tr>
-                    <td>
-                        a. Sub-agent business name
-                    </td>
-                    <td class="text-right">
-                        @Model.TprResponse.G2A
-                    </td>
-                </tr>
+                @{
+                    var count = Model.TprResponse.G2A.Split("; ").Count();
+                    var g2a = Model.TprResponse.G2A.Split("; ");
+                    var g2b = Model.TprResponse.G2B.Split("; ");
+                    var g2c = Model.TprResponse.G2C.Split("; ");
+                    var g2d = Model.TprResponse.G2D.Split("; ");
+                }
 
-                <tr>
-                    <td>
-                        b. Primary sub-agent contact
-                    </td>
-                    <td class="text-right">
-                        @Model.TprResponse.G2B
-                    </td>
-                </tr>
+                @for (var i = 0; i < count; i++)
+                {
+                    <tr>
+                        <td>
+                            a. Sub-agent business name
+                        </td>
+                        <td class="text-right">
+                            @g2a[i]
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>
-                        c. Sub-agent email
-                    </td>
-                    <td class="text-right">
-                        <email>@Model.TprResponse.G2C</email>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            b. Primary sub-agent contact
+                        </td>
+                        <td class="text-right">
+                            @g2b[i]
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>
-                        d. Services to be provided by sub-agent
-                    </td>
-                    <td class="text-right">
-                        @Model.TprResponse.G2D
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            c. Sub-agent email
+                        </td>
+                        <td class="text-right">
+                            <email>@g2c[i]</email>
+                        </td>
+                    </tr>
+
+                    <tr style="border-bottom: 2px solid black;">
+                        <td>
+                            d. Services to be provided by sub-agent
+                        </td>
+                        <td class="text-right">
+                            @g2d[i]
+                        </td>
+                    </tr>
+                }
             </tbody>
 
             <!--SIGNATURE AND CERTIFICATION-->
@@ -1224,7 +1244,6 @@
                         @Model.TprResponse.H5
                     </td>
                 </tr>
-                <!--#endregion-->
             </tbody>
         </table>
     </div>

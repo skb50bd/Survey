@@ -18,7 +18,7 @@
         #endregion
 
         #region Date Sponsor Form Submitted
-        public string C => SponsorResponse?.G2;
+        public string C => SponsorResponse?.G3;
         #endregion
 
         #region Status of Form 

@@ -53,16 +53,14 @@
             <tbody>
                 <tr>
                     <td>Sponsor</td>
-                    <td>
-                        <strong>@Model.Sponsor.Name</strong> -
-                        <a href="mailto:@Model.Sponsor.Email">
-                            <em>@Model.Sponsor.Email</em>
-                        </a>
+                    <td class="text-right">
+                        <strong>@Model.Sponsor.Name</strong>
+                        <<email>Model.Sponsor.Email</email>>
                     </td>
                 </tr>
                 <tr>
                     <td>Sponsor Response</td>
-                    <td>
+                    <td class="text-right">
                         @if (Model.Sponsor.ResponseId is null)
                         {
                             <span class="text-danger"
@@ -73,25 +71,24 @@
                         else
                         {
                             <a asp-page="/Responses/Sponsor"
-                               asp-route-id="@Model.Sponsor.Id"
+                               asp-route-id="@Model.Sponsor.Id" 
+                               class="btn btn-sm btn-success"
                                target="_blank">
-                                Link
+                                View
                             </a>
                         }
                     </td>
                 </tr>
                 <tr>
                     <td>Third Party Representative</td>
-                    <td>
-                        <strong>@Model.Tpr.Name</strong> -
-                        <a href="mailto:@Model.Tpr.Email">
-                            <em>@Model.Tpr.Email</em>
-                        </a>
+                    <td class="text-right">
+                        <strong>@Model.Tpr.Name</strong>
+                        <<email>@Model.Tpr.Email</email>>
                     </td>
                 </tr>
                 <tr>
                     <td>Third Party Representative Response</td>
-                    <td>
+                    <td class="text-right">
                         @if (Model.Tpr.ResponseId is null)
                         {
                             <span class="text-danger"
@@ -102,9 +99,10 @@
                         else
                         {
                             <a asp-page="/Responses/ThirdParty"
-                               asp-route-id="@Model.Tpr.Id"
+                               asp-route-id="@Model.Tpr.Id"  
+                               class="btn btn-sm btn-success"
                                target="_blank">
-                                Link
+                                View
                             </a>
                         }
                     </td>

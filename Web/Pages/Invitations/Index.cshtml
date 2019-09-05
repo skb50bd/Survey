@@ -1,15 +1,15 @@
 ﻿@page
 @model Web.Pages.Invitations.IndexModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Invitations";
 }
 
 <div class="card">
-    <div class="card-body">
+    <div class="card-body pb-1">
         <div class="row">
             <div class="col-md-6">
                 <h1 class="card-title display-4">
-                    Invitations
+                    @ViewData["Title"]
                 </h1>
             </div>
 
@@ -21,7 +21,7 @@
 
 
 
-        <table class="table table-sm table-hover table-striped table-hover">
+        <table class="table table-sm table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th></th>
@@ -31,46 +31,22 @@
                     <th>Response</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var sp in Model.Sponsors)
-                {
-                    var sponsorClass =
-                        sp.HasResponded
-                            ? "table-success"
-                            : "table-danger";
-
-                    var thirdPartyClass =
-                        sp.ThirdParty.HasResponded
-                            ? "table-success"
-                            : "table-danger";
-
+            @foreach (var sp in Model.Sponsors)
+            {
+                <tbody style="border-top: 2px solid black;">
                     <tr>
                         <td>
                             Sponsor
-                            <br />
-                            Third Party
-                            <br />
-                            <em>Summary</em>
                         </td>
+
                         <td style="font-weight: bold">
                             @sp.Name
-                            <br />
-                            @sp.ThirdParty.Name
-                            <br />
                         </td>
+
                         <td>
-                            <a href="mailto:@sp.Email">
-                                @sp.Email
-                            </a>
-
-                            <br />
-
-                            <a href="mailto:@sp.ThirdParty.Email">
-                                @sp.ThirdParty.Email
-                            </a>
-                            <br />
-
+                            <email>@sp.Email</email>
                         </td>
+
                         <td>
                             @if (sp.HasResponded)
                             {
@@ -82,12 +58,45 @@
                             else
                             {
                                 <a href="@Model.ClientBase/Sponsor/@sp.UniqueIdentifier"
+                                   class="btn btn-sm btn-success"
                                    target="_blank">
                                     Link
                                 </a>
                             }
-                            <br />
+                        </td>
 
+                        <td>
+                            @if (sp.HasResponded)
+                            {
+                                <a asp-page="/Responses/Sponsor"
+                                   asp-route-id="@sp.Id"
+                                   class="btn btn-sm btn-success"
+                                   target="_blank">
+                                    View
+                                </a>
+                            }
+                            else
+                            {
+                                <span class="text-danger"
+                                      style="font-weight: bold">
+                                    N/A
+                                </span>
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Third Party</td>
+
+                        <td style="font-weight: bold">
+                            @sp.ThirdParty.Name
+                        </td>
+
+                        <td>
+                            <email>@sp.ThirdParty.Email</email>
+                        </td>
+
+                        <td>
                             @if (sp.ThirdParty.HasResponded)
                             {
                                 <span class="text-success"
@@ -98,50 +107,21 @@
                             else
                             {
                                 <a href="@Model.ClientBase/ThirdParty/@sp.ThirdParty.UniqueIdentifier"
+                                   class="btn btn-sm btn-success"
                                    target="_blank">
                                     Link
                                 </a>
                             }
-                            <br />
-
-                            @if (sp.SummaryId is null)
-                            {
-                                <a asp-page="/Summary/Index"
-                                   asp-route-id="@sp.Id">Link</a>
-                            }
-                            else
-                            {
-                                <span class="text-success"
-                                      style="font-weight: bold">
-                                    N/A
-                                </span>
-                            }
-
                         </td>
-                        <td>
-                            @if (sp.HasResponded)
-                            {
-                                <a asp-page="/Responses/Sponsor"
-                                   asp-route-id="@sp.Id"
-                                   target="_blank">
-                                    Link
-                                </a>
-                            }
-                            else
-                            {
-                                <span class="text-danger"
-                                      style="font-weight: bold">
-                                    N/A
-                                </span>
-                            }
-                            <br />
 
+                        <td>
                             @if (sp.ThirdParty.HasResponded)
                             {
                                 <a asp-page="/Responses/ThirdParty"
                                    asp-route-id="@sp.ThirdPartyId"
+                                   class="btn btn-sm btn-success"
                                    target="_blank">
-                                    Link
+                                    View
                                 </a>
                             }
                             else
@@ -151,8 +131,24 @@
                                     N/A
                                 </span>
                             }
-                            <br />
+                        </td>
+                    </tr>
 
+                    <tr class="table-warning">
+                        <td>Summary</td>
+                        <td></td>
+                        <td></td>
+
+                        <td>
+                            <a class="btn btn-sm btn-success"
+                               asp-page="/Summary/Index"
+                               asp-route-id="@sp.Id"
+                               target="_blank">
+                                Link
+                            </a>
+                        </td>
+
+                        <td>
                             @if (sp.SummaryId is null)
                             {
                                 <span class="text-danger"
@@ -164,15 +160,15 @@
                             {
                                 <a asp-page="/Responses/Summary"
                                    asp-route-id="@sp.Id"
+                                   class="btn btn-sm btn-success"
                                    target="_blank">
-                                    Link
+                                    View
                                 </a>
                             }
-
                         </td>
                     </tr>
-                }
-            </tbody>
+                </tbody>
+            }
         </table>
     </div>
 </div>

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class Initial_Create : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -341,7 +341,7 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ResponseSummary",
+                name: "ResponseSummaries",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -358,15 +358,15 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ResponseSummary", x => x.Id);
+                    table.PrimaryKey("PK_ResponseSummaries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ResponseSummary_SponsorResponses_SponsorResponseId",
+                        name: "FK_ResponseSummaries_SponsorResponses_SponsorResponseId",
                         column: x => x.SponsorResponseId,
                         principalTable: "SponsorResponses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ResponseSummary_ThirdPartyResponses_ThirdPartyResponseId",
+                        name: "FK_ResponseSummaries_ThirdPartyResponses_ThirdPartyResponseId",
                         column: x => x.ThirdPartyResponseId,
                         principalTable: "ThirdPartyResponses",
                         principalColumn: "Id",
@@ -420,9 +420,9 @@ namespace Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Sponsors_ResponseSummary_SummaryId",
+                        name: "FK_Sponsors_ResponseSummaries_SummaryId",
                         column: x => x.SummaryId,
-                        principalTable: "ResponseSummary",
+                        principalTable: "ResponseSummaries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -473,13 +473,13 @@ namespace Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ResponseSummary_SponsorResponseId",
-                table: "ResponseSummary",
+                name: "IX_ResponseSummaries_SponsorResponseId",
+                table: "ResponseSummaries",
                 column: "SponsorResponseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ResponseSummary_ThirdPartyResponseId",
-                table: "ResponseSummary",
+                name: "IX_ResponseSummaries_ThirdPartyResponseId",
+                table: "ResponseSummaries",
                 column: "ThirdPartyResponseId");
 
             migrationBuilder.CreateIndex(
@@ -565,7 +565,7 @@ namespace Data.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "ResponseSummary");
+                name: "ResponseSummaries");
 
             migrationBuilder.DropTable(
                 name: "ThirdParties");
