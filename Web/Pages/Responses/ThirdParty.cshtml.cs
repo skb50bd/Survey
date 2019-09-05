@@ -21,7 +21,7 @@ namespace Web.Pages.Responses
         }
 
         public ThirdParty Tpr { get; set; }
-        public ThirdPartyResponse TprResonse => Tpr.Response;
+        public ThirdPartyResponse TprResponse => Tpr.Response;
 
         public async Task<IActionResult> OnGetAsync(int id)
         {

@@ -16,7 +16,7 @@ namespace Web
                     dest => dest.C2,
                     opt => opt.MapFrom(
                         src => string.Join(
-                            ", ",
+                            "; ",
                             src.C2))
                 );
 
@@ -36,6 +36,11 @@ namespace Web
                 ).ForMember(
                     dest => dest.DocumentE,
                     opt => opt.Ignore()
+                ).ForMember(
+                    dest => dest.B4C,
+                    opt => opt.MapFrom(
+                        src => string.Join("; ", src.B4C)
+                    )
                 ).ForMember(
                     dest => dest.D1,
                     opt => opt.MapFrom(

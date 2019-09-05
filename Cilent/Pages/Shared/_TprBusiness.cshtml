@@ -1,4 +1,10 @@
 ﻿@model Client.Pages.ThirdPartyResponseInput
+@using Newtonsoft.Json;
+@{
+    var countries =
+        JsonConvert.DeserializeObject<IList<string>>(
+            System.IO.File.ReadAllText("countries.json"));
+}
 
 <div class="card mb-2">
     <div class="card-body pb-0">
@@ -209,7 +215,7 @@
                        style="font-weight: 500;">
                     3. Please provide the following organizational information relating to COMPANY
                 </label>
-                <br/>
+                <br />
 
                 <label class="text-justify mb-0"
                        style="font-weight: 400;">
@@ -230,7 +236,7 @@
                        style="font-weight: 400;">
                     b. Approximate establishment date and legal jurisdiction of formation
                 </label>
-                <br/>
+                <br />
 
                 <label class="text-justify mb-0"
                        style="font-weight: 400; font-size: small;">
@@ -407,9 +413,9 @@
                     4. Please provide the following business information relating to COMPANY
                 </label>
                 <br />
-                
+
                 <label class="text-justify mb-0"
-                             style="font-weight: 400">
+                       style="font-weight: 400">
                     a. Describe your core business activities
                 </label>
 
@@ -442,9 +448,21 @@
                        style="font-weight: 400">
                     c. Countries in which you operate or provide services
                 </label>
-
-                <input asp-for="B4C"
-                       class="form-control form-control-sm col-md-6" />
+                <br />
+                <span style="font-size: smaller; font-style: italic;">
+                    Hold CTRL/⌘ to select multiple options
+                </span>
+                <select asp-for="B4C"
+                        class="multiselect form-control form-control-sm col-md-6"
+                        multiple="multiple"
+                        style="height: 10rem;">
+                    @foreach (var country in countries)
+                    {
+                        <option value="@country">
+                            @country
+                        </option>
+                    }
+                </select>
 
                 <span asp-validation-for="B4C"
                       class="text-danger">

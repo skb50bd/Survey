@@ -9,6 +9,7 @@ using AutoMapper;
 using Data;
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using File = Domain.File;
 
 namespace Client.Pages
@@ -27,6 +28,7 @@ namespace Client.Pages
         }
 
         public string UniqueId { get; set; }
+
         public async Task<IActionResult> OnGetAsync(string uid)
         {
             if (uid == null)
@@ -63,11 +65,11 @@ namespace Client.Pages
                 s => s.UniqueIdentifier.ToString() ==
                      Input.UniqueIdentifier);
 
-            var fileA = await SaveFile(Input.DocumentA);
-            var fileB = await SaveFile(Input.DocumentB);
-            var fileC = await SaveFile(Input.DocumentC);
-            var fileD = await SaveFile(Input.DocumentD);
-            var fileE = await SaveFile(Input.DocumentE);
+            var fileA = await MakeFile(Input.DocumentA);
+            var fileB = await MakeFile(Input.DocumentB);
+            var fileC = await MakeFile(Input.DocumentC);
+            var fileD = await MakeFile(Input.DocumentD);
+            var fileE = await MakeFile(Input.DocumentE);
 
             response.DocumentA = fileA;
             response.DocumentB = fileB;
@@ -88,9 +90,8 @@ namespace Client.Pages
             );
         }
 
-        public static async Task<File> SaveFile(IFormFile formFile)
+        public static async Task<File> MakeFile(IFormFile formFile)
         {
-
             if (!(formFile?.Length > 0)) return null;
 
             File file;
@@ -181,7 +182,7 @@ namespace Client.Pages
 
         public string B4A { get; set; }
         public string B4B { get; set; }
-        public string B4C { get; set; }
+        public IList<string> B4C { get; set; }
 
         public string B5 { get; set; }
         #endregion
