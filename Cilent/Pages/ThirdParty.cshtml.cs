@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Data;
+using Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Threading.Tasks;
-using AutoMapper;
-using Data;
-using Domain;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using File = Domain.File;
 
 namespace Client.Pages
@@ -31,17 +30,9 @@ namespace Client.Pages
 
         public async Task<IActionResult> OnGetAsync(string uid)
         {
-            if (uid == null)
-                return NotFound();
-
-            var thirdParty =
-                await _ctx.ThirdParties.FirstOrDefaultAsync(
-                    s => s.UniqueIdentifier.ToString() == uid);
-
-            var isValid = !thirdParty?.HasResponded ?? false;
-
-            if (!isValid)
-                return NotFound();
+            var page = await CheckValidity(uid);
+            if (!(page is null))
+                return page;
 
             UniqueId = uid;
 
@@ -59,6 +50,10 @@ namespace Client.Pages
             {
                 return Page();
             }
+
+            var page = await CheckValidity(Input.UniqueIdentifier);
+            if (!(page is null))
+                return page;
 
             var response = _mapper.Map<ThirdPartyResponse>(Input);
             var thirdParty = await _ctx.ThirdParties.FirstOrDefaultAsync(
@@ -90,6 +85,22 @@ namespace Client.Pages
             );
         }
 
+        public async Task<IActionResult> CheckValidity(string uid)
+        {
+            if (uid == null)
+                return NotFound();
+
+            var tpr =
+                await _ctx.ThirdParties.FirstOrDefaultAsync(
+                    s => s.UniqueIdentifier.ToString() == uid);
+
+            var isExpired = tpr?.HasResponded ?? false;
+            if (isExpired)
+                return RedirectToPage("/LinkExpired");
+
+            return tpr is null ? NotFound() : null;
+        }
+
         public static async Task<File> MakeFile(IFormFile formFile)
         {
             if (!(formFile?.Length > 0)) return null;
@@ -101,7 +112,7 @@ namespace Client.Pages
                 var byteArray = memoryStream.ToArray();
                 file = new File
                 {
-                    Content  = byteArray,
+                    Content = byteArray,
                     FileName = formFile.FileName
                 };
             }

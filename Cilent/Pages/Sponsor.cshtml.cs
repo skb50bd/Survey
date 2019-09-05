@@ -31,17 +31,11 @@ namespace Client.Pages
 
         public async Task<IActionResult> OnGetAsync(string uid)
         {
-            if (uid == null)
-                return NotFound();
-
-            var sponsor =
-                await _ctx.Sponsors.FirstOrDefaultAsync(
-                    s => s.UniqueIdentifier.ToString() == uid);
-
-            var isValid = !sponsor?.HasResponded ?? false;
-
-            if (!isValid)
-                return NotFound();
+            var page = await CheckValidity(uid);
+            if (!(page is null))
+            {
+                return page;
+            }
 
             UniqueId = uid;
 
@@ -59,6 +53,10 @@ namespace Client.Pages
                 return Page();
             }
 
+            var page = await CheckValidity(Answers.UniqueIdentifier);
+            if (!(page is null))
+                return page;
+
             var response = _mapper.Map<SponsorResponse>(Answers);
             var sponsor = await _ctx.Sponsors.FirstOrDefaultAsync(
                 s => s.UniqueIdentifier.ToString() ==
@@ -75,6 +73,22 @@ namespace Client.Pages
                     name = sponsor.Name
                 }
             );
+        }
+
+        public async Task<IActionResult> CheckValidity(string uid)
+        {
+            if (uid == null)
+                return NotFound();
+
+            var sponsor =
+                await _ctx.Sponsors.FirstOrDefaultAsync(
+                    s => s.UniqueIdentifier.ToString() == uid);
+
+            var isExpired = sponsor?.HasResponded ?? false;
+            if (isExpired)
+                return RedirectToPage("/LinkExpired");
+
+            return sponsor is null ? NotFound() : null;
         }
     }
     public class SponsorResponseInput
