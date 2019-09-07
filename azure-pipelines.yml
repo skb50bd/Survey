@@ -21,7 +21,14 @@ steps:
   displayName: Build
   inputs:
     command: build
-    projects: '**/Web.csproj, **/Client.csproj'
+    projects: '**/Web.csproj'
+    arguments: '--configuration Release'
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: build
+    projects: '**/Client.csproj'
     arguments: '--configuration Release'
 
 - task: DotNetCoreCLI@2
