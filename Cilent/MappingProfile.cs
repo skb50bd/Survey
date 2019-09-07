@@ -2,7 +2,7 @@
 using Domain;
 using Client.Pages;
 
-namespace Web
+namespace Client
 {
     public class MappingProfile : Profile
     {
